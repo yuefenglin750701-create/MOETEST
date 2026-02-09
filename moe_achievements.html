@@ -217,7 +217,7 @@
                 <!-- NCUT Info -->
                 <div class="flex flex-col md:flex-row items-center gap-16 mb-32">
                     <div class="md:w-1/2 relative">
-                        <img src="ncut.png" class="rounded-[2.5rem] shadow-2xl w-full h-[450px] object-cover border-8 border-white gallery-img" alt="NCUT Campus">
+                        <img src="ncut.jpg" class="rounded-[2.5rem] shadow-2xl w-full h-[450px] object-cover border-8 border-white gallery-img" alt="NCUT Campus">
                         <div class="absolute -bottom-6 -right-6 bg-blue-600 text-white p-6 rounded-3xl shadow-xl">
                             <p class="text-2xl font-extrabold italic">典範科大</p>
                             <p class="text-[10px] tracking-widest uppercase font-bold">Leading Tech University</p>
@@ -499,19 +499,128 @@
 
                 <!-- Video Grid -->
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-                    <div class="bg-white rounded-[2rem] shadow-sm border border-gray-100 overflow-hidden card-hover transition group cursor-pointer text-left">
-                        <div class="aspect-video bg-gray-200 relative"><img src="https://images.unsplash.com/photo-1565043589221-1a6fd495880c?q=80&w=800" class="w-full h-full object-cover" alt="V1"><div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300"><i class="fa-solid fa-circle-play text-white text-5xl"></i></div></div>
-                        <div class="p-8"><span class="inline-block px-3 py-1 bg-blue-50 text-blue-700 text-[10px] font-bold rounded-full mb-4">核心課程</span><h4 class="font-extrabold text-gray-800 mb-2 text-lg">智慧機械概論與虛實整合</h4><p class="text-gray-500 text-sm leading-relaxed line-clamp-2">深入探討數位雙生技術在加工路徑驗證與產線最佳化之應用場景。</p></div>
-                    </div>
-                    <div class="bg-white rounded-[2rem] shadow-sm border border-gray-100 overflow-hidden card-hover transition group cursor-pointer text-left">
-                        <div class="aspect-video bg-gray-200 relative"><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800" class="w-full h-full object-cover" alt="V2"><div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300"><i class="fa-solid fa-circle-play text-white text-5xl"></i></div></div>
-                        <div class="p-8"><span class="inline-block px-3 py-1 bg-green-50 text-green-700 text-[10px] font-bold rounded-full mb-4">PBL 專案實作</span><h4 class="font-extrabold text-gray-800 mb-2 text-lg">綠色製造能耗監測實錄</h4><p class="text-gray-500 text-sm leading-relaxed line-clamp-2">分析加工參數與能耗之關聯性，透過數據採集優化製程碳足跡。</p></div>
-                    </div>
-                    <div class="bg-white rounded-[2rem] shadow-sm border border-gray-100 overflow-hidden card-hover transition group cursor-pointer text-left">
-                        <div class="aspect-video bg-gray-200 relative"><img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=800" class="w-full h-full object-cover" alt="V3"><div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300"><i class="fa-solid fa-circle-play text-white text-5xl"></i></div></div>
-                        <div class="p-8"><span class="inline-block px-3 py-1 bg-purple-50 text-purple-700 text-[10px] font-bold rounded-full mb-4">技術研習</span><h4 class="font-extrabold text-gray-800 mb-2 text-lg">Python 訊號處理與 AI 診斷</h4><p class="text-gray-500 text-sm leading-relaxed line-clamp-2">示範如何利用 Python 進行振動訊號之特徵擷取，建置刀具磨耗預警模型。</p></div>
-                    </div>
-                </div>
+
+  <!-- Card 1 -->
+  <div class="bg-white rounded-[2rem] shadow-sm border border-gray-100 overflow-hidden card-hover transition group cursor-pointer text-left">
+    <div class="aspect-video bg-gray-200 relative overflow-hidden">
+      <!-- iframe (一開始就存在，避免 153) -->
+      <iframe
+        class="absolute inset-0 w-full h-full"
+        data-yt-frame
+        data-video-id="PIV2tifKPgE"
+        src="https://www.youtube.com/embed/PIV2tifKPgE?rel=0&playsinline=1"
+        title="YouTube video player"
+        frameborder="0"
+        referrerpolicy="origin-when-cross-origin"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen>
+      </iframe>
+
+      <!-- Overlay（封面 + 播放鍵） -->
+      <div data-yt-overlay class="absolute inset-0 z-10">
+        <img src="https://img.youtube.com/vi/PIV2tifKPgE/maxresdefault.jpg" class="absolute inset-0 w-full h-full object-cover" alt="V1 cover">
+        <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+          <i class="fa-solid fa-circle-play text-white text-5xl"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="p-8">
+      <span class="inline-block px-3 py-1 bg-blue-50 text-blue-700 text-[10px] font-bold rounded-full mb-4">核心課程</span>
+      <h4 class="font-extrabold text-gray-800 mb-2 text-lg">智慧機械概論與虛實整合</h4>
+      <p class="text-gray-500 text-sm leading-relaxed line-clamp-2">深入探討數位雙生技術在加工路徑驗證與產線最佳化之應用場景。</p>
+    </div>
+  </div>
+
+  <!-- Card 2 -->
+  <div class="bg-white rounded-[2rem] shadow-sm border border-gray-100 overflow-hidden card-hover transition group cursor-pointer text-left">
+    <div class="aspect-video bg-gray-200 relative overflow-hidden">
+      <iframe
+        class="absolute inset-0 w-full h-full"
+        data-yt-frame
+        data-video-id="u2G64r_PDYQ"
+        src="https://www.youtube.com/embed/u2G64r_PDYQ?rel=0&playsinline=1"
+        title="YouTube video player"
+        frameborder="0"
+        referrerpolicy="origin-when-cross-origin"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen>
+      </iframe>
+
+      <div data-yt-overlay class="absolute inset-0 z-10">
+        <img src="https://img.youtube.com/vi/u2G64r_PDYQ/maxresdefault.jpg" class="absolute inset-0 w-full h-full object-cover" alt="V2 cover">
+        <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+          <i class="fa-solid fa-circle-play text-white text-5xl"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="p-8">
+      <span class="inline-block px-3 py-1 bg-green-50 text-green-700 text-[10px] font-bold rounded-full mb-4">PBL 專案實作</span>
+      <h4 class="font-extrabold text-gray-800 mb-2 text-lg">綠色製造能耗監測實錄</h4>
+      <p class="text-gray-500 text-sm leading-relaxed line-clamp-2">分析加工參數與能耗之關聯性，透過數據採集優化製程碳足跡。</p>
+    </div>
+  </div>
+
+  <!-- Card 3 -->
+  <div class="bg-white rounded-[2rem] shadow-sm border border-gray-100 overflow-hidden card-hover transition group cursor-pointer text-left">
+    <div class="aspect-video bg-gray-200 relative overflow-hidden">
+      <iframe
+        class="absolute inset-0 w-full h-full"
+        data-yt-frame
+        data-video-id="y1-yZkB0yaA"
+        src="https://www.youtube.com/embed/y1-yZkB0yaA?rel=0&playsinline=1"
+        title="YouTube video player"
+        frameborder="0"
+        referrerpolicy="origin-when-cross-origin"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen>
+      </iframe>
+
+      <div data-yt-overlay class="absolute inset-0 z-10">
+        <img src="https://img.youtube.com/vi/y1-yZkB0yaA/maxresdefault.jpg" class="absolute inset-0 w-full h-full object-cover" alt="V3 cover">
+        <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+          <i class="fa-solid fa-circle-play text-white text-5xl"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="p-8">
+      <span class="inline-block px-3 py-1 bg-purple-50 text-purple-700 text-[10px] font-bold rounded-full mb-4">技術研習</span>
+      <h4 class="font-extrabold text-gray-800 mb-2 text-lg">Python 訊號處理與 AI 診斷</h4>
+      <p class="text-gray-500 text-sm leading-relaxed line-clamp-2">示範如何利用 Python 進行振動訊號之特徵擷取，建置刀具磨耗預警模型。</p>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  // 讓 YouTube embed 帶上 origin，並在點擊時 autoplay（可大幅降低 153 機率）
+  document.addEventListener("DOMContentLoaded", () => {
+    const origin = encodeURIComponent(window.location.origin);
+
+    document.querySelectorAll("[data-yt-frame]").forEach((iframe) => {
+      const vid = iframe.getAttribute("data-video-id");
+      // 重新指定一次 src，確保帶 origin
+      iframe.src = `https://www.youtube.com/embed/${vid}?rel=0&playsinline=1&origin=${origin}`;
+    });
+
+    document.querySelectorAll("[data-yt-overlay]").forEach((overlay) => {
+      overlay.addEventListener("click", (e) => {
+        const wrapper = overlay.parentElement;
+        const iframe = wrapper.querySelector("[data-yt-frame]");
+        const vid = iframe.getAttribute("data-video-id");
+
+        // 隱藏遮罩
+        overlay.style.display = "none";
+
+        // 開始播放（保留 origin）
+        iframe.src = `https://www.youtube.com/embed/${vid}?rel=0&playsinline=1&autoplay=1&origin=${origin}`;
+      });
+    });
+  });
+</script>
+
             </div>
         </div>
 
