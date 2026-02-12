@@ -599,7 +599,16 @@
     frame.src = "https://www.youtube-nocookie.com/embed/" + videoId + "?autoplay=1&rel=0&playsinline=1";
     overlay.style.display = "none";
   });
+
+
+ window.addEventListener("DOMContentLoaded", function () {
+    // 預設顯示首頁
+    if (typeof showPage === "function") {
+      showPage("home");
+    }
+  });
 </script>
+
 
 
             </div>
