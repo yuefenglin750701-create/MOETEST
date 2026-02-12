@@ -13,6 +13,7 @@
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
+        
         body { font-family: 'Noto Sans TC', sans-serif; scroll-behavior: smooth; }
         .hero-pattern {
             background-color: #004e9c;
@@ -50,6 +51,18 @@
         ::-webkit-scrollbar-thumb { background: #004e9c; border-radius: 4px; }
         
         .me-content-block { background: linear-gradient(135deg, #ffffff 0%, #f9fafb 100%); }
+        
+        /* ✅ Tailwind 尚未載入時的保險：避免首屏導覽列缺按鈕 */
+@media (min-width: 1024px) {  /* 對應 Tailwind 的 lg */
+  header nav { display: flex !important; }
+  #mobile-menu-btn { display: none !important; }
+  #mobile-menu { display: none !important; }
+}
+
+@media (max-width: 1023.98px) {
+  header nav { display: none !important; }
+  #mobile-menu-btn { display: block !important; }
+}
     </style>
 </head>
 <body class="bg-gray-50 flex flex-col min-h-screen text-gray-800">
@@ -1106,6 +1119,21 @@
       "?autoplay=1&rel=0&playsinline=1";
 
     overlay.style.display = "none";
+  });
+
+  // ✅ 首次載入：預設顯示首頁（解決「要先點別頁再回來才出現」）
+  window.addEventListener("DOMContentLoaded", function () {
+    if (typeof showPage === "function") {
+      showPage("home");
+    }
+  });
+
+  // ✅ 若你有用 hash（例如 #home #videos），也同步支援
+  window.addEventListener("hashchange", function () {
+    const hash = (location.hash || "#home").replace("#", "");
+    if (typeof showPage === "function") {
+      showPage(hash);
+    }
   });
 </script>
 
