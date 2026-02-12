@@ -420,95 +420,58 @@
                 <div class="relative z-10"><h1 class="text-5xl font-extrabold mb-4 tracking-wider text-shadow">教學影片專區</h1><p class="text-blue-100 text-xl font-light italic">線上課程．實作示範．技術研討</p></div>
             </div>
             <div class="container mx-auto px-4 py-16 max-w-7xl">
-                <!-- Featured Video Section -->
-                <div class="mb-16">
-           <div id="videoCard" class="bg-black rounded-3xl overflow-hidden shadow-2xl aspect-video relative">
-  <!-- 封面圖 -->
-<!-- 影片卡片 -->
-<div class="bg-black rounded-3xl overflow-hidden shadow-2xl aspect-video relative">
-  <div id="videoCard" class="absolute inset-0">
+            <!-- Featured Video Section -->
+<div class="mb-16">
+  <div class="bg-black rounded-3xl overflow-hidden shadow-2xl aspect-video relative">
+    <!-- Featured iframe（先放在裡面，但不自動播放） -->
+    <iframe
+      class="absolute inset-0 w-full h-full"
+      data-yt-frame
+      data-video-id="w8KK-a4t1m4"
+      src="https://www.youtube-nocookie.com/embed/w8KK-a4t1m4?rel=0&playsinline=1"
+      title="YouTube video player"
+      frameborder="0"
+      referrerpolicy="origin-when-cross-origin"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen>
+    </iframe>
 
-    <!-- 封面圖 -->
-    <img
-      src="https://img.youtube.com/vi/w8KK-a4t1m4/maxresdefault.jpg"
-      class="absolute inset-0 w-full h-full object-cover opacity-60"
-      alt="Main Video Cover"
-    />
+    <!-- Overlay（封面 + 播放鍵 + 文字） -->
+    <div data-yt-overlay class="absolute inset-0 z-10">
+      <img
+        src="https://img.youtube.com/vi/w8KK-a4t1m4/maxresdefault.jpg"
+        class="absolute inset-0 w-full h-full object-cover opacity-60"
+        alt="Main Video Cover"
+      />
 
-    <!-- 播放鍵 -->
-    <button
-      id="playVideo"
-      type="button"
-      class="absolute inset-0 m-auto w-24 h-24 bg-red-600 text-white rounded-full flex items-center justify-center text-3xl hover:scale-110 transition shadow-2xl z-10"
-      aria-label="Play video"
-    >
-      <i class="fa-solid fa-play ml-1"></i>
-    </button>
+      <button
+        type="button"
+        data-yt-play
+        class="absolute inset-0 m-auto w-24 h-24 bg-red-600 text-white rounded-full flex items-center justify-center text-3xl hover:scale-110 transition shadow-2xl z-20"
+        aria-label="Play video">
+        <i class="fa-solid fa-play ml-1"></i>
+      </button>
 
-    <!-- 文字 -->
-    <div class="absolute bottom-0 left-0 w-full p-8 bg-gradient-to-t from-black/90 to-transparent text-left z-10">
-      <span class="inline-block px-3 py-1 bg-yellow-500 text-black text-xs font-bold rounded mb-2 uppercase">
-        精選教學
-      </span>
-      <h2 class="text-white text-3xl font-extrabold mb-2">
-        五軸加工機操作示範：開機與座標設定
-      </h2>
-      <p class="text-gray-300">
-        本教學由業師指導，詳細介紹多軸機台的操作規範與虛實整合路徑驗證流程。
-      </p>
+      <div class="absolute bottom-0 left-0 w-full p-8 bg-gradient-to-t from-black/90 to-transparent text-left z-20">
+        <span class="inline-block px-3 py-1 bg-yellow-500 text-black text-xs font-bold rounded mb-2 uppercase">精選教學</span>
+        <h2 class="text-white text-3xl font-extrabold mb-2">五軸加工機操作示範：開機與座標設定</h2>
+        <p class="text-gray-300">本教學由業師指導，詳細介紹多軸機台的操作規範與虛實整合路徑驗證流程。</p>
+      </div>
     </div>
-
   </div>
 </div>
 
-<script>
-  document.getElementById("playVideo").addEventListener("click", function () {
-    document.getElementById("videoCard").innerHTML = `
-      <iframe
-        class="w-full h-full"
-        src="https://www.youtube.com/embed/w8KK-a4t1m4?autoplay=1&rel=0"
-        title="YouTube video player"
-        frameborder="0"
-        referrerpolicy="strict-origin-when-cross-origin"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen>
-      </iframe>
-    `;
-  });
-</script>
-
-</div>
-
-</div>
-
-<script>
-  document.getElementById("playVideo").addEventListener("click", function () {
-    document.getElementById("videoCard").innerHTML = `
-      <iframe
-        class="w-full h-full"
-        src="https://www.youtube.com/embed/w8KK-a4t1m4?autoplay=1&rel=0"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen>
-      </iframe>
-    `;
-  });
-</script>
-
-                </div>
-
-                <!-- Video Grid -->
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+<!-- Video Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
 
   <!-- Card 1 -->
   <div class="bg-white rounded-[2rem] shadow-sm border border-gray-100 overflow-hidden card-hover transition group cursor-pointer text-left">
     <div class="aspect-video bg-gray-200 relative overflow-hidden">
-      <!-- iframe (一開始就存在，避免 153) -->
       <iframe
         class="absolute inset-0 w-full h-full"
         data-yt-frame
         data-video-id="PIV2tifKPgE"
-        src="https://www.youtube.com/embed/PIV2tifKPgE?rel=0&playsinline=1"
+        src="https://www.youtube-nocookie.com/embed/PIV2tifKPgE?rel=0&playsinline=1"
         title="YouTube video player"
         frameborder="0"
         referrerpolicy="origin-when-cross-origin"
@@ -516,12 +479,13 @@
         allowfullscreen>
       </iframe>
 
-      <!-- Overlay（封面 + 播放鍵） -->
       <div data-yt-overlay class="absolute inset-0 z-10">
         <img src="https://img.youtube.com/vi/PIV2tifKPgE/maxresdefault.jpg" class="absolute inset-0 w-full h-full object-cover" alt="V1 cover">
-        <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
-          <i class="fa-solid fa-circle-play text-white text-5xl"></i>
-        </div>
+        <button type="button" data-yt-play class="absolute inset-0 w-full h-full">
+          <span class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+            <i class="fa-solid fa-circle-play text-white text-5xl"></i>
+          </span>
+        </button>
       </div>
     </div>
 
@@ -539,7 +503,7 @@
         class="absolute inset-0 w-full h-full"
         data-yt-frame
         data-video-id="u2G64r_PDYQ"
-        src="https://www.youtube.com/embed/u2G64r_PDYQ?rel=0&playsinline=1"
+        src="https://www.youtube-nocookie.com/embed/u2G64r_PDYQ?rel=0&playsinline=1"
         title="YouTube video player"
         frameborder="0"
         referrerpolicy="origin-when-cross-origin"
@@ -549,9 +513,11 @@
 
       <div data-yt-overlay class="absolute inset-0 z-10">
         <img src="https://img.youtube.com/vi/u2G64r_PDYQ/maxresdefault.jpg" class="absolute inset-0 w-full h-full object-cover" alt="V2 cover">
-        <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
-          <i class="fa-solid fa-circle-play text-white text-5xl"></i>
-        </div>
+        <button type="button" data-yt-play class="absolute inset-0 w-full h-full">
+          <span class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+            <i class="fa-solid fa-circle-play text-white text-5xl"></i>
+          </span>
+        </button>
       </div>
     </div>
 
@@ -569,7 +535,7 @@
         class="absolute inset-0 w-full h-full"
         data-yt-frame
         data-video-id="y1-yZkB0yaA"
-        src="https://www.youtube.com/embed/y1-yZkB0yaA?rel=0&playsinline=1"
+        src="https://www.youtube-nocookie.com/embed/y1-yZkB0yaA?rel=0&playsinline=1"
         title="YouTube video player"
         frameborder="0"
         referrerpolicy="origin-when-cross-origin"
@@ -579,9 +545,11 @@
 
       <div data-yt-overlay class="absolute inset-0 z-10">
         <img src="https://img.youtube.com/vi/y1-yZkB0yaA/maxresdefault.jpg" class="absolute inset-0 w-full h-full object-cover" alt="V3 cover">
-        <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
-          <i class="fa-solid fa-circle-play text-white text-5xl"></i>
-        </div>
+        <button type="button" data-yt-play class="absolute inset-0 w-full h-full">
+          <span class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+            <i class="fa-solid fa-circle-play text-white text-5xl"></i>
+          </span>
+        </button>
       </div>
     </div>
 
@@ -595,31 +563,26 @@
 </div>
 
 <script>
-  // 讓 YouTube embed 帶上 origin，並在點擊時 autoplay（可大幅降低 153 機率）
-  document.addEventListener("DOMContentLoaded", () => {
-    const origin = encodeURIComponent(window.location.origin);
+  // 事件委派：點任何 [data-yt-play] 就讓該卡片 iframe autoplay，並把 overlay 隱藏
+  document.addEventListener("click", function (e) {
+    const playBtn = e.target.closest("[data-yt-play]");
+    if (!playBtn) return;
 
-    document.querySelectorAll("[data-yt-frame]").forEach((iframe) => {
-      const vid = iframe.getAttribute("data-video-id");
-      // 重新指定一次 src，確保帶 origin
-      iframe.src = `https://www.youtube.com/embed/${vid}?rel=0&playsinline=1&origin=${origin}`;
-    });
+    const overlay = playBtn.closest("[data-yt-overlay]");
+    if (!overlay) return;
 
-    document.querySelectorAll("[data-yt-overlay]").forEach((overlay) => {
-      overlay.addEventListener("click", (e) => {
-        const wrapper = overlay.parentElement;
-        const iframe = wrapper.querySelector("[data-yt-frame]");
-        const vid = iframe.getAttribute("data-video-id");
+    const wrap = overlay.parentElement; // iframe 與 overlay 的共同容器
+    const frame = wrap.querySelector("[data-yt-frame]");
+    if (!frame) return;
 
-        // 隱藏遮罩
-        overlay.style.display = "none";
+    const vid = frame.getAttribute("data-video-id");
+    // autoplay 常需要 mute 才會穩（尤其 Chrome）
+    frame.src = `https://www.youtube-nocookie.com/embed/${vid}?autoplay=1&mute=1&rel=0&playsinline=1`;
 
-        // 開始播放（保留 origin）
-        iframe.src = `https://www.youtube.com/embed/${vid}?rel=0&playsinline=1&autoplay=1&origin=${origin}`;
-      });
-    });
+    overlay.style.display = "none";
   });
 </script>
+
 
             </div>
         </div>
