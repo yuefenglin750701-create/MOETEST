@@ -1107,21 +1107,6 @@
 
     overlay.style.display = "none";
   });
-
-  // ✅ 首次載入：預設顯示首頁（解決「要先點別頁再回來才出現」）
-  window.addEventListener("DOMContentLoaded", function () {
-    if (typeof showPage === "function") {
-      showPage("home");
-    }
-  });
-
-  // ✅ 若你有用 hash（例如 #home #videos），也同步支援
-  window.addEventListener("hashchange", function () {
-    const hash = (location.hash || "#home").replace("#", "");
-    if (typeof showPage === "function") {
-      showPage(hash);
-    }
-  });
 </script>
 
 </body>
