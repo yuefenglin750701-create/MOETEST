@@ -580,51 +580,7 @@
   </div>
 </div>
 
-<script>
-  // 事件委派：不用綁死某個 id，放 GitHub 也穩
-  document.addEventListener("click", function (e) {
-    const playBtn = e.target.closest("[data-yt-play]");
-    if (!playBtn) return;
 
-    const card = playBtn.closest("[data-yt-card]");
-    if (!card) return;
-
-    const videoId = card.getAttribute("data-video-id");
-    const frame = card.querySelector("iframe[data-yt-frame]");
-    const overlay = card.querySelector("[data-yt-overlay]");
-
-    if (!videoId || !frame || !overlay) return;
-
-    // autoplay 開始播放
-    frame.src =
-      "https://www.youtube-nocookie.com/embed/" +
-      videoId +
-      "?autoplay=1&rel=0&playsinline=1";
-
-    overlay.style.display = "none";
-  });
-
-  // ✅ 首次載入：預設顯示首頁（解決「要先點別頁再回來才出現」）
-  window.addEventListener("DOMContentLoaded", function () {
-    if (typeof showPage === "function") {
-      showPage("home");
-    }
-  });
-
-  // ✅ 若你有用 hash（例如 #home #videos），也同步支援
-  window.addEventListener("hashchange", function () {
-    const hash = (location.hash || "#home").replace("#", "");
-    if (typeof showPage === "function") {
-      showPage(hash);
-    }
-  });
-</script>
-
-
-
-
-            </div>
-        </div>
 
         <!-- PAGE: HIGHLIGHTS (SVG Pyramid) -->
         <div id="page-highlights" class="section-view">
@@ -966,77 +922,207 @@
         </div>
     </footer>
 
-    <script>
-        lucide.createIcons();
+ <script>
+  lucide.createIcons();
 
-        function showPage(pageId) {
-            document.querySelectorAll('.section-view').forEach(p => p.classList.remove('active'));
-            const target = document.getElementById('page-' + pageId);
-            if(target) target.classList.add('active');
-            
-            document.getElementById('mobile-menu').classList.add('hidden');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-            
-            if(pageId === 'home') setTimeout(animateStats, 300);
-            if(pageId === 'highlights') updatePyramid(2);
+  // ✅ 切頁：強制顯示/隱藏（避免 GitHub 上第一次載入不穩）
+  function showPage(pageId) {
+    const pages = document.querySelectorAll(".section-view");
+    pages.forEach(p => {
+      p.classList.remove("active");
+      p.style.display = "none";     // 直接隱藏，避免 CSS/DOM 問題
+    });
+
+    const target = document.getElementById("page-" + pageId);
+    if (target) {
+      target.style.display = "block";
+      target.classList.add("active");
+    } else {
+      // 找不到就回首頁，避免空白
+      const home = document.getElementById("page-home");
+      if (home) {
+        home.style.display = "block";
+        home.classList.add("active");
+      }
+    }
+
+    const mobileMenu = document.getElementById("mobile-menu");
+    if (mobileMenu) mobileMenu.classList.add("hidden");
+
+    window.scrollTo({ top: 0, behavior: "smooth" });
+
+    if (pageId === "home" && typeof animateStats === "function") {
+      setTimeout(animateStats, 300);
+    }
+    if (pageId === "highlights" && typeof updatePyramid === "function") {
+      updatePyramid(2);
+    }
+  }
+
+  // ✅ 首次載入就顯示首頁（解決「要先點別頁再回來才出現」）
+  window.addEventListener("DOMContentLoaded", function () {
+    const hash = (location.hash || "#home").replace("#", "");
+    showPage(hash);
+  });
+
+  // ✅ 支援 hash 切頁（例如 /#videos）
+  window.addEventListener("hashchange", function () {
+    const hash = (location.hash || "#home").replace("#", "");
+    showPage(hash);
+  });
+</script>
+
+ <script>
+  const pyramidData = {
+    1: {
+      title: "基礎核心課程",
+      badge: "Level 1: 紮根期",
+      color: "bg-green-600",
+      desc: "建立工具機結構與程式設計之穩固基礎。",
+      courses: [
+        "工具機導論 (Intro to MT)",
+        "人工智慧概論 (AI Intro)",
+        "Python 程式設計 (Python Programming)",
+        "數值分析與數值控制 (Numerical Analysis)",
+        "虛實整合技術基礎 (CPS Foundation)"
+      ],
+      goal: "奠定學生對於工具機系統運作、演算法邏輯與數據分析之基礎認知。"
+    },
+    2: {
+      title: "特色領域模組",
+      badge: "Level 2: 強化期",
+      color: "bg-blue-600",
+      desc: "深化五軸加工與感測數據分析技能。",
+      courses: [
+        "五軸加工技術 (5-Axis Machining)",
+        "工具機精度量測實務 (Accuracy Measurement)",
+        "智慧機電組件設計 (Intelligent Component Design)",
+        "Python 工業訊號處理 (Signal Processing)",
+        "影像辨識應用 (Computer Vision Applications)"
+      ],
+      goal: "透過實機操作與感測器聯網，強化學生具備「機電整合」與「數據驅動」的工程實力。"
+    },
+    3: {
+      title: "PBL 總整課程",
+      badge: "Level 3: 實戰期",
+      color: "bg-yellow-600",
+      desc: "採企業出題、學生解題模式，解決真實產線痛點。",
+      courses: [
+        "PBL 導向多軸加工監控 (Machining Monitoring)",
+        "智慧刀具磨耗預測系統 (Tool Wear Prediction)",
+        "綠色製造加工系統優化 (GX Optimization)",
+        "智慧監控整合實作 (Integrated Intelligent Control)"
+      ],
+      goal: "整合前兩階段所學，在業師指導下完成系統雛型開發，驗證解決複雜工業問題之能力。"
+    }
+  };
+
+  function updatePyramid(lvl) {
+    document.querySelectorAll(".pyramid-layer").forEach(l => l.classList.remove("active"));
+    const layer = document.getElementById("l" + lvl);
+    if (layer) layer.classList.add("active");
+
+    const data = pyramidData[lvl];
+    const panel = document.getElementById("pyr-panel");
+    if (!data || !panel) return;
+
+    panel.innerHTML = `
+      <div class="p-8 ${data.color} text-white rounded-t-[3rem] text-left transition-colors duration-500 shadow-inner">
+        <span class="px-3 py-1 bg-white/20 rounded-full text-[10px] font-bold uppercase mb-4 inline-block tracking-widest border border-white/30">
+          ${data.badge}
+        </span>
+        <h3 class="text-3xl font-extrabold mb-2">${data.title}</h3>
+        <p class="text-white/80 font-medium">${data.desc}</p>
+      </div>
+      <div class="p-8 space-y-4">
+        <div class="grid grid-cols-1 gap-3">
+          ${data.courses.map(c => `
+            <div class="p-4 bg-gray-50 rounded-2xl border border-gray-100 font-bold text-gray-700 text-left flex items-center gap-4 hover:bg-white transition group">
+              <div class="w-2.5 h-2.5 rounded-full ${data.color} group-hover:scale-125 transition"></div>
+              <span class="text-sm">${c}</span>
+            </div>
+          `).join("")}
+        </div>
+        <div class="pt-6 border-t border-gray-100 text-left">
+          <h4 class="text-xs font-bold text-gray-400 uppercase mb-2 tracking-widest">
+            <i class="fa-solid fa-bullseye mr-2"></i>培育學習目標
+          </h4>
+          <p class="text-gray-500 text-sm font-medium leading-relaxed italic">「${data.goal}」</p>
+        </div>
+      </div>
+    `;
+  }
+
+  function animateStats() {
+    document.querySelectorAll(".counter").forEach(c => {
+      const target = +c.getAttribute("data-target");
+      let count = 0;
+      const speed = 50;
+      const update = () => {
+        count += target / speed;
+        if (count < target) {
+          c.innerText = Math.floor(count);
+          requestAnimationFrame(update);
+        } else {
+          c.innerText = target;
         }
+      };
+      update();
+    });
+  }
 
-        const pyramidData = {
-            1: { title: "基礎核心課程", badge: "Level 1: 紮根期", color: "bg-green-600", desc: "建立工具機結構與程式設計之穩固基礎。", courses: ["工具機導論 (Intro to MT)", "人工智慧概論 (AI Intro)", "Python 程式設計 (Python Programming)", "數值分析與數值控制 (Numerical Analysis)", "虛實整合技術基礎 (CPS Foundation)"], goal: "奠定學生對於工具機系統運作、演算法邏輯與數據分析之基礎認知。" },
-            2: { title: "特色領域模組", badge: "Level 2: 強化期", color: "bg-blue-600", desc: "深化五軸加工與感測數據分析技能。", courses: ["五軸加工技術 (5-Axis Machining)", "工具機精度量測實務 (Accuracy Measurement)", "智慧機電組件設計 (Intelligent Component Design)", "Python 工業訊號處理 (Signal Processing)", "影像辨識應用 (Computer Vision Applications)"], goal: "透過實機操作與感測器聯網，強化學生具備「機電整合」與「數據驅動」的工程實力。" },
-            3: { title: "PBL 總整課程", badge: "Level 3: 實戰期", color: "bg-yellow-600", desc: "採企業出題、學生解題模式，解決真實產線痛點。", courses: ["PBL 導向多軸加工監控 (Machining Monitoring)", "智慧刀具磨耗預測系統 (Tool Wear Prediction)", "綠色製造加工系統優化 (GX Optimization)", "智慧監控整合實作 (Integrated Intelligent Control)"], goal: "整合前兩階段所學，在業師指導下完成系統雛型開發，驗證解決複雜工業問題之能力。" }
-        };
+  // ✅ DOM 就緒後再綁事件，避免抓不到元素
+  window.addEventListener("DOMContentLoaded", () => {
+    const btn = document.getElementById("mobile-menu-btn");
+    const menu = document.getElementById("mobile-menu");
+    if (btn && menu) {
+      btn.addEventListener("click", () => menu.classList.toggle("hidden"));
+    }
 
-        function updatePyramid(lvl) {
-            document.querySelectorAll('.pyramid-layer').forEach(l => l.classList.remove('active'));
-            const layer = document.getElementById('l' + lvl);
-            if(layer) layer.classList.add('active');
-            const data = pyramidData[lvl];
-            const panel = document.getElementById('pyr-panel');
-            if(panel) {
-                panel.innerHTML = `
-                    <div class="p-8 ${data.color} text-white rounded-t-[3rem] text-left transition-colors duration-500 shadow-inner">
-                        <span class="px-3 py-1 bg-white/20 rounded-full text-[10px] font-bold uppercase mb-4 inline-block tracking-widest border border-white/30">${data.badge}</span>
-                        <h3 class="text-3xl font-extrabold mb-2">${data.title}</h3>
-                        <p class="text-white/80 font-medium">${data.desc}</p>
-                    </div>
-                    <div class="p-8 space-y-4">
-                        <div class="grid grid-cols-1 gap-3">
-                            ${data.courses.map(c => `
-                                <div class="p-4 bg-gray-50 rounded-2xl border border-gray-100 font-bold text-gray-700 text-left flex items-center gap-4 hover:bg-white transition group">
-                                    <div class="w-2.5 h-2.5 rounded-full ${data.color} group-hover:scale-125 transition"></div>
-                                    <span class="text-sm">${c}</span>
-                                </div>
-                            `).join('')}
-                        </div>
-                        <div class="pt-6 border-t border-gray-100 text-left">
-                            <h4 class="text-xs font-bold text-gray-400 uppercase mb-2 tracking-widest"><i class="fa-solid fa-bullseye mr-2"></i>培育學習目標</h4>
-                            <p class="text-gray-500 text-sm font-medium leading-relaxed italic">「${data.goal}」</p>
-                        </div>
-                    </div>
-                `;
-            }
-        }
+    animateStats();
+    updatePyramid(2);
+  });
+</script>
 
-        function animateStats() {
-            document.querySelectorAll('.counter').forEach(c => {
-                const target = +c.getAttribute('data-target');
-                let count = 0;
-                const speed = 50;
-                const update = () => {
-                    count += target / speed;
-                    if(count < target) { c.innerText = Math.floor(count); requestAnimationFrame(update); }
-                    else c.innerText = target;
-                };
-                update();
-            });
-        }
+<script>
+  // 事件委派：不用綁死某個 id，放 GitHub 也穩
+  document.addEventListener("click", function (e) {
+    const playBtn = e.target.closest("[data-yt-play]");
+    if (!playBtn) return;
 
-        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
-            document.getElementById('mobile-menu').classList.toggle('hidden');
-        });
+    const card = playBtn.closest("[data-yt-card]");
+    if (!card) return;
 
-        window.onload = () => { animateStats(); updatePyramid(2); };
-    </script>
+    const videoId = card.getAttribute("data-video-id");
+    const frame = card.querySelector("iframe[data-yt-frame]");
+    const overlay = card.querySelector("[data-yt-overlay]");
+
+    if (!videoId || !frame || !overlay) return;
+
+    // autoplay 開始播放
+    frame.src =
+      "https://www.youtube-nocookie.com/embed/" +
+      videoId +
+      "?autoplay=1&rel=0&playsinline=1";
+
+    overlay.style.display = "none";
+  });
+
+  // ✅ 首次載入：預設顯示首頁（解決「要先點別頁再回來才出現」）
+  window.addEventListener("DOMContentLoaded", function () {
+    if (typeof showPage === "function") {
+      showPage("home");
+    }
+  });
+
+  // ✅ 若你有用 hash（例如 #home #videos），也同步支援
+  window.addEventListener("hashchange", function () {
+    const hash = (location.hash || "#home").replace("#", "");
+    if (typeof showPage === "function") {
+      showPage(hash);
+    }
+  });
+</script>
+
 </body>
 </html>
