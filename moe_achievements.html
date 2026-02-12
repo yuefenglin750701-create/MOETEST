@@ -51,18 +51,7 @@
         ::-webkit-scrollbar-thumb { background: #004e9c; border-radius: 4px; }
         
         .me-content-block { background: linear-gradient(135deg, #ffffff 0%, #f9fafb 100%); }
-
-        /* ✅ Tailwind 尚未載入時的保險：避免首屏導覽列缺按鈕 */
-@media (min-width: 1024px) {
-  #desktop-nav { display: flex !important; }
-  #mobile-menu-btn { display: none !important; }
-  #mobile-menu { display: none !important; }
-}
-
-@media (max-width: 1023.98px) {
-  #desktop-nav { display: none !important; }
-  #mobile-menu-btn { display: block !important; }
-}
+        
     </style>
 </head>
 <body class="bg-gray-50 flex flex-col min-h-screen text-gray-800">
@@ -81,7 +70,7 @@
             </a>
 
             <!-- Desktop Navigation -->
-            <nav id="desktop-nav" style="display:flex" class="space-x-1 text-sm font-bold text-gray-600 whitespace-nowrap">
+            <nav id="desktop-nav" style="display:flex" class="space-x-1 text-sm font-bold text-gray-600 whitespace-nowrap overflow-x-auto">
                 <button onclick="showPage('home')" class="nav-btn px-3 py-2 rounded-lg hover:bg-blue-50 hover:text-blue-900 transition">首頁</button>
                 <button onclick="showPage('about')" class="nav-btn px-3 py-2 rounded-lg hover:bg-blue-50 hover:text-blue-900 transition">關於我們</button>
                 <button onclick="showPage('summary')" class="nav-btn px-3 py-2 rounded-lg hover:bg-blue-50 hover:text-blue-900 transition">計畫簡介</button>
@@ -448,7 +437,7 @@
         <iframe
           class="absolute inset-0 w-full h-full"
           data-yt-frame
-          src="https://www.youtube-nocookie.com/embed/w8KK-a4t1m4?rel=0&playsinline=1"
+          src="https://youtu.be/fqFJGuke00A?si=qnb1hHeiaaHfxmd9"
           title="YouTube video player"
           frameborder="0"
           referrerpolicy="origin-when-cross-origin"
@@ -500,7 +489,7 @@
           <iframe
             class="absolute inset-0 w-full h-full"
             data-yt-frame
-            src="https://www.youtube-nocookie.com/embed/PIV2tifKPgE?rel=0&playsinline=1"
+            src="https://youtu.be/fqFJGuke00A?si=qnb1hHeiaaHfxmd9"
             title="YouTube video player"
             frameborder="0"
             referrerpolicy="origin-when-cross-origin"
