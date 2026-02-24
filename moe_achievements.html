@@ -58,7 +58,7 @@
 
     <!-- Header -->
     <header class="bg-white shadow-md sticky top-0 z-[100]">
-        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+        <div class="container mx-auto px-4 py-3 flex items-center gap-4 min-w-0">
             <a href="javascript:void(0)" onclick="showPage('home')" class="flex items-center space-x-3 group">
                 <div class="w-10 h-10 flex items-center justify-center text-blue-900 text-2xl">
                     <img src="logo.png" alt="NCUT Logo" class="w-full h-full object-contain">
@@ -70,6 +70,7 @@
             </a>
 
             <!-- Desktop Navigation -->
+            <div class="hidden lg:flex flex-1 min-w-0 justify-end">
             <nav id="desktop-nav" class="hidden lg:flex space-x-1 text-sm font-bold text-gray-600 whitespace-nowrap overflow-x-auto">
                 <button onclick="showPage('home')" class="nav-btn px-3 py-2 rounded-lg hover:bg-blue-50 hover:text-blue-900 transition">首頁</button>
                 <button onclick="showPage('about')" class="nav-btn px-3 py-2 rounded-lg hover:bg-blue-50 hover:text-blue-900 transition">關於我們</button>
@@ -80,6 +81,7 @@
                 <button onclick="showPage('performance')" class="nav-btn px-3 py-2 rounded-lg hover:bg-blue-50 hover:text-blue-900 transition">執行績效</button>
                 <button onclick="showPage('activities')" class="nav-btn px-3 py-2 rounded-lg hover:bg-blue-50 hover:text-blue-900 transition">活動競賽</button>
             </nav>
+            </div>
 
             <button id="mobile-menu-btn" class="lg:hidden text-gray-800 focus:outline-none">
                 <i class="fa-solid fa-bars text-2xl"></i>
