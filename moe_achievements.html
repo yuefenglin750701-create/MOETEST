@@ -71,15 +71,15 @@
 
             <!-- Desktop Navigation -->
             <div class="hidden lg:flex flex-1 min-w-0 justify-end">
-            <nav id="desktop-nav" class="hidden lg:flex space-x-1 text-sm font-bold text-gray-600 whitespace-nowrap overflow-x-auto">
-                <button onclick="showPage('home')" class="nav-btn px-3 py-2 rounded-lg hover:bg-blue-50 hover:text-blue-900 transition">首頁</button>
-                <button onclick="showPage('about')" class="nav-btn px-3 py-2 rounded-lg hover:bg-blue-50 hover:text-blue-900 transition">關於我們</button>
-                <button onclick="showPage('summary')" class="nav-btn px-3 py-2 rounded-lg hover:bg-blue-50 hover:text-blue-900 transition">計畫簡介</button>
-                <button onclick="showPage('structure')" class="nav-btn px-3 py-2 rounded-lg hover:bg-blue-50 hover:text-blue-900 transition">計畫組成</button>
-                <button onclick="showPage('videos')" class="nav-btn px-3 py-2 rounded-lg hover:bg-blue-50 hover:text-blue-900 transition">教學影片</button>
-                <button onclick="showPage('labs')" class="nav-btn px-3 py-2 rounded-lg hover:bg-blue-50 hover:text-blue-900 transition">特色實驗室</button>
-                <button onclick="showPage('performance')" class="nav-btn px-3 py-2 rounded-lg hover:bg-blue-50 hover:text-blue-900 transition">執行績效</button>
-                <button onclick="showPage('activities')" class="nav-btn px-3 py-2 rounded-lg hover:bg-blue-50 hover:text-blue-900 transition">活動競賽</button>
+            <nav id="desktop-nav" class="hidden lg:flex flex-wrap gap-1 text-sm font-bold text-gray-600">
+                <button onclick="showPage('home')" class="nav-btn px-3 py-2 whitespace-nowrap rounded-lg hover:bg-blue-50 hover:text-blue-900 transition">首頁</button>
+                <button onclick="showPage('about')" class="nav-btn px-3 py-2 whitespace-nowrap rounded-lg hover:bg-blue-50 hover:text-blue-900 transition">關於我們</button>
+                <button onclick="showPage('summary')" class="nav-btn px-3 py-2 whitespace-nowrap rounded-lg hover:bg-blue-50 hover:text-blue-900 transition">計畫簡介</button>
+                <button onclick="showPage('structure')" class="nav-btn px-3 py-2 whitespace-nowrap rounded-lg hover:bg-blue-50 hover:text-blue-900 transition">計畫組成</button>
+                <button onclick="showPage('videos')" class="nav-btn px-3 py-2 whitespace-nowrap rounded-lg hover:bg-blue-50 hover:text-blue-900 transition">教學影片</button>
+                <button onclick="showPage('labs')" class="nav-btn px-3 py-2 whitespace-nowrap rounded-lg hover:bg-blue-50 hover:text-blue-900 transition">特色實驗室</button>
+                <button onclick="showPage('performance')" class="nav-btn px-3 py-2 whitespace-nowrap rounded-lg hover:bg-blue-50 hover:text-blue-900 transition">執行績效</button>
+                <button onclick="showPage('activities')" class="nav-btn px-3 py-2 whitespace-nowrap rounded-lg hover:bg-blue-50 hover:text-blue-900 transition">活動競賽</button>
             </nav>
             </div>
 
@@ -448,34 +448,23 @@
       allowfullscreen>
     </iframe>
 
-        <!-- Overlay -->
-        <div data-yt-overlay class="absolute inset-0 z-10">
-          <img
-            src="https://img.youtube.com/vi/w8KK-a4t1m4/maxresdefault.jpg"
-            class="absolute inset-0 w-full h-full object-cover opacity-60"
-            alt="Main Video Cover"
-          />
-
-          <button
-            type="button"
-            data-yt-play
-            class="absolute inset-0 m-auto w-24 h-24 bg-red-600 text-white rounded-full flex items-center justify-center text-3xl hover:scale-110 transition shadow-2xl z-10"
-            aria-label="Play video"
-          >
-            <i class="fa-solid fa-play ml-1"></i>
-          </button>
-
-          <div class="absolute bottom-0 left-0 w-full p-8 bg-gradient-to-t from-black/90 to-transparent text-left z-10">
-            <span class="inline-block px-3 py-1 bg-yellow-500 text-black text-xs font-bold rounded mb-2 uppercase">精選教學</span>
-            <h2 class="text-white text-3xl font-extrabold mb-2">五軸加工機操作示範：開機與座標設定</h2>
-            <p class="text-gray-300">本教學由業師指導，詳細介紹多軸機台的操作規範與虛實整合路徑驗證流程。</p>
-          </div>
-        </div>
+<!-- Featured Video -->
+<div class="mb-16">
+  <div class="bg-black rounded-3xl overflow-hidden shadow-2xl aspect-video">
+    <iframe
+      class="w-full h-full"
+      src="https://www.youtube-nocookie.com/embed/fqFJGuke00A?rel=0&playsinline=1"
+      title="五軸加工機操作示範"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      referrerpolicy="strict-origin-when-cross-origin"
+      allowfullscreen>
+    </iframe>
+  </div>
+</div>
       </div>
 
-      <p class="mt-4 text-sm text-gray-500">
-        若出現「錯誤 153」，表示該影片不允許嵌入播放；請更換可嵌入影片或改用連結開啟。
-      </p>
+      
     </div>
 
     <!-- Video Cards -->
