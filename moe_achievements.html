@@ -70,7 +70,7 @@
             </a>
 
             <!-- Desktop Navigation -->
-            <nav id="desktop-nav" style="display:flex" class="space-x-1 text-sm font-bold text-gray-600 whitespace-nowrap overflow-x-auto">
+            <nav id="desktop-nav" class="hidden lg:flex space-x-1 text-sm font-bold text-gray-600 whitespace-nowrap overflow-x-auto">
                 <button onclick="showPage('home')" class="nav-btn px-3 py-2 rounded-lg hover:bg-blue-50 hover:text-blue-900 transition">首頁</button>
                 <button onclick="showPage('about')" class="nav-btn px-3 py-2 rounded-lg hover:bg-blue-50 hover:text-blue-900 transition">關於我們</button>
                 <button onclick="showPage('summary')" class="nav-btn px-3 py-2 rounded-lg hover:bg-blue-50 hover:text-blue-900 transition">計畫簡介</button>
@@ -81,7 +81,7 @@
                 <button onclick="showPage('activities')" class="nav-btn px-3 py-2 rounded-lg hover:bg-blue-50 hover:text-blue-900 transition">活動競賽</button>
             </nav>
 
-            <button id="mobile-menu-btn" style="display:none" class="text-gray-800 focus:outline-none">
+            <button id="mobile-menu-btn" class="lg:hidden text-gray-800 focus:outline-none">
                 <i class="fa-solid fa-bars text-2xl"></i>
             </button>
         </div>
@@ -428,22 +428,23 @@
   <div class="container mx-auto px-4 py-16 max-w-7xl">
 
     <!-- Featured Video -->
-    <div class="mb-16">
-      <div
-        class="bg-black rounded-3xl overflow-hidden shadow-2xl aspect-video relative"
-        data-yt-card
-        data-video-id="w8KK-a4t1m4"
-      >
-        <iframe
-          class="absolute inset-0 w-full h-full"
-          data-yt-frame
-          src="https://youtu.be/fqFJGuke00A?si=qnb1hHeiaaHfxmd9"
-          title="YouTube video player"
-          frameborder="0"
-          referrerpolicy="origin-when-cross-origin"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen>
-        </iframe>
+<div class="mb-16">
+  <div
+    id="featured-yt-card"
+    class="bg-black rounded-3xl overflow-hidden shadow-2xl aspect-video relative"
+    data-yt-card
+    data-video-id="fqFJGuke00A"
+  >
+    <iframe
+      class="absolute inset-0 w-full h-full"
+      data-yt-frame
+      src="https://www.youtube.com/embed/fqFJGuke00A"
+      title="YouTube video player"
+      frameborder="0"
+      referrerpolicy="strict-origin-when-cross-origin"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen>
+    </iframe>
 
         <!-- Overlay -->
         <div data-yt-overlay class="absolute inset-0 z-10">
@@ -470,7 +471,6 @@
         </div>
       </div>
 
-      <!-- 若影片不允許嵌入（錯誤 153），只能改成跳轉 YouTube -->
       <p class="mt-4 text-sm text-gray-500">
         若出現「錯誤 153」，表示該影片不允許嵌入播放；請更換可嵌入影片或改用連結開啟。
       </p>
@@ -924,53 +924,65 @@
         </div>
     </footer>
 
- <script>
+<script>
   lucide.createIcons();
 
-  // ✅ 切頁：強制顯示/隱藏（避免 GitHub 上第一次載入不穩）
-  function showPage(pageId) {
-    const pages = document.querySelectorAll(".section-view");
-    pages.forEach(p => {
+  // hash routing (/#home, /#videos)
+  function getHashPage() {
+    const h = (location.hash || "#home").replace("#", "").trim();
+    return h || "home";
+  }
+
+  function showPage(pageId, opts = { updateHash: true, scrollTop: true }) {
+    // 1) hide all
+    document.querySelectorAll(".section-view").forEach(p => {
       p.classList.remove("active");
-      p.style.display = "none";     // 直接隱藏，避免 CSS/DOM 問題
+      p.style.display = "none";
     });
 
-    const target = document.getElementById("page-" + pageId);
+    // 2) show target
+    const target = document.getElementById("page-" + pageId) || document.getElementById("page-home");
     if (target) {
       target.style.display = "block";
       target.classList.add("active");
-    } else {
-      // 找不到就回首頁，避免空白
-      const home = document.getElementById("page-home");
-      if (home) {
-        home.style.display = "block";
-        home.classList.add("active");
-      }
     }
 
+    // 3) update hash (avoid triggering hashchange loop)
+    if (opts.updateHash) {
+      const newHash = "#" + pageId;
+      if (location.hash !== newHash) history.replaceState(null, "", newHash);
+    }
+
+    // 4) close mobile menu
     const mobileMenu = document.getElementById("mobile-menu");
     if (mobileMenu) mobileMenu.classList.add("hidden");
 
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    // 5) scroll to top (do NOT smooth on first load)
+    if (opts.scrollTop) window.scrollTo({ top: 0 });
 
+    // 6) page-specific init
     if (pageId === "home" && typeof animateStats === "function") {
-      setTimeout(animateStats, 300);
+      setTimeout(animateStats, 150);
     }
     if (pageId === "highlights" && typeof updatePyramid === "function") {
       updatePyramid(2);
     }
   }
 
-  // ✅ 首次載入就顯示首頁（解決「要先點別頁再回來才出現」）
-  window.addEventListener("DOMContentLoaded", function () {
-    const hash = (location.hash || "#home").replace("#", "");
-    showPage(hash);
+  // initial load
+  window.addEventListener("DOMContentLoaded", () => {
+    // show by hash
+    showPage(getHashPage(), { updateHash: false, scrollTop: false });
+
+    // mobile menu toggle
+    const btn = document.getElementById("mobile-menu-btn");
+    const menu = document.getElementById("mobile-menu");
+    if (btn && menu) btn.addEventListener("click", () => menu.classList.toggle("hidden"));
   });
 
-  // ✅ 支援 hash 切頁（例如 /#videos）
-  window.addEventListener("hashchange", function () {
-    const hash = (location.hash || "#home").replace("#", "");
-    showPage(hash);
+  // hash change
+  window.addEventListener("hashchange", () => {
+    showPage(getHashPage(), { updateHash: false, scrollTop: true });
   });
 </script>
 
@@ -1110,20 +1122,7 @@
     overlay.style.display = "none";
   });
 
-  // ✅ 首次載入：預設顯示首頁（解決「要先點別頁再回來才出現」）
-  window.addEventListener("DOMContentLoaded", function () {
-    if (typeof showPage === "function") {
-      showPage("home");
-    }
-  });
-
-  // ✅ 若你有用 hash（例如 #home #videos），也同步支援
-  window.addEventListener("hashchange", function () {
-    const hash = (location.hash || "#home").replace("#", "");
-    if (typeof showPage === "function") {
-      showPage(hash);
-    }
-  });
+  
 </script>
 
 </body>
