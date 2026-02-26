@@ -57,7 +57,7 @@
 <body class="bg-gray-50 flex flex-col min-h-screen text-gray-800">
 
     <!-- Header -->
-    <header class="bg-white shadow-md sticky top-0 z-[100]">
+    <header class="bg-white shadow-md sticky top-0 z-[9999] relative">
         <div class="container mx-auto px-4 py-3 flex items-center gap-4 min-w-0">
             <a href="javascript:void(0)" onclick="showPage('home')" class="flex items-center space-x-3 group">
                 <div class="w-10 h-10 flex items-center justify-center text-blue-900 text-2xl">
@@ -108,8 +108,8 @@
         <!-- PAGE: HOME -->
         <div id="page-home" class="section-view active">
             <section class="relative h-[600px] flex items-center justify-center hero-pattern text-white overflow-hidden">
-                <div class="absolute inset-0 bg-black opacity-40"></div>
-                <img src="https://images.unsplash.com/photo-1562774053-701939374585?q=80&w=2086" class="absolute inset-0 w-full h-full object-cover mix-blend-overlay opacity-50" alt="Home Hero Image">
+                <div class="absolute inset-0 bg-black opacity-40 pointer-events-none"></div>
+                <img src="https://images.unsplash.com/photo-1562774053-701939374585?q=80&w=2086" class="absolute inset-0 w-full h-full object-cover mix-blend-overlay opacity-50 pointer-events-none"> alt="Home Hero Image">
                 <div class="relative z-10 text-center px-4 max-w-5xl">
                     <span class="inline-block py-1 px-4 rounded-full bg-yellow-500 text-white text-sm font-bold mb-6 animate-bounce shadow-xl">
                         114年度教育部智慧製造人才培育計畫
