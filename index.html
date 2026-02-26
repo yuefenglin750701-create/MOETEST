@@ -476,17 +476,14 @@
     </div>
   </div>
 </div>
-      </div>
 
-      
-    </div>
 
     <!-- Video Cards -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
 
       <!-- Card 1 -->
       <div class="bg-white rounded-[2rem] shadow-sm border border-gray-100 overflow-hidden card-hover transition text-left">
-<div
+ <div
   class="aspect-video bg-black relative cursor-pointer"
   data-yt-card
   data-video-id="PIV2tifKPgE"
@@ -494,7 +491,16 @@
   data-video-title="智慧機械概論與虛實整合"
   data-video-desc="深入探討數位雙生技術在加工路徑驗證與產線最佳化之應用場景。"
 >
-
+          <iframe
+            class="absolute inset-0 w-full h-full"
+            data-yt-frame
+            src="https://youtu.be/fqFJGuke00A?si=qnb1hHeiaaHfxmd9"
+            title="YouTube video player"
+            frameborder="0"
+            referrerpolicy="origin-when-cross-origin"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
 
           <div data-yt-overlay class="absolute inset-0">
             <img src="https://img.youtube.com/vi/PIV2tifKPgE/maxresdefault.jpg" class="absolute inset-0 w-full h-full object-cover opacity-80" alt="V1">
@@ -984,58 +990,56 @@
     showPage(getHashPage(), { updateHash: false, scrollTop: true });
   });
 </script>
+
 <script>
 document.addEventListener("DOMContentLoaded", function () {
 
-  function setFeatured(videoId, tag, title, desc, autoplay) {
+  function playInFeatured(videoId, tag, title, desc) {
+    const card = document.getElementById("featured-yt-card");
     const frame = document.getElementById("featured-yt-frame");
-    const thumb = document.getElementById("featured-thumb");
     const overlay = document.getElementById("featured-overlay");
+    const thumb = document.getElementById("featured-thumb");
     const tagEl = document.getElementById("featured-tag");
     const titleEl = document.getElementById("featured-title");
     const descEl = document.getElementById("featured-desc");
-    const card = document.getElementById("featured-yt-card");
 
-    if (!frame) return;
+    if (!card || !frame) return;
 
+    // 更新 featured 的資料
     card.dataset.videoId = videoId;
-    thumb.src = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
 
-    tagEl.textContent = tag || "";
-    titleEl.textContent = title || "";
-    descEl.textContent = desc || "";
+    if (thumb) thumb.src = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
+    if (tagEl) tagEl.textContent = tag || "";
+    if (titleEl) titleEl.textContent = title || "";
+    if (descEl) descEl.textContent = desc || "";
 
-    if (autoplay) {
-      frame.src = `https://www.youtube-nocookie.com/embed/${videoId}?rel=0&playsinline=1&autoplay=1`;
-      overlay.style.display = "none";
-    } else {
-      frame.src = "about:blank";
-      overlay.style.display = "";
-    }
+    // 直接在大播放器播放
+    frame.src = `https://www.youtube-nocookie.com/embed/${videoId}?rel=0&playsinline=1&autoplay=1`;
+
+    // 隱藏封面 overlay
+    if (overlay) overlay.style.display = "none";
+
+    // 捲動到上方（體感放大）
+    card.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
-  document.querySelectorAll("[data-yt-card]").forEach(el => {
+  // 綁定下面所有卡片
+  document.querySelectorAll("[data-yt-card][data-video-id]").forEach((el) => {
     if (el.id === "featured-yt-card") return;
 
     el.addEventListener("click", () => {
-      setFeatured(
+      playInFeatured(
         el.dataset.videoId,
         el.dataset.videoTag,
         el.dataset.videoTitle,
-        el.dataset.videoDesc,
-        true
+        el.dataset.videoDesc
       );
-
-      document.getElementById("featured-yt-card")
-        ?.scrollIntoView({ behavior: "smooth" });
     });
   });
 
 });
 </script>
 
-<script>
-const pyramidData = {
  <script>
   const pyramidData = {
     1: {
@@ -1170,10 +1174,38 @@ const pyramidData = {
       "?autoplay=1&rel=0&playsinline=1";
 
     overlay.style.display = "none";
+    // ====== 下面卡片點擊/播放 → 切到上方 Featured 大播放器 ======
+const featuredCard = document.getElementById("featured-yt-card");
+if (featuredCard) {
+  const featuredFrame = featuredCard.querySelector("iframe[data-yt-frame]");
+  const featuredOverlay = featuredCard.querySelector("[data-yt-overlay]");
+  const featuredThumb = featuredCard.querySelector("[data-featured-thumb]");
+  const featuredTag = featuredCard.querySelector("[data-featured-tag]");
+  const featuredTitle = featuredCard.querySelector("[data-featured-title]");
+  const featuredDesc = featuredCard.querySelector("[data-featured-desc]");
 
-    window.addEventListener("load", () => {
-    if (typeof showPage === "function") showPage("home");
-});
+  // 讀取下面卡片的資料（若沒有就給空字串）
+  const tag = card.getAttribute("data-video-tag") || "";
+  const title = card.getAttribute("data-video-title") || "";
+  const desc = card.getAttribute("data-video-desc") || "";
+
+  // 更新 featured 顯示文字/封面
+  if (featuredThumb) featuredThumb.src = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
+  if (featuredTag) featuredTag.textContent = tag;
+  if (featuredTitle) featuredTitle.textContent = title;
+  if (featuredDesc) featuredDesc.textContent = desc;
+
+  // 讓 featured 播放這支影片（自動播放）
+  if (featuredFrame) {
+    featuredFrame.src = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0&playsinline=1`;
+  }
+
+  // 隱藏 featured 的封面 overlay
+  if (featuredOverlay) featuredOverlay.style.display = "none";
+
+  // 捲動到上方 featured（看起來就是「放大播放」）
+  featuredCard.scrollIntoView({ behavior: "smooth", block: "start" });
+}
   });
 
   
