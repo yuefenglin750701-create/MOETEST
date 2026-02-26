@@ -486,21 +486,15 @@
 
       <!-- Card 1 -->
       <div class="bg-white rounded-[2rem] shadow-sm border border-gray-100 overflow-hidden card-hover transition text-left">
-        <div
-          class="aspect-video bg-black relative"
-          data-yt-card
-          data-video-id="PIV2tifKPgE"
-        >
-          <iframe
-            class="absolute inset-0 w-full h-full"
-            data-yt-frame
-            src="https://youtu.be/fqFJGuke00A?si=qnb1hHeiaaHfxmd9"
-            title="YouTube video player"
-            frameborder="0"
-            referrerpolicy="origin-when-cross-origin"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen>
-          </iframe>
+<div
+  class="aspect-video bg-black relative cursor-pointer"
+  data-yt-card
+  data-video-id="PIV2tifKPgE"
+  data-video-tag="核心課程"
+  data-video-title="智慧機械概論與虛實整合"
+  data-video-desc="深入探討數位雙生技術在加工路徑驗證與產線最佳化之應用場景。"
+>
+
 
           <div data-yt-overlay class="absolute inset-0">
             <img src="https://img.youtube.com/vi/PIV2tifKPgE/maxresdefault.jpg" class="absolute inset-0 w-full h-full object-cover opacity-80" alt="V1">
@@ -990,7 +984,58 @@
     showPage(getHashPage(), { updateHash: false, scrollTop: true });
   });
 </script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
 
+  function setFeatured(videoId, tag, title, desc, autoplay) {
+    const frame = document.getElementById("featured-yt-frame");
+    const thumb = document.getElementById("featured-thumb");
+    const overlay = document.getElementById("featured-overlay");
+    const tagEl = document.getElementById("featured-tag");
+    const titleEl = document.getElementById("featured-title");
+    const descEl = document.getElementById("featured-desc");
+    const card = document.getElementById("featured-yt-card");
+
+    if (!frame) return;
+
+    card.dataset.videoId = videoId;
+    thumb.src = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
+
+    tagEl.textContent = tag || "";
+    titleEl.textContent = title || "";
+    descEl.textContent = desc || "";
+
+    if (autoplay) {
+      frame.src = `https://www.youtube-nocookie.com/embed/${videoId}?rel=0&playsinline=1&autoplay=1`;
+      overlay.style.display = "none";
+    } else {
+      frame.src = "about:blank";
+      overlay.style.display = "";
+    }
+  }
+
+  document.querySelectorAll("[data-yt-card]").forEach(el => {
+    if (el.id === "featured-yt-card") return;
+
+    el.addEventListener("click", () => {
+      setFeatured(
+        el.dataset.videoId,
+        el.dataset.videoTag,
+        el.dataset.videoTitle,
+        el.dataset.videoDesc,
+        true
+      );
+
+      document.getElementById("featured-yt-card")
+        ?.scrollIntoView({ behavior: "smooth" });
+    });
+  });
+
+});
+</script>
+
+<script>
+const pyramidData = {
  <script>
   const pyramidData = {
     1: {
