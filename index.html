@@ -54,7 +54,7 @@
         
     </style>
 </head>
-<body class="bg-gray-50 flex flex-col min-h-screen text-gray-800">
+<body class="bg-gray-50 flex flex-col min-h-screen text-gray-800 overflow-x-hidden">
 
     <!-- Header -->
     <header class="bg-white shadow-md sticky top-0 z-[9999] relative">
@@ -83,13 +83,14 @@
             </nav>
             </div>
 
-            <button id="mobile-menu-btn" class="lg:hidden text-gray-800 focus:outline-none">
-                <i class="fa-solid fa-bars text-2xl"></i>
-            </button>
+          <button id="mobile-menu-btn" type="button" class="lg:hidden text-gray-800 focus:outline-none">
+    <i class="fa-solid fa-bars text-2xl"></i>
+</button>
         </div>
 
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-100 absolute w-full shadow-2xl">
+<div id="mobile-menu"
+     class="hidden lg:hidden bg-white border-t border-gray-100 absolute top-full left-0 w-full shadow-2xl z-[10000] max-h-[calc(100vh-64px)] overflow-y-auto">
             <div class="flex flex-col p-4 space-y-2 font-bold text-gray-700">
                 <button onclick="showPage('home')" class="text-left py-3 px-4 hover:bg-blue-50 rounded-xl">首頁</button>
                 <button onclick="showPage('about')" class="text-left py-3 px-4 hover:bg-blue-50 rounded-xl">關於我們</button>
@@ -107,7 +108,7 @@
         
         <!-- PAGE: HOME -->
         <div id="page-home" class="section-view active">
-            <section class="relative h-[600px] flex items-center justify-center hero-pattern text-white overflow-hidden">
+            <section class="relative min-h-[70vh] sm:min-h-[600px] flex items-center justify-center hero-pattern text-white overflow-hidden">
                 <div class="absolute inset-0 bg-black opacity-40 pointer-events-none"></div>
                 <img src="https://images.unsplash.com/photo-1562774053-701939374585?q=80&w=2086" class="absolute inset-0 w-full h-full object-cover mix-blend-overlay opacity-50 pointer-events-none">
                 <div class="relative z-10 text-center px-4 max-w-5xl">
@@ -755,7 +756,7 @@
                             114年度課程開設總表 (截至期中)
                         </h2>
                     </div>
-                    <div class="overflow-x-auto">
+                    <div class="overflow-x-auto -mx-4 px-4">
                         <table class="w-full text-left border-collapse">
                             <thead class="bg-gray-100 font-bold text-gray-500 text-xs tracking-widest uppercase text-center">
                                 <tr>
