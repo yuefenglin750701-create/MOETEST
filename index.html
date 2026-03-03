@@ -63,15 +63,26 @@
     <!-- Header -->
     <header class="bg-white shadow-md sticky top-0 z-[9999] relative">
         <div class="container mx-auto px-4 py-3 flex items-center gap-4 min-w-0">
-            <a href="javascript:void(0)" onclick="showPage('home')" class="flex items-center space-x-3 group">
-                <div class="w-10 h-10 flex items-center justify-center text-blue-900 text-2xl">
-                    <img src="logo.png" alt="NCUT Logo" class="w-full h-full object-contain">
-                </div>
-                <div class="flex flex-col">
-                    <span class="text-lg font-extrabold text-gray-800 group-hover:text-blue-900 transition">國立勤益科技大學</span>
-                    <span class="text-[10px] text-gray-500 font-bold tracking-widest uppercase">Smart Manufacturing Project</span>
-                </div>
-            </a>
+       <a href="javascript:void(0)" onclick="showPage('home')" class="flex items-center space-x-4 group">
+
+    <!-- 教育部計畫 Logo -->
+    <div class="flex items-center">
+        <img src="教育部計畫logo.png" 
+             alt="教育部計畫 Logo"
+             class="h-10 md:h-12 w-auto object-contain transition duration-300 group-hover:scale-105">
+    </div>
+
+    <!-- 校名區塊 -->
+    <div class="flex flex-col">
+        <span class="text-lg font-extrabold text-gray-800 group-hover:text-blue-900 transition">
+            國立勤益科技大學
+        </span>
+        <span class="text-[10px] text-gray-500 font-bold tracking-widest uppercase">
+            Smart Manufacturing Project
+        </span>
+    </div>
+
+</a>
 <div class="hidden lg:flex flex-1 min-w-0 justify-end items-center gap-6">
     <div class="hidden lg:flex flex-1 min-w-0 justify-end items-center gap-6">
 
@@ -1235,10 +1246,11 @@ window.addEventListener("load", function () {
 
     setTimeout(() => {
         splash.style.opacity = "0";
-        setTimeout(() => {
-            splash.style.display = "none";
-        }, 700);
-    }, 1500); // 顯示 1.5 秒
+    }, 1000); // 1秒後開始淡出
+
+    setTimeout(() => {
+        splash.style.display = "none";
+    }, 1600); // 淡出完成後隱藏
 });
 </script>
 </body>
