@@ -55,6 +55,10 @@
     </style>
 </head>
 <body class="bg-gray-50 flex flex-col min-h-screen text-gray-800 overflow-x-hidden">
+    <!-- Splash Screen -->
+<div id="splash-screen" class="fixed inset-0 bg-white flex items-center justify-center z-[99999] transition-opacity duration-700">
+    <img src="教育部計畫logo.png" alt="Logo" class="w-72 md:w-96 animate-pulse">
+</div>
 
     <!-- Header -->
     <header class="bg-white shadow-md sticky top-0 z-[9999] relative">
@@ -68,7 +72,16 @@
                     <span class="text-[10px] text-gray-500 font-bold tracking-widest uppercase">Smart Manufacturing Project</span>
                 </div>
             </a>
+<div class="hidden lg:flex flex-1 min-w-0 justify-end items-center gap-6">
+    <div class="hidden lg:flex flex-1 min-w-0 justify-end items-center gap-6">
 
+    <!-- 🔹 TEIM Logo -->
+    <img src="assets/teim-logo.png"
+         alt="教育部智慧製造人才培育計畫"
+         class="h-8 object-contain">
+
+    <nav id="desktop-nav"
+         class="hidden lg:flex flex-wrap gap-1 text-sm font-bold text-gray-600">
             <!-- Desktop Navigation -->
             <div class="hidden lg:flex flex-1 min-w-0 justify-end">
             <nav id="desktop-nav" class="hidden lg:flex flex-wrap gap-1 text-sm font-bold text-gray-600">
@@ -1216,6 +1229,17 @@ if (featuredCard) {
 
   
 </script>
+<script>
+window.addEventListener("load", function () {
+    const splash = document.getElementById("splash-screen");
 
+    setTimeout(() => {
+        splash.style.opacity = "0";
+        setTimeout(() => {
+            splash.style.display = "none";
+        }, 700);
+    }, 1500); // 顯示 1.5 秒
+});
+</script>
 </body>
 </html>
