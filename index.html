@@ -1000,10 +1000,18 @@ if (window.lucide && typeof window.lucide.createIcons === "function") {
     showPage(getHashPage(), { updateHash: false, scrollTop: false });
 
     // mobile menu toggle
-    const btn = document.getElementById("mobile-menu-btn");
-    const menu = document.getElementById("mobile-menu");
-    if (btn && menu) btn.addEventListener("click", () => menu.classList.toggle("hidden"));
+// mobile menu toggle (bind ONLY ONCE)
+const btn = document.getElementById("mobile-menu-btn");
+const menu = document.getElementById("mobile-menu");
+
+if (btn && menu) {
+  btn.addEventListener("click", (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    menu.classList.toggle("hidden");
+    btn.setAttribute("aria-expanded", String(!menu.classList.contains("hidden")));
   });
+}
 
   // hash change
   window.addEventListener("hashchange", () => {
@@ -1160,16 +1168,10 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // ✅ DOM 就緒後再綁事件，避免抓不到元素
-  window.addEventListener("DOMContentLoaded", () => {
-    const btn = document.getElementById("mobile-menu-btn");
-    const menu = document.getElementById("mobile-menu");
-    if (btn && menu) {
-      btn.addEventListener("click", () => menu.classList.toggle("hidden"));
-    }
-
-    animateStats();
-    updatePyramid(2);
-  });
+window.addEventListener("DOMContentLoaded", () => {
+  animateStats();
+  updatePyramid(2);
+});
 </script>
 
 <script>
