@@ -56,7 +56,8 @@
 </head>
 <body class="bg-gray-50 flex flex-col min-h-screen text-gray-800 overflow-x-hidden">
     <!-- Splash Screen -->
-<div id="splash-screen" class="fixed inset-0 bg-white flex items-center justify-center z-[99999] transition-opacity duration-700">
+<!-- Splash Screen -->
+<div id="splash-screen" class="fixed inset-0 bg-white flex items-center justify-center z-[99999] transition-opacity duration-700 pointer-events-none">
     <img src="教育部計畫logo.png" alt="Logo" class="w-72 md:w-96 animate-pulse">
 </div>
 
@@ -447,164 +448,42 @@
 
   <div class="container mx-auto px-4 py-16 max-w-7xl">
 
-<!-- Featured Video -->
-<div class="mb-16">
-  <div
-    id="featured-yt-card"
-    class="bg-black rounded-3xl overflow-hidden shadow-2xl aspect-video relative"
-    data-yt-card
-    data-video-id="fqFJGuke00A"
-  >
-    <iframe
-      class="absolute inset-0 w-full h-full"
-      data-yt-frame
-      src="about:blank"
-      title="Featured Video"
-      frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      referrerpolicy="strict-origin-when-cross-origin"
-      allowfullscreen>
-    </iframe>
-
-    <div data-yt-overlay class="absolute inset-0 z-10">
-      <img
-        data-featured-thumb
-        src="https://img.youtube.com/vi/fqFJGuke00A/maxresdefault.jpg"
-        class="absolute inset-0 w-full h-full object-cover opacity-60"
-      />
-
-      <button
-        type="button"
-        data-yt-play
-        class="absolute inset-0 m-auto w-24 h-24 bg-red-600 text-white rounded-full flex items-center justify-center text-3xl shadow-2xl">
-        <i class="fa-solid fa-play ml-1"></i>
-      </button>
-
-      <div class="absolute bottom-0 left-0 w-full p-8 bg-gradient-to-t from-black/90 to-transparent text-left z-10">
-        <span data-featured-tag class="inline-block px-3 py-1 bg-yellow-500 text-black text-xs font-bold rounded mb-2 uppercase">
-          精選教學
-        </span>
-        <h2 data-featured-title class="text-white text-3xl font-extrabold mb-2">
-          五軸加工機操作示範：開機與座標設定
-        </h2>
-        <p data-featured-desc class="text-gray-300">
-          本教學由業師指導，詳細介紹多軸機台的操作規範與虛實整合路徑驗證流程。
-        </p>
+    <!-- 點擊後才顯示的大播放器 -->
+    <div id="video-player-section" class="hidden mb-12">
+      <div class="bg-white rounded-[2rem] shadow-xl border border-gray-100 overflow-hidden">
+        <div class="aspect-video bg-black relative">
+          <iframe
+            id="main-video-frame"
+            class="absolute inset-0 w-full h-full"
+            src="about:blank"
+            title="Main Video Player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen>
+          </iframe>
+        </div>
+        <div class="p-8">
+          <span id="main-video-tag" class="inline-block px-3 py-1 bg-yellow-500 text-black text-xs font-bold rounded mb-3 uppercase">
+            教學影片
+          </span>
+          <h2 id="main-video-title" class="text-2xl md:text-3xl font-extrabold text-gray-800 mb-3">
+            請選擇影片
+          </h2>
+          <p id="main-video-desc" class="text-gray-500 leading-relaxed">
+            點選下方任一影片後，將在此放大播放。
+          </p>
+        </div>
       </div>
     </div>
+
+    <!-- 分類按鈕 -->
+    <div id="video-filter-bar" class="flex flex-wrap gap-3 mb-8"></div>
+
+    <!-- 小影片清單 -->
+    <div id="video-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-6"></div>
   </div>
 </div>
-
-
-    <!-- Video Cards -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-
-      <!-- Card 1 -->
-      <div class="bg-white rounded-[2rem] shadow-sm border border-gray-100 overflow-hidden card-hover transition text-left">
- <div
-  class="aspect-video bg-black relative cursor-pointer"
-  data-yt-card
-  data-video-id="PIV2tifKPgE"
-  data-video-tag="核心課程"
-  data-video-title="智慧機械概論與虛實整合"
-  data-video-desc="深入探討數位雙生技術在加工路徑驗證與產線最佳化之應用場景。"
->
-          <iframe
-            class="absolute inset-0 w-full h-full"
-            data-yt-frame
-            src="https://youtu.be/fqFJGuke00A?si=qnb1hHeiaaHfxmd9"
-            title="YouTube video player"
-            frameborder="0"
-            referrerpolicy="origin-when-cross-origin"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen>
-          </iframe>
-
-          <div data-yt-overlay class="absolute inset-0">
-            <img src="https://img.youtube.com/vi/PIV2tifKPgE/maxresdefault.jpg" class="absolute inset-0 w-full h-full object-cover opacity-80" alt="V1">
-            <button type="button" data-yt-play class="absolute inset-0 flex items-center justify-center">
-              <i class="fa-solid fa-circle-play text-white text-5xl drop-shadow-2xl"></i>
-            </button>
-          </div>
-        </div>
-
-        <div class="p-8">
-          <span class="inline-block px-3 py-1 bg-blue-50 text-blue-700 text-[10px] font-bold rounded-full mb-4">核心課程</span>
-          <h4 class="font-extrabold text-gray-800 mb-2 text-lg">智慧機械概論與虛實整合</h4>
-          <p class="text-gray-500 text-sm leading-relaxed">深入探討數位雙生技術在加工路徑驗證與產線最佳化之應用場景。</p>
-        </div>
-      </div>
-
-      <!-- Card 2 -->
-      <div class="bg-white rounded-[2rem] shadow-sm border border-gray-100 overflow-hidden card-hover transition text-left">
-        <div
-          class="aspect-video bg-black relative"
-          data-yt-card
-          data-video-id="u2G64r_PDYQ"
-        >
-          <iframe
-            class="absolute inset-0 w-full h-full"
-            data-yt-frame
-            src="https://www.youtube-nocookie.com/embed/u2G64r_PDYQ?rel=0&playsinline=1"
-            title="YouTube video player"
-            frameborder="0"
-            referrerpolicy="origin-when-cross-origin"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen>
-          </iframe>
-
-          <div data-yt-overlay class="absolute inset-0">
-            <img src="https://img.youtube.com/vi/u2G64r_PDYQ/maxresdefault.jpg" class="absolute inset-0 w-full h-full object-cover opacity-80" alt="V2">
-            <button type="button" data-yt-play class="absolute inset-0 flex items-center justify-center">
-              <i class="fa-solid fa-circle-play text-white text-5xl drop-shadow-2xl"></i>
-            </button>
-          </div>
-        </div>
-
-        <div class="p-8">
-          <span class="inline-block px-3 py-1 bg-green-50 text-green-700 text-[10px] font-bold rounded-full mb-4">PBL 專案實作</span>
-          <h4 class="font-extrabold text-gray-800 mb-2 text-lg">綠色製造能耗監測實錄</h4>
-          <p class="text-gray-500 text-sm leading-relaxed">分析加工參數與能耗之關聯性，透過數據採集優化製程碳足跡。</p>
-        </div>
-      </div>
-
-      <!-- Card 3 -->
-      <div class="bg-white rounded-[2rem] shadow-sm border border-gray-100 overflow-hidden card-hover transition text-left">
-        <div
-          class="aspect-video bg-black relative"
-          data-yt-card
-          data-video-id="y1-yZkB0yaA"
-        >
-          <iframe
-            class="absolute inset-0 w-full h-full"
-            data-yt-frame
-            src="https://www.youtube-nocookie.com/embed/y1-yZkB0yaA?rel=0&playsinline=1"
-            title="YouTube video player"
-            frameborder="0"
-            referrerpolicy="origin-when-cross-origin"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen>
-          </iframe>
-
-          <div data-yt-overlay class="absolute inset-0">
-            <img src="https://img.youtube.com/vi/y1-yZkB0yaA/maxresdefault.jpg" class="absolute inset-0 w-full h-full object-cover opacity-80" alt="V3">
-            <button type="button" data-yt-play class="absolute inset-0 flex items-center justify-center">
-              <i class="fa-solid fa-circle-play text-white text-5xl drop-shadow-2xl"></i>
-            </button>
-          </div>
-        </div>
-
-        <div class="p-8">
-          <span class="inline-block px-3 py-1 bg-purple-50 text-purple-700 text-[10px] font-bold rounded-full mb-4">技術研習</span>
-          <h4 class="font-extrabold text-gray-800 mb-2 text-lg">Python 訊號處理與 AI 診斷</h4>
-          <p class="text-gray-500 text-sm leading-relaxed">示範如何利用 Python 進行振動訊號之特徵擷取，建置刀具磨耗預警模型。</p>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</div>
-
 
 
         <!-- PAGE: HIGHLIGHTS (SVG Pyramid) -->
@@ -1000,18 +879,10 @@ if (window.lucide && typeof window.lucide.createIcons === "function") {
     showPage(getHashPage(), { updateHash: false, scrollTop: false });
 
     // mobile menu toggle
-// mobile menu toggle (bind ONLY ONCE)
-const btn = document.getElementById("mobile-menu-btn");
-const menu = document.getElementById("mobile-menu");
-
-if (btn && menu) {
-  btn.addEventListener("click", (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    menu.classList.toggle("hidden");
-    btn.setAttribute("aria-expanded", String(!menu.classList.contains("hidden")));
+    const btn = document.getElementById("mobile-menu-btn");
+    const menu = document.getElementById("mobile-menu");
+    if (btn && menu) btn.addEventListener("click", () => menu.classList.toggle("hidden"));
   });
-}
 
   // hash change
   window.addEventListener("hashchange", () => {
@@ -1019,54 +890,6 @@ if (btn && menu) {
   });
 </script>
 
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-
-  function playInFeatured(videoId, tag, title, desc) {
-    const card = document.getElementById("featured-yt-card");
-    const frame = document.getElementById("featured-yt-frame");
-    const overlay = document.getElementById("featured-overlay");
-    const thumb = document.getElementById("featured-thumb");
-    const tagEl = document.getElementById("featured-tag");
-    const titleEl = document.getElementById("featured-title");
-    const descEl = document.getElementById("featured-desc");
-
-    if (!card || !frame) return;
-
-    // 更新 featured 的資料
-    card.dataset.videoId = videoId;
-
-    if (thumb) thumb.src = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
-    if (tagEl) tagEl.textContent = tag || "";
-    if (titleEl) titleEl.textContent = title || "";
-    if (descEl) descEl.textContent = desc || "";
-
-    // 直接在大播放器播放
-    frame.src = `https://www.youtube-nocookie.com/embed/${videoId}?rel=0&playsinline=1&autoplay=1`;
-
-    // 隱藏封面 overlay
-    if (overlay) overlay.style.display = "none";
-
-    // 捲動到上方（體感放大）
-    card.scrollIntoView({ behavior: "smooth", block: "start" });
-  }
-
-  // 綁定下面所有卡片
-  document.querySelectorAll("[data-yt-card][data-video-id]").forEach((el) => {
-    if (el.id === "featured-yt-card") return;
-
-    el.addEventListener("click", () => {
-      playInFeatured(
-        el.dataset.videoId,
-        el.dataset.videoTag,
-        el.dataset.videoTitle,
-        el.dataset.videoDesc
-      );
-    });
-  });
-
-});
-</script>
 
  <script>
   const pyramidData = {
@@ -1175,75 +998,33 @@ window.addEventListener("DOMContentLoaded", () => {
 </script>
 
 <script>
-  // 事件委派：不用綁死某個 id，放 GitHub 也穩
-  document.addEventListener("click", function (e) {
-    const playBtn = e.target.closest("[data-yt-play]");
-    if (!playBtn) return;
+(function () {
+  function hideSplash() {
+    const splash = document.getElementById("splash-screen");
+    if (!splash) return;
 
-    const card = playBtn.closest("[data-yt-card]");
-    if (!card) return;
+    // 先保證不擋任何點擊（很重要）
+    splash.style.pointerEvents = "none";
 
-    const videoId = card.getAttribute("data-video-id");
-    const frame = card.querySelector("iframe[data-yt-frame]");
-    const overlay = card.querySelector("[data-yt-overlay]");
+    // 淡出
+    splash.style.opacity = "0";
 
-    if (!videoId || !frame || !overlay) return;
-
-    // autoplay 開始播放
-    frame.src =
-      "https://www.youtube-nocookie.com/embed/" +
-      videoId +
-      "?autoplay=1&rel=0&playsinline=1";
-
-    overlay.style.display = "none";
-    // ====== 下面卡片點擊/播放 → 切到上方 Featured 大播放器 ======
-const featuredCard = document.getElementById("featured-yt-card");
-if (featuredCard) {
-  const featuredFrame = featuredCard.querySelector("iframe[data-yt-frame]");
-  const featuredOverlay = featuredCard.querySelector("[data-yt-overlay]");
-  const featuredThumb = featuredCard.querySelector("[data-featured-thumb]");
-  const featuredTag = featuredCard.querySelector("[data-featured-tag]");
-  const featuredTitle = featuredCard.querySelector("[data-featured-title]");
-  const featuredDesc = featuredCard.querySelector("[data-featured-desc]");
-
-  // 讀取下面卡片的資料（若沒有就給空字串）
-  const tag = card.getAttribute("data-video-tag") || "";
-  const title = card.getAttribute("data-video-title") || "";
-  const desc = card.getAttribute("data-video-desc") || "";
-
-  // 更新 featured 顯示文字/封面
-  if (featuredThumb) featuredThumb.src = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
-  if (featuredTag) featuredTag.textContent = tag;
-  if (featuredTitle) featuredTitle.textContent = title;
-  if (featuredDesc) featuredDesc.textContent = desc;
-
-  // 讓 featured 播放這支影片（自動播放）
-  if (featuredFrame) {
-    featuredFrame.src = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0&playsinline=1`;
+    // 完全移除（避免透明但仍在上層）
+    setTimeout(() => {
+      splash.remove();
+    }, 800);
   }
 
-  // 隱藏 featured 的封面 overlay
-  if (featuredOverlay) featuredOverlay.style.display = "none";
-
-  // 捲動到上方 featured（看起來就是「放大播放」）
-  featuredCard.scrollIntoView({ behavior: "smooth", block: "start" });
-}
+  // DOM 一出來就開始倒數，不用等 load
+  document.addEventListener("DOMContentLoaded", () => {
+    setTimeout(hideSplash, 800);
   });
 
-  
-</script>
-<script>
-window.addEventListener("load", function () {
-    const splash = document.getElementById("splash-screen");
-
-    setTimeout(() => {
-        splash.style.opacity = "0";
-    }, 1000); // 1秒後開始淡出
-
-    setTimeout(() => {
-        splash.style.display = "none";
-    }, 1600); // 淡出完成後隱藏
-});
+  // 保險：load 再跑一次
+  window.addEventListener("load", () => {
+    setTimeout(hideSplash, 800);
+  });
+})();
 </script>
 </body>
 </html>
