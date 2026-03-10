@@ -477,14 +477,100 @@
       </div>
     </div>
 
-    <!-- 分類按鈕 -->
-    <div id="video-filter-bar" class="flex flex-wrap gap-3 mb-8"></div>
-
     <!-- 小影片清單 -->
-    <div id="video-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-6"></div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+
+      <!-- Video 1 -->
+      <div class="bg-white rounded-[1.5rem] shadow-sm border border-gray-100 overflow-hidden card-hover transition text-left">
+        <button type="button" class="w-full text-left"
+          onclick="openMainVideo('PIV2tifKPgE','核心課程','智慧機械概論與虛實整合','深入探討數位雙生技術在加工路徑驗證與產線最佳化之應用場景。')">
+          <div class="aspect-video bg-black relative">
+            <img src="https://img.youtube.com/vi/PIV2tifKPgE/maxresdefault.jpg"
+                 onerror="this.src='https://img.youtube.com/vi/PIV2tifKPgE/hqdefault.jpg'"
+                 class="absolute inset-0 w-full h-full object-cover"
+                 alt="智慧機械概論與虛實整合">
+            <div class="absolute inset-0 bg-black/20"></div>
+            <div class="absolute inset-0 flex items-center justify-center">
+              <i class="fa-solid fa-circle-play text-white text-4xl drop-shadow-2xl"></i>
+            </div>
+          </div>
+          <div class="p-5">
+            <span class="inline-block px-3 py-1 bg-blue-50 text-blue-700 text-[10px] font-bold rounded-full mb-3">核心課程</span>
+            <h4 class="font-extrabold text-gray-800 mb-2 text-base leading-snug">智慧機械概論與虛實整合</h4>
+            <p class="text-gray-500 text-sm leading-relaxed">深入探討數位雙生技術在加工路徑驗證與產線最佳化之應用場景。</p>
+          </div>
+        </button>
+      </div>
+
+      <!-- Video 2 -->
+      <div class="bg-white rounded-[1.5rem] shadow-sm border border-gray-100 overflow-hidden card-hover transition text-left">
+        <button type="button" class="w-full text-left"
+          onclick="openMainVideo('u2G64r_PDYQ','PBL 專案實作','綠色製造能耗監測實錄','分析加工參數與能耗之關聯性，透過數據採集優化製程碳足跡。')">
+          <div class="aspect-video bg-black relative">
+            <img src="https://img.youtube.com/vi/u2G64r_PDYQ/maxresdefault.jpg"
+                 onerror="this.src='https://img.youtube.com/vi/u2G64r_PDYQ/hqdefault.jpg'"
+                 class="absolute inset-0 w-full h-full object-cover"
+                 alt="綠色製造能耗監測實錄">
+            <div class="absolute inset-0 bg-black/20"></div>
+            <div class="absolute inset-0 flex items-center justify-center">
+              <i class="fa-solid fa-circle-play text-white text-4xl drop-shadow-2xl"></i>
+            </div>
+          </div>
+          <div class="p-5">
+            <span class="inline-block px-3 py-1 bg-green-50 text-green-700 text-[10px] font-bold rounded-full mb-3">PBL 專案實作</span>
+            <h4 class="font-extrabold text-gray-800 mb-2 text-base leading-snug">綠色製造能耗監測實錄</h4>
+            <p class="text-gray-500 text-sm leading-relaxed">分析加工參數與能耗之關聯性，透過數據採集優化製程碳足跡。</p>
+          </div>
+        </button>
+      </div>
+
+      <!-- Video 3 -->
+      <div class="bg-white rounded-[1.5rem] shadow-sm border border-gray-100 overflow-hidden card-hover transition text-left">
+        <button type="button" class="w-full text-left"
+          onclick="openMainVideo('y1-yZkB0yaA','技術研習','Python 訊號處理與 AI 診斷','示範如何利用 Python 進行振動訊號之特徵擷取，建置刀具磨耗預警模型。')">
+          <div class="aspect-video bg-black relative">
+            <img src="https://img.youtube.com/vi/y1-yZkB0yaA/maxresdefault.jpg"
+                 onerror="this.src='https://img.youtube.com/vi/y1-yZkB0yaA/hqdefault.jpg'"
+                 class="absolute inset-0 w-full h-full object-cover"
+                 alt="Python 訊號處理與 AI 診斷">
+            <div class="absolute inset-0 bg-black/20"></div>
+            <div class="absolute inset-0 flex items-center justify-center">
+              <i class="fa-solid fa-circle-play text-white text-4xl drop-shadow-2xl"></i>
+            </div>
+          </div>
+          <div class="p-5">
+            <span class="inline-block px-3 py-1 bg-purple-50 text-purple-700 text-[10px] font-bold rounded-full mb-3">技術研習</span>
+            <h4 class="font-extrabold text-gray-800 mb-2 text-base leading-snug">Python 訊號處理與 AI 診斷</h4>
+            <p class="text-gray-500 text-sm leading-relaxed">示範如何利用 Python 進行振動訊號之特徵擷取，建置刀具磨耗預警模型。</p>
+          </div>
+        </button>
+      </div>
+
+      <!-- Video 4 -->
+      <div class="bg-white rounded-[1.5rem] shadow-sm border border-gray-100 overflow-hidden card-hover transition text-left">
+        <button type="button" class="w-full text-left"
+          onclick="openMainVideo('fqFJGuke00A','精選教學','五軸加工機操作示範：開機與座標設定','本教學由業師指導，詳細介紹多軸機台的操作規範與虛實整合路徑驗證流程。')">
+          <div class="aspect-video bg-black relative">
+            <img src="https://img.youtube.com/vi/fqFJGuke00A/maxresdefault.jpg"
+                 onerror="this.src='https://img.youtube.com/vi/fqFJGuke00A/hqdefault.jpg'"
+                 class="absolute inset-0 w-full h-full object-cover"
+                 alt="五軸加工機操作示範">
+            <div class="absolute inset-0 bg-black/20"></div>
+            <div class="absolute inset-0 flex items-center justify-center">
+              <i class="fa-solid fa-circle-play text-white text-4xl drop-shadow-2xl"></i>
+            </div>
+          </div>
+          <div class="p-5">
+            <span class="inline-block px-3 py-1 bg-yellow-50 text-yellow-700 text-[10px] font-bold rounded-full mb-3">精選教學</span>
+            <h4 class="font-extrabold text-gray-800 mb-2 text-base leading-snug">五軸加工機操作示範：開機與座標設定</h4>
+            <p class="text-gray-500 text-sm leading-relaxed">本教學由業師指導，詳細介紹多軸機台的操作規範與虛實整合路徑驗證流程。</p>
+          </div>
+        </button>
+      </div>
+
+    </div>
   </div>
 </div>
-
 
         <!-- PAGE: HIGHLIGHTS (SVG Pyramid) -->
         <div id="page-highlights" class="section-view">
@@ -890,8 +976,7 @@ if (window.lucide && typeof window.lucide.createIcons === "function") {
   });
 </script>
 
-
- <script>
+<script>
   const pyramidData = {
     1: {
       title: "基礎核心課程",
@@ -995,6 +1080,26 @@ window.addEventListener("DOMContentLoaded", () => {
   animateStats();
   updatePyramid(2);
 });
+</script>
+
+<script>
+function openMainVideo(videoId, tag, title, desc) {
+  const section = document.getElementById("video-player-section");
+  const frame = document.getElementById("main-video-frame");
+  const tagEl = document.getElementById("main-video-tag");
+  const titleEl = document.getElementById("main-video-title");
+  const descEl = document.getElementById("main-video-desc");
+
+  if (!section || !frame || !tagEl || !titleEl || !descEl) return;
+
+  section.classList.remove("hidden");
+  frame.src = "https://www.youtube-nocookie.com/embed/" + videoId + "?autoplay=1&rel=0&playsinline=1";
+  tagEl.textContent = tag;
+  titleEl.textContent = title;
+  descEl.textContent = desc;
+
+  section.scrollIntoView({ behavior: "smooth", block: "start" });
+}
 </script>
 
 <script>
