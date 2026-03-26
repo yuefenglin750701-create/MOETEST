@@ -51,6 +51,13 @@
         ::-webkit-scrollbar-thumb { background: #004e9c; border-radius: 4px; }
         
         .me-content-block { background: linear-gradient(135deg, #ffffff 0%, #f9fafb 100%); }
+
+        .project-filter-btn.active { background-color: #1d4ed8; color: white; box-shadow: 0 10px 25px rgba(29,78,216,0.2); }
+        .project-card { transition: all 0.35s ease; }
+        .project-card:hover { transform: translateY(-6px); box-shadow: 0 18px 36px rgba(15,23,42,0.12); }
+        .project-chip { display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.4rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 700; }
+        .project-modal-backdrop { background: rgba(15, 23, 42, 0.72); backdrop-filter: blur(6px); }
+        .project-hidden { display: none !important; }
         
     </style>
 </head>
@@ -91,6 +98,9 @@
     <button onclick="showPage('summary')" class="nav-btn px-3 py-2 whitespace-nowrap rounded-lg hover:bg-blue-50 hover:text-blue-900 transition">計畫簡介</button>
     <button onclick="showPage('structure')" class="nav-btn px-3 py-2 whitespace-nowrap rounded-lg hover:bg-blue-50 hover:text-blue-900 transition">計畫組成</button>
     <button onclick="showPage('videos')" class="nav-btn px-3 py-2 whitespace-nowrap rounded-lg hover:bg-blue-50 hover:text-blue-900 transition">教學影片</button>
+    <button onclick="showPage('projects')" class="nav-btn px-3 py-2 whitespace-nowrap rounded-lg hover:bg-blue-50 hover:text-blue-900 transition">專題成果</button>
+    <button onclick="showPage('resources')" class="nav-btn px-3 py-2 whitespace-nowrap rounded-lg hover:bg-blue-50 hover:text-blue-900 transition">共享教材</button>
+    <button onclick="showPage('industry')" class="nav-btn px-3 py-2 whitespace-nowrap rounded-lg hover:bg-blue-50 hover:text-blue-900 transition">產學合作</button>
     <button onclick="showPage('labs')" class="nav-btn px-3 py-2 whitespace-nowrap rounded-lg hover:bg-blue-50 hover:text-blue-900 transition">特色實驗室</button>
     <button onclick="showPage('performance')" class="nav-btn px-3 py-2 rounded-lg hover:bg-blue-50 hover:text-blue-900 transition">執行績效</button>
     <button onclick="showPage('activities')" class="nav-btn px-3 py-2 rounded-lg hover:bg-blue-50 hover:text-blue-900 transition">活動競賽</button>
@@ -115,6 +125,9 @@
                 <button onclick="showPage('summary')" class="text-left py-3 px-4 hover:bg-blue-50 rounded-xl">計畫簡介</button>
                 <button onclick="showPage('structure')" class="text-left py-3 px-4 hover:bg-blue-50 rounded-xl">計畫組成</button>
                 <button onclick="showPage('videos')" class="text-left py-3 px-4 hover:bg-blue-50 rounded-xl">教學影片</button>
+                <button onclick="showPage('projects')" class="text-left py-3 px-4 hover:bg-blue-50 rounded-xl">專題成果</button>
+                <button onclick="showPage('resources')" class="text-left py-3 px-4 hover:bg-blue-50 rounded-xl">共享教材</button>
+                <button onclick="showPage('industry')" class="text-left py-3 px-4 hover:bg-blue-50 rounded-xl">產學合作</button>
                 <button onclick="showPage('labs')" class="text-left py-3 px-4 hover:bg-blue-50 rounded-xl">特色實驗室</button>
                 <button onclick="showPage('performance')" class="text-left py-3 px-4 hover:bg-blue-50 rounded-xl">執行績效</button>
                 <button onclick="showPage('activities')" class="text-left py-3 px-4 hover:bg-blue-50 rounded-xl">活動競賽</button>
@@ -135,11 +148,12 @@
                     </span>
                     <h1 class="text-4xl md:text-6xl font-extrabold mb-6 text-shadow leading-tight italic">數位轉型 <span class="text-yellow-400">x</span> 綠色製造 <span class="text-yellow-400">x</span> 製造轉型</h1>
                     <p class="text-xl md:text-2xl text-gray-100 max-w-3xl mx-auto mb-12 text-shadow font-light">
-                        攜手 11 家龍頭企業，打造跨域整合高階工程人才的搖籃。
+                        培育智慧工具機 × AI 應用跨域人才，串接課程金字塔、PBL 實作、智慧實驗室與教材共享平台。
                     </p>
                     <div class="flex flex-col sm:flex-row justify-center items-center gap-6">
                         <button onclick="showPage('highlights')" class="bg-white text-blue-900 hover:bg-blue-50 font-extrabold py-4 px-12 rounded-2xl shadow-2xl transition transform hover:scale-105">探索課程地圖</button>
                         <button onclick="showPage('summary')" class="bg-transparent border-2 border-white text-white hover:bg-white hover:text-blue-900 font-extrabold py-4 px-12 rounded-2xl shadow-2xl transition transform hover:scale-105 backdrop-blur-sm">計畫詳情</button>
+                        <button onclick="showPage('projects')" class="bg-yellow-500 text-white hover:bg-yellow-400 font-extrabold py-4 px-12 rounded-2xl shadow-2xl transition transform hover:scale-105">專題成果</button>
                     </div>
                 </div>
             </section>
@@ -149,14 +163,57 @@
                 <div class="container mx-auto px-4 relative z-10">
                     <div class="grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
                         <div class="p-4"><div class="text-5xl font-extrabold text-yellow-400 mb-2 counter" data-target="11">0</div><p class="text-sm text-blue-200 font-bold tracking-widest uppercase">合作企業</p></div>
-                        <div class="p-4"><div class="text-5xl font-extrabold text-yellow-400 mb-2 counter" data-target="5">0</div><p class="text-sm text-blue-200 font-bold tracking-widest uppercase">核心課程</p></div>
-                        <div class="p-4"><div class="text-5xl font-extrabold text-yellow-400 mb-2 counter" data-target="26">0</div><p class="text-sm text-blue-200 font-bold tracking-widest uppercase">數位教材</p></div>
-                        <div class="p-4"><div class="text-5xl font-extrabold text-yellow-400 counter" data-target="1">0</div><p class="text-sm text-blue-200 font-bold tracking-widest uppercase mt-2">全國金牌</p></div>
+                        <div class="p-4"><div class="text-5xl font-extrabold text-yellow-400 mb-2 counter" data-target="6">0</div><p class="text-sm text-blue-200 font-bold tracking-widest uppercase">基礎核心課程</p></div>
+                        <div class="p-4"><div class="text-5xl font-extrabold text-yellow-400 mb-2 counter" data-target="5">0</div><p class="text-sm text-blue-200 font-bold tracking-widest uppercase">特色領域模組</p></div>
+                        <div class="p-4"><div class="text-5xl font-extrabold text-yellow-400 counter" data-target="2">0</div><p class="text-sm text-blue-200 font-bold tracking-widest uppercase mt-2">年度 PBL 課程</p></div>
                     </div>
                 </div>
             </section>
 
-
+            <section class="py-20 bg-white border-b border-gray-100">
+                <div class="container mx-auto px-4 max-w-7xl">
+                    <div class="text-center mb-12">
+                        <span class="inline-flex px-4 py-1.5 rounded-full bg-blue-50 text-blue-700 text-sm font-extrabold mb-4">30 秒看懂計畫亮點</span>
+                        <h2 class="text-4xl font-extrabold text-gray-800 mb-4">首頁核心亮點</h2>
+                        <p class="text-gray-500 max-w-3xl mx-auto">從課程金字塔、PBL 產學專題、智慧實驗室、數位教材到量化績效，以一頁式視覺快速掌握計畫價值。</p>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-6">
+                        <div class="bg-gradient-to-br from-blue-700 to-blue-900 text-white rounded-[2rem] p-7 shadow-xl">
+                            <div class="text-3xl mb-5"><i class="fa-solid fa-shapes"></i></div>
+                            <h3 class="text-xl font-extrabold mb-3">課程金字塔</h3>
+                            <p class="text-blue-100 text-sm leading-relaxed mb-5">以基礎核心、特色模組到 PBL 總整課程，建立跨域學習進程。</p>
+                            <button onclick="showPage('highlights')" class="text-sm font-extrabold underline underline-offset-4">查看培育地圖</button>
+                        </div>
+                        <div class="bg-white rounded-[2rem] p-7 border border-gray-100 shadow-sm">
+                            <div class="text-3xl text-amber-500 mb-5"><i class="fa-solid fa-lightbulb"></i></div>
+                            <h3 class="text-xl font-extrabold text-gray-800 mb-3">PBL 產學專題</h3>
+                            <p class="text-gray-500 text-sm leading-relaxed mb-5">以企業真實問題出題，讓學生完成 AI、感測、CPS 與製造整合成果。</p>
+                            <button onclick="showPage('projects')" class="text-sm font-extrabold text-blue-700">前往成果專區 →</button>
+                        </div>
+                        <div class="bg-white rounded-[2rem] p-7 border border-gray-100 shadow-sm">
+                            <div class="text-3xl text-emerald-500 mb-5"><i class="fa-solid fa-flask-vial"></i></div>
+                            <h3 class="text-xl font-extrabold text-gray-800 mb-3">智慧製造實驗室</h3>
+                            <p class="text-gray-500 text-sm leading-relaxed mb-5">多軸加工、感測監控與數據分析場域，支撐實作與專題驗證。</p>
+                            <button onclick="showPage('labs')" class="text-sm font-extrabold text-blue-700">查看場域設備 →</button>
+                        </div>
+                        <div class="bg-white rounded-[2rem] p-7 border border-gray-100 shadow-sm">
+                            <div class="text-3xl text-violet-500 mb-5"><i class="fa-solid fa-photo-film"></i></div>
+                            <h3 class="text-xl font-extrabold text-gray-800 mb-3">教學影片 × 共享教材</h3>
+                            <p class="text-gray-500 text-sm leading-relaxed mb-5">課程錄影、操作示範、實驗手冊與簡報，強調可重複使用與跨校推廣。</p>
+                            <div class="flex gap-3 flex-wrap text-sm font-extrabold">
+                                <button onclick="showPage('videos')" class="text-blue-700">教學影片 →</button>
+                                <button onclick="showPage('resources')" class="text-violet-700">共享教材 →</button>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-[2rem] p-7 border border-gray-100 shadow-sm">
+                            <div class="text-3xl text-rose-500 mb-5"><i class="fa-solid fa-chart-column"></i></div>
+                            <h3 class="text-xl font-extrabold text-gray-800 mb-3">數據儀表板</h3>
+                            <p class="text-gray-500 text-sm leading-relaxed mb-5">修課人數、業師參與、產學合作與教材數量以圖卡與表格即時呈現。</p>
+                            <button onclick="showPage('performance')" class="text-sm font-extrabold text-blue-700">查看執行績效 →</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
             <!-- Core Field Section (Experimental Field) -->
             <section class="py-24 bg-white">
@@ -187,6 +244,79 @@
                     </div>
                 </div>
             </div>
+                    <!-- Project Showcase Section -->
+                    <section class="py-6 mb-24">
+                        <div class="text-center mb-14">
+                            <span class="inline-block px-4 py-1.5 rounded-full bg-blue-50 text-blue-700 text-sm font-extrabold mb-4">Project Showcase</span>
+                            <h2 class="text-4xl font-extrabold text-gray-800 mb-4 tracking-wider">專題成果展示</h2>
+                            <p class="text-gray-500 max-w-3xl mx-auto leading-relaxed">以企業實題、跨域整合與 PBL 實作為主軸，展示學生於智慧製造、AI、自動化與半導體應用之具體成果。</p>
+                        </div>
+
+                        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-10">
+                            <div class="project-card bg-gradient-to-br from-blue-700 to-blue-900 text-white rounded-[2rem] p-8 shadow-xl lg:col-span-1 flex flex-col justify-between">
+                                <div>
+                                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/15 text-xs font-bold tracking-widest uppercase mb-4">
+                                        <i class="fa-solid fa-award"></i> 精選成果
+                                    </div>
+                                    <h3 class="text-2xl font-extrabold mb-4 leading-snug">應用於 8 吋碳化矽之智慧化雙旋轉軸線切割系統</h3>
+                                    <p class="text-blue-100 leading-relaxed mb-6">整合雙旋轉軸、智慧監測與切割參數優化，強化高硬脆材料加工穩定性與切割品質。</p>
+                                </div>
+                                <div class="space-y-3">
+                                    <div class="flex items-center justify-between text-sm border-b border-white/15 pb-2"><span class="text-blue-100">對應領域</span><span class="font-bold">半導體 × 智慧加工</span></div>
+                                    <div class="flex items-center justify-between text-sm border-b border-white/15 pb-2"><span class="text-blue-100">成果亮點</span><span class="font-bold">設備整合與製程驗證</span></div>
+                                    <button onclick="showPage('projects')" class="mt-4 w-full bg-white text-blue-900 font-extrabold py-3 rounded-2xl hover:bg-blue-50 transition">查看更多成果</button>
+                                </div>
+                            </div>
+
+                            <div class="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="project-card bg-white rounded-[2rem] border border-gray-100 shadow-sm overflow-hidden">
+                                    <div class="h-40 bg-gradient-to-br from-cyan-500 to-blue-700 flex items-center justify-center text-white text-5xl">
+                                        <i class="fa-solid fa-microchip"></i>
+                                    </div>
+                                    <div class="p-6">
+                                        <div class="flex flex-wrap gap-2 mb-3">
+                                            <span class="project-chip bg-cyan-50 text-cyan-700">半導體製程</span>
+                                            <span class="project-chip bg-blue-50 text-blue-700">智慧監測</span>
+                                        </div>
+                                        <h4 class="text-xl font-extrabold text-gray-800 mb-2">SiC 晶圓切割監測與參數優化</h4>
+                                        <p class="text-gray-500 text-sm leading-relaxed mb-4">以感測資料分析與切割參數調校，提升加工穩定性與品質追溯能力。</p>
+                                        <button onclick="showPage('projects')" class="text-blue-700 font-extrabold hover:text-blue-900 transition">查看專題詳情 →</button>
+                                    </div>
+                                </div>
+
+                                <div class="project-card bg-white rounded-[2rem] border border-gray-100 shadow-sm overflow-hidden">
+                                    <div class="h-40 bg-gradient-to-br from-emerald-500 to-green-700 flex items-center justify-center text-white text-5xl">
+                                        <i class="fa-solid fa-robot"></i>
+                                    </div>
+                                    <div class="p-6">
+                                        <div class="flex flex-wrap gap-2 mb-3">
+                                            <span class="project-chip bg-emerald-50 text-emerald-700">智慧巡檢</span>
+                                            <span class="project-chip bg-lime-50 text-lime-700">Raspberry Pi</span>
+                                        </div>
+                                        <h4 class="text-xl font-extrabold text-gray-800 mb-2">工具機精度量測與誤差分析專題</h4>
+                                        <p class="text-gray-500 text-sm leading-relaxed mb-4">結合視覺辨識、路徑巡檢與即時回傳，建立校園或工廠場域巡檢應用雛形。</p>
+                                        <button onclick="showPage('projects')" class="text-blue-700 font-extrabold hover:text-blue-900 transition">查看專題詳情 →</button>
+                                    </div>
+                                </div>
+
+                                <div class="project-card bg-white rounded-[2rem] border border-gray-100 shadow-sm overflow-hidden md:col-span-2">
+                                    <div class="p-7 flex flex-col md:flex-row md:items-center md:justify-between gap-5">
+                                        <div>
+                                            <div class="flex flex-wrap gap-2 mb-3">
+                                                <span class="project-chip bg-purple-50 text-purple-700">AI 分析</span>
+                                                <span class="project-chip bg-amber-50 text-amber-700">產學實作</span>
+                                                <span class="project-chip bg-gray-100 text-gray-700">PBL</span>
+                                            </div>
+                                            <h4 class="text-2xl font-extrabold text-gray-800 mb-2">Python 訊號處理與影像辨識應用專題與技能矩陣應用</h4>
+                                            <p class="text-gray-500 text-sm leading-relaxed max-w-2xl">從市場需求、產能資訊到人力技能盤點，建立跨部門視覺化決策與人才培育支援機制。</p>
+                                        </div>
+                                        <button onclick="showPage('projects')" class="shrink-0 px-6 py-3 rounded-2xl bg-blue-600 text-white font-extrabold hover:bg-blue-700 transition">前往成果專區</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
                     <div class="text-center mb-16">
                         <h2 class="text-4xl font-extrabold text-gray-800 mb-4 tracking-wider">核心教學場域</h2>
                         <div class="w-24 h-1.5 bg-blue-600 mx-auto rounded-full"></div>
@@ -196,7 +326,7 @@
                             <div class="relative overflow-hidden rounded-[2.5rem] h-64 mb-6 shadow-xl border-4 border-white">
                                 <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=800" class="w-full h-full object-cover transition duration-500 group-hover:scale-110" alt="Lab 1">
                                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end p-8">
-                                    <h3 class="text-white text-xl font-bold">工具機實習工廠</h3>
+                                    <h3 class="text-white text-xl font-bold">多功能實習工廠</h3>
                                 </div>
                             </div>
                             <p class="text-gray-500 text-sm leading-relaxed px-4 text-center">配備五軸同動機台與模擬器，落實實機加工技術訓練。</p>
@@ -205,7 +335,7 @@
                             <div class="relative overflow-hidden rounded-[2.5rem] h-64 mb-6 shadow-xl border-4 border-white">
                                 <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800" class="w-full h-full object-cover transition duration-500 group-hover:scale-110" alt="Lab 2">
                                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end p-8">
-                                    <h3 class="text-white text-xl font-bold">智慧多軸複合技術實驗室</h3>
+                                    <h3 class="text-white text-xl font-bold">工具機產業學院大樓</h3>
                                 </div>
                             </div>
                             <p class="text-gray-500 text-sm leading-relaxed px-4 text-center">專注於 Python 數據分析、訊號處理與 AI 診斷開發。</p>
@@ -358,27 +488,71 @@
                 <div class="bg-white rounded-3xl shadow-xl p-12 mb-16 border border-gray-100">
                     <h2 class="text-3xl font-extrabold text-gray-800 mb-8 border-l-8 border-blue-600 pl-6 tracking-wide">核心目標與願景</h2>
                     <p class="text-gray-600 text-lg leading-relaxed mb-8">
-                        面對全球製造業的數位轉型潮流，本計畫旨在透過「數位轉型 (DX)」、「綠色製造 (GX)」與「製造轉型 (MX)」三大主軸，培育具備實戰解決問題能力的高階製造人才。我們不僅強調硬體技術的精進，更整合 AI 監控與數據加值應用，為台灣工具機產業打造下一代技術骨幹。
+                        本計畫以「強化產學鏈結、培育未來關鍵人才」為核心，聚焦工具機產業數位轉型（DX）、綠色轉型（GX）與製造轉型（MX）三軸整合趨勢，透過課程模組、PBL 實作、教學實驗室與企業協作，培育具備跨域整合與實作能力的高階工程人才。
                     </p>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-                        <div class="bg-blue-50 p-10 rounded-[2.5rem] border border-blue-100">
-                            <h4 class="text-xl font-extrabold text-blue-900 mb-4 flex items-center gap-3"><i class="fa-solid fa-bullseye"></i> 教育使命</h4>
-                            <p class="text-gray-600 text-sm leading-relaxed font-medium">整合機械、資工與智動系資源，透過企業出題、學生解題 (PBL) 模式，落實產業無縫對接，預計總培育人次達 580 人次。</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+                        <div class="bg-blue-50 p-8 rounded-[2rem] border border-blue-100">
+                            <h4 class="text-lg font-extrabold text-blue-900 mb-3 flex items-center gap-3"><i class="fa-solid fa-handshake"></i> 產學鏈結</h4>
+                            <p class="text-gray-600 text-sm leading-relaxed font-medium">結合 11 家合作企業，導入業師協同授課、企業參訪、實習與專題指導，讓課程更貼近真實產線需求。</p>
                         </div>
-                        <div class="bg-green-50 p-10 rounded-[2.5rem] border border-green-100">
-                            <h4 class="text-xl font-extrabold text-green-900 mb-4 flex items-center gap-3"><i class="fa-solid fa-leaf"></i> 永續轉型</h4>
-                            <p class="text-gray-600 text-sm leading-relaxed font-medium">導入碳足跡追蹤與能耗盤點教學場域，協助企業達成淨零碳排目標，預期降低單件加工碳排達 8% 以上。</p>
+                        <div class="bg-emerald-50 p-8 rounded-[2rem] border border-emerald-100">
+                            <h4 class="text-lg font-extrabold text-emerald-900 mb-3 flex items-center gap-3"><i class="fa-solid fa-sitemap"></i> 跨域整合</h4>
+                            <p class="text-gray-600 text-sm leading-relaxed font-medium">由機械基礎延伸到 AI、訊號處理、感測、虛實整合與智慧自動化製造，培育學生全局系統整合能力。</p>
                         </div>
+                        <div class="bg-amber-50 p-8 rounded-[2rem] border border-amber-100">
+                            <h4 class="text-lg font-extrabold text-amber-900 mb-3 flex items-center gap-3"><i class="fa-solid fa-gears"></i> 高值化技術</h4>
+                            <p class="text-gray-600 text-sm leading-relaxed font-medium">聚焦五軸加工、工具機精度量測、關鍵組件設計、感測與智慧監測，對接工具機產業升級需求。</p>
+                        </div>
+                        <div class="bg-purple-50 p-8 rounded-[2rem] border border-purple-100">
+                            <h4 class="text-lg font-extrabold text-purple-900 mb-3 flex items-center gap-3"><i class="fa-solid fa-seedling"></i> 人才培育</h4>
+                            <p class="text-gray-600 text-sm leading-relaxed font-medium">透過模組課程、PBL 總整課程與特色教學實驗室，建立從基礎學習到成果落地的完整培育鏈。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+                    <div class="bg-white rounded-[2.5rem] shadow-sm border border-gray-100 p-10">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="w-14 h-14 rounded-2xl bg-blue-100 text-blue-700 flex items-center justify-center text-2xl"><i class="fa-solid fa-compass-drafting"></i></div>
+                            <div>
+                                <h3 class="text-2xl font-extrabold text-gray-800">計畫推動主軸</h3>
+                                <p class="text-sm text-gray-400 font-bold tracking-widest">DX × GX × MX</p>
+                            </div>
+                        </div>
+                        <ul class="space-y-4 text-gray-600 leading-relaxed">
+                            <li class="flex gap-3"><i class="fa-solid fa-circle-check text-blue-600 mt-1"></i><span>數位轉型：導入 AI、資料分析、虛實整合與智慧監測。</span></li>
+                            <li class="flex gap-3"><i class="fa-solid fa-circle-check text-blue-600 mt-1"></i><span>綠色轉型：強化工具機與製程之永續與高效率應用。</span></li>
+                            <li class="flex gap-3"><i class="fa-solid fa-circle-check text-blue-600 mt-1"></i><span>製造轉型：以高階工具機、關鍵組件與自動化整合為重點。</span></li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-white rounded-[2.5rem] shadow-sm border border-gray-100 p-10">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="w-14 h-14 rounded-2xl bg-green-100 text-green-700 flex items-center justify-center text-2xl"><i class="fa-solid fa-diagram-project"></i></div>
+                            <div>
+                                <h3 class="text-2xl font-extrabold text-gray-800">年度執行重點</h3>
+                                <p class="text-sm text-gray-400 font-bold tracking-widest">課程 × 實驗室 × 產學合作</p>
+                            </div>
+                        </div>
+                        <ul class="space-y-4 text-gray-600 leading-relaxed">
+                            <li class="flex gap-3"><i class="fa-solid fa-circle-check text-green-600 mt-1"></i><span>開設 6 門基礎/核心課程、5 個特色領域模組與每年至少 2 門 PBL 總整課程。</span></li>
+                            <li class="flex gap-3"><i class="fa-solid fa-circle-check text-green-600 mt-1"></i><span>推動教學實驗室建置與每週至少 6 小時教學使用，強化實作訓練。</span></li>
+                            <li class="flex gap-3"><i class="fa-solid fa-circle-check text-green-600 mt-1"></i><span>串接產學合作、推廣活動、國際交流與成果展示，擴大影響力。</span></li>
+                        </ul>
                     </div>
                 </div>
 
                 <!-- Quantative Indicators -->
                 <h2 class="text-3xl font-extrabold text-gray-800 mb-12 text-center">預期量化效益指標</h2>
                 <div class="grid grid-cols-2 lg:grid-cols-4 gap-8">
-                    <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 text-center"><p class="text-4xl font-extrabold text-blue-600 mb-2">580+</p><p class="text-xs font-bold text-gray-400 tracking-widest">總培育人次</p></div>
-                    <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 text-center"><p class="text-4xl font-extrabold text-green-600 mb-2">80+</p><p class="text-xs font-bold text-gray-400 tracking-widest">上課教材件數</p></div>
-                    <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 text-center"><p class="text-4xl font-extrabold text-yellow-600 mb-2">30+</p><p class="text-xs font-bold text-gray-400 tracking-widest">業界師資人次</p></div>
-                    <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 text-center"><p class="text-4xl font-extrabold text-purple-600 mb-2">4+</p><p class="text-xs font-bold text-gray-400 tracking-widest">PBL 課程件數</p></div>
+                    <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 text-center"><p class="text-4xl font-extrabold text-blue-600 mb-2">580</p><p class="text-xs font-bold text-gray-400 tracking-widest">修課人次</p></div>
+                    <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 text-center"><p class="text-4xl font-extrabold text-green-600 mb-2">80</p><p class="text-xs font-bold text-gray-400 tracking-widest">上課教材件數</p></div>
+                    <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 text-center"><p class="text-4xl font-extrabold text-cyan-600 mb-2">70</p><p class="text-xs font-bold text-gray-400 tracking-widest">數位/影音教材</p></div>
+                    <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 text-center"><p class="text-4xl font-extrabold text-purple-600 mb-2">4</p><p class="text-xs font-bold text-gray-400 tracking-widest">PBL 總整課程</p></div>
+                    <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 text-center"><p class="text-4xl font-extrabold text-amber-600 mb-2">4</p><p class="text-xs font-bold text-gray-400 tracking-widest">產學合作件數</p></div>
+                    <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 text-center"><p class="text-4xl font-extrabold text-rose-600 mb-2">30</p><p class="text-xs font-bold text-gray-400 tracking-widest">業師參與人次</p></div>
+                    <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 text-center"><p class="text-4xl font-extrabold text-indigo-600 mb-2">4</p><p class="text-xs font-bold text-gray-400 tracking-widest">教學實驗室</p></div>
+                    <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 text-center"><p class="text-4xl font-extrabold text-teal-600 mb-2">60</p><p class="text-xs font-bold text-gray-400 tracking-widest">競賽參與人次</p></div>
                 </div>
             </div>
         </div>
@@ -403,13 +577,13 @@
                         <div class="w-24 h-24 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-8 text-4xl shadow-inner group-hover:scale-110 transition duration-500"><i class="fa-solid fa-user-group"></i></div>
                         <h3 class="text-2xl font-extrabold mb-2 text-gray-800">林岳鋒 教授</h3>
                         <p class="text-green-600 font-bold mb-4">共同主持人</p>
-                        <p class="text-xs text-gray-400 font-medium italic">機械工程系 教授</p>
+                        <p class="text-xs text-gray-400 font-medium italic">機械工程系 副主任兼助理教授</p>
                     </div>
                     <div class="bg-white p-12 rounded-[2.5rem] shadow-sm border border-gray-100 text-center hover:shadow-xl transition-all group">
                         <div class="w-24 h-24 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center mx-auto mb-8 text-4xl shadow-inner group-hover:scale-110 transition duration-500"><i class="fa-solid fa-user-group"></i></div>
                         <h3 class="text-2xl font-extrabold mb-2 text-gray-800">李榮茂 教授</h3>
                         <p class="text-purple-600 font-bold mb-4">共同主持人</p>
-                        <p class="text-xs text-gray-400 font-medium italic">智慧自動化系 系主任</p>
+                        <p class="text-xs text-gray-400 font-medium italic">智慧自動化工程系 系主任兼副教授</p>
                     </div>
                 </div>
 
@@ -417,20 +591,38 @@
                 <div class="bg-gray-100 rounded-[3rem] p-16">
                     <div class="text-center mb-16">
                         <h2 class="text-4xl font-extrabold text-gray-800 mb-4 tracking-wider">產業合作聯盟 (11家)</h2>
-                        <p class="text-gray-500 font-medium">匯聚全台工具機與零組件頂尖企業，建構實務學習網絡</p>
+                        <p class="text-gray-500 font-medium">鏈結工具機整機、關鍵零組件與金屬製程企業，建構教學、實習與專題合作網絡</p>
                     </div>
                     <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                        <div class="bg-white p-8 rounded-2xl shadow-sm text-center font-bold text-gray-700 hover:text-blue-600 transition cursor-default">台中精機</div>
-                        <div class="bg-white p-8 rounded-2xl shadow-sm text-center font-bold text-gray-700 hover:text-blue-600 transition cursor-default">上銀科技</div>
-                        <div class="bg-white p-8 rounded-2xl shadow-sm text-center font-bold text-gray-700 hover:text-blue-600 transition cursor-default">永進機械</div>
-                        <div class="bg-white p-8 rounded-2xl shadow-sm text-center font-bold text-gray-700 hover:text-blue-600 transition cursor-default">凱柏精機</div>
-                        <div class="bg-white p-8 rounded-2xl shadow-sm text-center font-bold text-gray-700 hover:text-blue-600 transition cursor-default">大光長榮</div>
                         <div class="bg-white p-8 rounded-2xl shadow-sm text-center font-bold text-gray-700 hover:text-blue-600 transition cursor-default">盈錫精密</div>
-                        <div class="bg-white p-8 rounded-2xl shadow-sm text-center font-bold text-gray-700 hover:text-blue-600 transition cursor-default">徠通科技</div>
-                        <div class="bg-white p-8 rounded-2xl shadow-sm text-center font-bold text-gray-700 hover:text-blue-600 transition cursor-default">亞崴機電</div>
-                        <div class="bg-white p-8 rounded-2xl shadow-sm text-center font-bold text-gray-700 hover:text-blue-600 transition cursor-default">旭東機械</div>
-                        <div class="bg-white p-8 rounded-2xl shadow-sm text-center font-bold text-gray-700 hover:text-blue-600 transition cursor-default">聯盛機電</div>
+                        <div class="bg-white p-8 rounded-2xl shadow-sm text-center font-bold text-gray-700 hover:text-blue-600 transition cursor-default">台中精機</div>
+                        <div class="bg-white p-8 rounded-2xl shadow-sm text-center font-bold text-gray-700 hover:text-blue-600 transition cursor-default">大光長榮</div>
+                        <div class="bg-white p-8 rounded-2xl shadow-sm text-center font-bold text-gray-700 hover:text-blue-600 transition cursor-default">凱柏精機</div>
+                        <div class="bg-white p-8 rounded-2xl shadow-sm text-center font-bold text-gray-700 hover:text-blue-600 transition cursor-default">上銀科技</div>
                         <div class="bg-white p-8 rounded-2xl shadow-sm text-center font-bold text-gray-700 hover:text-blue-600 transition cursor-default">松讚實業</div>
+                        <div class="bg-white p-8 rounded-2xl shadow-sm text-center font-bold text-gray-700 hover:text-blue-600 transition cursor-default">永進機械</div>
+                        <div class="bg-white p-8 rounded-2xl shadow-sm text-center font-bold text-gray-700 hover:text-blue-600 transition cursor-default">亞崴機電</div>
+                        <div class="bg-white p-8 rounded-2xl shadow-sm text-center font-bold text-gray-700 hover:text-blue-600 transition cursor-default">徠通科技</div>
+                        <div class="bg-white p-8 rounded-2xl shadow-sm text-center font-bold text-gray-700 hover:text-blue-600 transition cursor-default">程泰機械</div>
+                        <div class="bg-white p-8 rounded-2xl shadow-sm text-center font-bold text-gray-700 hover:text-blue-600 transition cursor-default">崴立機電</div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-12">
+                    <div class="bg-white rounded-[2rem] p-8 border border-gray-100 shadow-sm">
+                        <div class="w-14 h-14 rounded-2xl bg-blue-100 text-blue-700 flex items-center justify-center text-2xl mb-5"><i class="fa-solid fa-school"></i></div>
+                        <h3 class="text-2xl font-extrabold text-gray-800 mb-3">教學協作</h3>
+                        <p class="text-gray-500 leading-relaxed">邀請企業業師參與課程規劃、協同授課與專題指導，讓學生在課堂中直接接觸工具機產業真實題目。</p>
+                    </div>
+                    <div class="bg-white rounded-[2rem] p-8 border border-gray-100 shadow-sm">
+                        <div class="w-14 h-14 rounded-2xl bg-emerald-100 text-emerald-700 flex items-center justify-center text-2xl mb-5"><i class="fa-solid fa-industry"></i></div>
+                        <h3 class="text-2xl font-extrabold text-gray-800 mb-3">場域實作</h3>
+                        <p class="text-gray-500 leading-relaxed">透過設備觀摩、工廠參訪、企業實習與專題合作，把五軸加工、線切割、感測診斷與智慧生產管理導入學習歷程。</p>
+                    </div>
+                    <div class="bg-white rounded-[2rem] p-8 border border-gray-100 shadow-sm">
+                        <div class="w-14 h-14 rounded-2xl bg-amber-100 text-amber-700 flex items-center justify-center text-2xl mb-5"><i class="fa-solid fa-chart-column"></i></div>
+                        <h3 class="text-2xl font-extrabold text-gray-800 mb-3">成果追蹤</h3>
+                        <p class="text-gray-500 leading-relaxed">以專題成果展示、實習回饋、業師評分、競賽表現與就業媒合成效，持續檢視人才培育與落地成果。</p>
                     </div>
                 </div>
             </div>
@@ -440,134 +632,125 @@
 <div id="page-videos" class="section-view">
   <div class="hero-pattern py-20 text-center text-white relative">
     <div class="absolute inset-0 bg-black opacity-30"></div>
-    <div class="relative z-10">
+    <div class="relative z-10 px-4">
       <h1 class="text-5xl font-extrabold mb-4 tracking-wider text-shadow">教學影片專區</h1>
-      <p class="text-blue-100 text-xl font-light italic">線上課程．實作示範．技術研討</p>
+      <p class="text-blue-100 text-xl font-light italic">全部以小圖呈現，點擊後才放大播放</p>
     </div>
   </div>
 
   <div class="container mx-auto px-4 py-16 max-w-7xl">
-
-    <!-- 點擊後才顯示的大播放器 -->
-    <div id="video-player-section" class="hidden mb-12">
-      <div class="bg-white rounded-[2rem] shadow-xl border border-gray-100 overflow-hidden">
-        <div class="aspect-video bg-black relative">
-          <iframe
-            id="main-video-frame"
-            class="absolute inset-0 w-full h-full"
-            src="about:blank"
-            title="Main Video Player"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerpolicy="strict-origin-when-cross-origin"
-            allowfullscreen>
-          </iframe>
-        </div>
-        <div class="p-8">
-          <span id="main-video-tag" class="inline-block px-3 py-1 bg-yellow-500 text-black text-xs font-bold rounded mb-3 uppercase">
-            教學影片
-          </span>
-          <h2 id="main-video-title" class="text-2xl md:text-3xl font-extrabold text-gray-800 mb-3">
-            請選擇影片
-          </h2>
-          <p id="main-video-desc" class="text-gray-500 leading-relaxed">
-            點選下方任一影片後，將在此放大播放。
-          </p>
-        </div>
+    <div class="flex items-center justify-between gap-4 flex-wrap mb-8">
+      <div>
+        <h2 class="text-3xl font-extrabold text-gray-800 mb-2">教學影片總覽</h2>
+        <p class="text-gray-500">切換到其他頁面後，再回到教學影片時，會自動恢復為小圖列表。</p>
       </div>
+      <div class="text-sm text-gray-400 font-semibold">點擊任一影片縮圖即可放大觀看</div>
     </div>
 
-    <!-- 小影片清單 -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+    <div class="flex flex-wrap gap-3 mb-8">
+      <span class="project-chip bg-blue-50 text-blue-700">課程錄影</span>
+      <span class="project-chip bg-emerald-50 text-emerald-700">操作示範影片</span>
+      <span class="project-chip bg-violet-50 text-violet-700">PBL 專題展示影片</span>
+      <span class="project-chip bg-amber-50 text-amber-700">可重複使用數位教材</span>
+    </div>
 
-      <!-- Video 1 -->
-      <div class="bg-white rounded-[1.5rem] shadow-sm border border-gray-100 overflow-hidden card-hover transition text-left">
-        <button type="button" class="w-full text-left"
-          onclick="openMainVideo('PIV2tifKPgE','核心課程','智慧機械概論與虛實整合','深入探討數位雙生技術在加工路徑驗證與產線最佳化之應用場景。')">
-          <div class="aspect-video bg-black relative">
-            <img src="https://img.youtube.com/vi/PIV2tifKPgE/maxresdefault.jpg"
-                 onerror="this.src='https://img.youtube.com/vi/PIV2tifKPgE/hqdefault.jpg'"
-                 class="absolute inset-0 w-full h-full object-cover"
-                 alt="智慧機械概論與虛實整合">
-            <div class="absolute inset-0 bg-black/20"></div>
-            <div class="absolute inset-0 flex items-center justify-center">
-              <i class="fa-solid fa-circle-play text-white text-4xl drop-shadow-2xl"></i>
-            </div>
+    <div id="video-gallery-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+
+      <button type="button" class="video-thumb-card group bg-white rounded-[2rem] shadow-sm border border-gray-100 overflow-hidden text-left transition hover:shadow-xl hover:-translate-y-1"
+        data-video-id="PIV2tifKPgE"
+        data-video-tag="核心課程"
+        data-video-title="智慧機械概論與虛實整合"
+        data-video-desc="深入探討數位雙生技術在加工路徑驗證與產線最佳化之應用場景。">
+        <div class="aspect-video relative overflow-hidden bg-slate-900">
+          <img src="https://img.youtube.com/vi/PIV2tifKPgE/maxresdefault.jpg" alt="智慧機械概論與虛實整合" class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+          <div class="absolute inset-0 flex items-center justify-center">
+            <span class="w-16 h-16 rounded-full bg-white/90 text-red-600 flex items-center justify-center text-2xl shadow-xl group-hover:scale-110 transition"><i class="fa-solid fa-play ml-1"></i></span>
           </div>
-          <div class="p-5">
-            <span class="inline-block px-3 py-1 bg-blue-50 text-blue-700 text-[10px] font-bold rounded-full mb-3">核心課程</span>
-            <h4 class="font-extrabold text-gray-800 mb-2 text-base leading-snug">智慧機械概論與虛實整合</h4>
-            <p class="text-gray-500 text-sm leading-relaxed">深入探討數位雙生技術在加工路徑驗證與產線最佳化之應用場景。</p>
+          <span class="absolute top-4 left-4 px-3 py-1 bg-blue-600/90 text-white text-[11px] font-bold rounded-full">核心課程</span>
+        </div>
+        <div class="p-6">
+          <h3 class="font-extrabold text-gray-800 text-lg mb-2 line-clamp-2">智慧機械概論與虛實整合</h3>
+          <p class="text-gray-500 text-sm leading-relaxed line-clamp-3">深入探討數位雙生技術在加工路徑驗證與產線最佳化之應用場景。</p>
+        </div>
+      </button>
+
+      <button type="button" class="video-thumb-card group bg-white rounded-[2rem] shadow-sm border border-gray-100 overflow-hidden text-left transition hover:shadow-xl hover:-translate-y-1"
+        data-video-id="u2G64r_PDYQ"
+        data-video-tag="PBL 專案實作"
+        data-video-title="綠色製造能耗監測實錄"
+        data-video-desc="分析加工參數與能耗之關聯性，透過數據採集優化製程碳足跡。">
+        <div class="aspect-video relative overflow-hidden bg-slate-900">
+          <img src="https://img.youtube.com/vi/u2G64r_PDYQ/maxresdefault.jpg" alt="綠色製造能耗監測實錄" class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+          <div class="absolute inset-0 flex items-center justify-center">
+            <span class="w-16 h-16 rounded-full bg-white/90 text-red-600 flex items-center justify-center text-2xl shadow-xl group-hover:scale-110 transition"><i class="fa-solid fa-play ml-1"></i></span>
           </div>
+          <span class="absolute top-4 left-4 px-3 py-1 bg-green-600/90 text-white text-[11px] font-bold rounded-full">PBL 專案實作</span>
+        </div>
+        <div class="p-6">
+          <h3 class="font-extrabold text-gray-800 text-lg mb-2 line-clamp-2">綠色製造能耗監測實錄</h3>
+          <p class="text-gray-500 text-sm leading-relaxed line-clamp-3">分析加工參數與能耗之關聯性，透過數據採集優化製程碳足跡。</p>
+        </div>
+      </button>
+
+      <button type="button" class="video-thumb-card group bg-white rounded-[2rem] shadow-sm border border-gray-100 overflow-hidden text-left transition hover:shadow-xl hover:-translate-y-1"
+        data-video-id="y1-yZkB0yaA"
+        data-video-tag="技術研習"
+        data-video-title="Python 訊號處理與 AI 診斷"
+        data-video-desc="示範如何利用 Python 進行振動訊號特徵擷取，建置刀具磨耗預警模型。">
+        <div class="aspect-video relative overflow-hidden bg-slate-900">
+          <img src="https://img.youtube.com/vi/y1-yZkB0yaA/maxresdefault.jpg" alt="Python 訊號處理與 AI 診斷" class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+          <div class="absolute inset-0 flex items-center justify-center">
+            <span class="w-16 h-16 rounded-full bg-white/90 text-red-600 flex items-center justify-center text-2xl shadow-xl group-hover:scale-110 transition"><i class="fa-solid fa-play ml-1"></i></span>
+          </div>
+          <span class="absolute top-4 left-4 px-3 py-1 bg-purple-600/90 text-white text-[11px] font-bold rounded-full">技術研習</span>
+        </div>
+        <div class="p-6">
+          <h3 class="font-extrabold text-gray-800 text-lg mb-2 line-clamp-2">Python 訊號處理與 AI 診斷</h3>
+          <p class="text-gray-500 text-sm leading-relaxed line-clamp-3">示範如何利用 Python 進行振動訊號特徵擷取，建置刀具磨耗預警模型。</p>
+        </div>
+      </button>
+
+      <button type="button" class="video-thumb-card group bg-white rounded-[2rem] shadow-sm border border-gray-100 overflow-hidden text-left transition hover:shadow-xl hover:-translate-y-1"
+        data-video-id="fqFJGuke00A"
+        data-video-tag="精選教學"
+        data-video-title="五軸加工機操作示範：開機與座標設定"
+        data-video-desc="由業師示範多軸機台的開機流程、基準設定與加工前檢核重點。">
+        <div class="aspect-video relative overflow-hidden bg-slate-900">
+          <img src="https://img.youtube.com/vi/fqFJGuke00A/maxresdefault.jpg" alt="五軸加工機操作示範：開機與座標設定" class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+          <div class="absolute inset-0 flex items-center justify-center">
+            <span class="w-16 h-16 rounded-full bg-white/90 text-red-600 flex items-center justify-center text-2xl shadow-xl group-hover:scale-110 transition"><i class="fa-solid fa-play ml-1"></i></span>
+          </div>
+          <span class="absolute top-4 left-4 px-3 py-1 bg-amber-500/95 text-black text-[11px] font-bold rounded-full">精選教學</span>
+        </div>
+        <div class="p-6">
+          <h3 class="font-extrabold text-gray-800 text-lg mb-2 line-clamp-2">五軸加工機操作示範：開機與座標設定</h3>
+          <p class="text-gray-500 text-sm leading-relaxed line-clamp-3">由業師示範多軸機台的開機流程、基準設定與加工前檢核重點。</p>
+        </div>
+      </button>
+
+    </div>
+  </div>
+
+  <div id="video-modal" class="hidden fixed inset-0 z-[100001]">
+    <div class="absolute inset-0 bg-slate-950/80 backdrop-blur-sm"></div>
+    <div class="relative min-h-screen px-4 py-8 flex items-center justify-center">
+      <div class="w-full max-w-5xl bg-white rounded-[2rem] overflow-hidden shadow-2xl relative">
+        <button id="video-modal-close" type="button" class="absolute top-4 right-4 z-20 w-11 h-11 rounded-full bg-white/90 text-gray-700 hover:bg-gray-100 shadow-lg transition">
+          <i class="fa-solid fa-xmark"></i>
         </button>
+        <div class="aspect-video bg-black">
+          <iframe id="video-modal-frame" class="w-full h-full" src="about:blank" title="教學影片播放視窗" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+        <div class="p-8">
+          <span id="video-modal-tag" class="inline-block px-3 py-1 bg-blue-50 text-blue-700 text-xs font-bold rounded-full mb-4">教學影片</span>
+          <h3 id="video-modal-title" class="text-2xl md:text-3xl font-extrabold text-gray-800 mb-3"></h3>
+          <p id="video-modal-desc" class="text-gray-600 leading-relaxed"></p>
+        </div>
       </div>
-
-      <!-- Video 2 -->
-      <div class="bg-white rounded-[1.5rem] shadow-sm border border-gray-100 overflow-hidden card-hover transition text-left">
-        <button type="button" class="w-full text-left"
-          onclick="openMainVideo('u2G64r_PDYQ','PBL 專案實作','綠色製造能耗監測實錄','分析加工參數與能耗之關聯性，透過數據採集優化製程碳足跡。')">
-          <div class="aspect-video bg-black relative">
-            <img src="https://img.youtube.com/vi/u2G64r_PDYQ/maxresdefault.jpg"
-                 onerror="this.src='https://img.youtube.com/vi/u2G64r_PDYQ/hqdefault.jpg'"
-                 class="absolute inset-0 w-full h-full object-cover"
-                 alt="綠色製造能耗監測實錄">
-            <div class="absolute inset-0 bg-black/20"></div>
-            <div class="absolute inset-0 flex items-center justify-center">
-              <i class="fa-solid fa-circle-play text-white text-4xl drop-shadow-2xl"></i>
-            </div>
-          </div>
-          <div class="p-5">
-            <span class="inline-block px-3 py-1 bg-green-50 text-green-700 text-[10px] font-bold rounded-full mb-3">PBL 專案實作</span>
-            <h4 class="font-extrabold text-gray-800 mb-2 text-base leading-snug">綠色製造能耗監測實錄</h4>
-            <p class="text-gray-500 text-sm leading-relaxed">分析加工參數與能耗之關聯性，透過數據採集優化製程碳足跡。</p>
-          </div>
-        </button>
-      </div>
-
-      <!-- Video 3 -->
-      <div class="bg-white rounded-[1.5rem] shadow-sm border border-gray-100 overflow-hidden card-hover transition text-left">
-        <button type="button" class="w-full text-left"
-          onclick="openMainVideo('y1-yZkB0yaA','技術研習','Python 訊號處理與 AI 診斷','示範如何利用 Python 進行振動訊號之特徵擷取，建置刀具磨耗預警模型。')">
-          <div class="aspect-video bg-black relative">
-            <img src="https://img.youtube.com/vi/y1-yZkB0yaA/maxresdefault.jpg"
-                 onerror="this.src='https://img.youtube.com/vi/y1-yZkB0yaA/hqdefault.jpg'"
-                 class="absolute inset-0 w-full h-full object-cover"
-                 alt="Python 訊號處理與 AI 診斷">
-            <div class="absolute inset-0 bg-black/20"></div>
-            <div class="absolute inset-0 flex items-center justify-center">
-              <i class="fa-solid fa-circle-play text-white text-4xl drop-shadow-2xl"></i>
-            </div>
-          </div>
-          <div class="p-5">
-            <span class="inline-block px-3 py-1 bg-purple-50 text-purple-700 text-[10px] font-bold rounded-full mb-3">技術研習</span>
-            <h4 class="font-extrabold text-gray-800 mb-2 text-base leading-snug">Python 訊號處理與 AI 診斷</h4>
-            <p class="text-gray-500 text-sm leading-relaxed">示範如何利用 Python 進行振動訊號之特徵擷取，建置刀具磨耗預警模型。</p>
-          </div>
-        </button>
-      </div>
-
-      <!-- Video 4 -->
-      <div class="bg-white rounded-[1.5rem] shadow-sm border border-gray-100 overflow-hidden card-hover transition text-left">
-        <button type="button" class="w-full text-left"
-          onclick="openMainVideo('fqFJGuke00A','精選教學','五軸加工機操作示範：開機與座標設定','本教學由業師指導，詳細介紹多軸機台的操作規範與虛實整合路徑驗證流程。')">
-          <div class="aspect-video bg-black relative">
-            <img src="https://img.youtube.com/vi/fqFJGuke00A/maxresdefault.jpg"
-                 onerror="this.src='https://img.youtube.com/vi/fqFJGuke00A/hqdefault.jpg'"
-                 class="absolute inset-0 w-full h-full object-cover"
-                 alt="五軸加工機操作示範">
-            <div class="absolute inset-0 bg-black/20"></div>
-            <div class="absolute inset-0 flex items-center justify-center">
-              <i class="fa-solid fa-circle-play text-white text-4xl drop-shadow-2xl"></i>
-            </div>
-          </div>
-          <div class="p-5">
-            <span class="inline-block px-3 py-1 bg-yellow-50 text-yellow-700 text-[10px] font-bold rounded-full mb-3">精選教學</span>
-            <h4 class="font-extrabold text-gray-800 mb-2 text-base leading-snug">五軸加工機操作示範：開機與座標設定</h4>
-            <p class="text-gray-500 text-sm leading-relaxed">本教學由業師指導，詳細介紹多軸機台的操作規範與虛實整合路徑驗證流程。</p>
-          </div>
-        </button>
-      </div>
-
     </div>
   </div>
 </div>
@@ -617,6 +800,11 @@
             </div>
 
             <div class="container mx-auto px-4 py-20 max-w-6xl space-y-32">
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="bg-white rounded-[2rem] p-7 border border-gray-100 shadow-sm"><h3 class="text-xl font-extrabold text-gray-800 mb-3">多軸加工實驗室</h3><p class="text-gray-500 text-sm leading-relaxed">支援五軸加工、加工參數驗證與工具機相關實作課程。</p></div>
+                    <div class="bg-white rounded-[2rem] p-7 border border-gray-100 shadow-sm"><h3 class="text-xl font-extrabold text-gray-800 mb-3">智慧監控設備</h3><p class="text-gray-500 text-sm leading-relaxed">整合感測器、資料擷取與製程監測，對應感測器聯網與數據分析課程。</p></div>
+                    <div class="bg-white rounded-[2rem] p-7 border border-gray-100 shadow-sm"><h3 class="text-xl font-extrabold text-gray-800 mb-3">量測與分析場域</h3><p class="text-gray-500 text-sm leading-relaxed">用於精度量測、誤差分析與影像辨識應用，支援特色模組與專題成果驗證。</p></div>
+                </div>
                 <!-- Field 1 -->
                 <div class="flex flex-col lg:flex-row gap-16 items-center">
                     <div class="lg:w-1/2">
@@ -627,13 +815,13 @@
                     </div>
                     <div class="lg:w-1/2 text-left">
                         <span class="inline-block px-4 py-1 bg-orange-100 text-orange-700 text-xs font-bold rounded-full mb-4 uppercase tracking-widest">機械工程系</span>
-                        <h2 class="text-4xl font-extrabold mb-8 flex items-center gap-4 text-gray-800"><i data-lucide="wrench" class="text-orange-600"></i>工具機實習工廠</h2>
+                        <h2 class="text-4xl font-extrabold mb-8 flex items-center gap-4 text-gray-800"><i data-lucide="wrench" class="text-orange-600"></i>多功能實習工廠</h2>
                         <p class="text-gray-600 leading-relaxed text-lg mb-8 italic">
-                            整合傳統與數位加工，專注於五軸加工技術示範與實務訓練。
+                            結合本校創新研發大樓與機械系實作場域，支援工具機人才訓練、產學合作與專題實作。
                         </p>
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            <div class="bg-white p-5 rounded-2xl border-l-4 border-orange-500 shadow-sm font-bold text-gray-700 flex items-center gap-2"><i class="fa-solid fa-circle-check text-orange-400"></i>五軸同動加工中心</div>
-                            <div class="bg-white p-5 rounded-2xl border-l-4 border-orange-500 shadow-sm font-bold text-gray-700 flex items-center gap-2"><i class="fa-solid fa-circle-check text-orange-400"></i>CNC 數位模擬系統</div>
+                            <div class="bg-white p-5 rounded-2xl border-l-4 border-orange-500 shadow-sm font-bold text-gray-700 flex items-center gap-2"><i class="fa-solid fa-circle-check text-orange-400"></i>工具機實作與加工訓練</div>
+                            <div class="bg-white p-5 rounded-2xl border-l-4 border-orange-500 shadow-sm font-bold text-gray-700 flex items-center gap-2"><i class="fa-solid fa-circle-check text-orange-400"></i>企業專題與實作課程支援</div>
                         </div>
                     </div>
                 </div>
@@ -648,13 +836,13 @@
                     </div>
                     <div class="lg:w-1/2 text-left">
                         <span class="inline-block px-4 py-1 bg-indigo-100 text-indigo-700 text-xs font-bold rounded-full mb-4 uppercase tracking-widest">智慧自動化工程系</span>
-                        <h2 class="text-4xl font-extrabold mb-8 flex items-center gap-4 text-gray-800"><i data-lucide="cpu" class="text-indigo-600"></i>智慧多軸複合技術實驗室</h2>
+                        <h2 class="text-4xl font-extrabold mb-8 flex items-center gap-4 text-gray-800"><i data-lucide="cpu" class="text-indigo-600"></i>工具機產業學院大樓</h2>
                         <p class="text-gray-600 leading-relaxed text-lg mb-8 italic">
-                            主攻 Python 數據採集與處理，實現製造數據價值化與跨域整合。
+                            整合多軸加工、量測與關鍵組件訓練空間，作為長期培育優秀專業人才與精進實務技術基地。
                         </p>
                         <div class="space-y-4">
-                            <div class="bg-white p-5 rounded-2xl border-l-4 border-indigo-500 shadow-sm font-bold text-gray-700 flex items-center gap-3"><i class="fa-solid fa-code text-indigo-400"></i> Python 工業數據分析平台</div>
-                            <div class="bg-white p-5 rounded-2xl border-l-4 border-indigo-500 shadow-sm font-bold text-gray-700 flex items-center gap-3"><i class="fa-solid fa-brain text-indigo-400"></i> AI 加工異常診斷模型訓練</div>
+                            <div class="bg-white p-5 rounded-2xl border-l-4 border-indigo-500 shadow-sm font-bold text-gray-700 flex items-center gap-3"><i class="fa-solid fa-code text-indigo-400"></i> 多軸複合技術與加工訓練</div>
+                            <div class="bg-white p-5 rounded-2xl border-l-4 border-indigo-500 shadow-sm font-bold text-gray-700 flex items-center gap-3"><i class="fa-solid fa-brain text-indigo-400"></i> 量測與關鍵組件檢測支援</div>
                         </div>
                     </div>
                 </div>
@@ -663,7 +851,391 @@
             </div>
         </div>
 
-        <!-- PAGE: PERFORMANCE (Data Master Version) -->
+        <!-- PAGE: RESOURCES -->
+        <div id="page-resources" class="section-view">
+            <div class="hero-pattern py-20 text-center text-white relative">
+                <div class="absolute inset-0 bg-black opacity-30"></div>
+                <div class="relative z-10 px-4">
+                    <span class="inline-block py-1.5 px-4 rounded-full bg-white/15 border border-white/20 text-sm font-bold mb-5">Shared Teaching Resources</span>
+                    <h1 class="text-5xl font-extrabold mb-4 tracking-wider text-shadow">共享教材專區</h1>
+                    <p class="text-blue-100 text-xl font-light italic max-w-3xl mx-auto">提供講義、簡報、實驗手冊、範例程式與授權說明，展現計畫可擴散性與跨校共享價值。</p>
+                </div>
+            </div>
+            <div class="container mx-auto px-4 py-16 max-w-7xl space-y-12">
+                <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+                    <div class="bg-white rounded-[2rem] border border-gray-100 shadow-sm p-7">
+                        <div class="text-3xl text-blue-600 mb-4"><i class="fa-solid fa-file-lines"></i></div>
+                        <h3 class="text-xl font-extrabold text-gray-800 mb-3">PDF 講義</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-4">基礎核心課程與模組教材，適合作為授課與複習用教學資源。</p>
+                        <div class="space-y-2 text-sm font-bold text-gray-600">
+                            <div>• 工具機導論</div>
+                            <div>• 人工智慧概論</div>
+                            <div>• 訊號處理與感測器原理</div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-[2rem] border border-gray-100 shadow-sm p-7">
+                        <div class="text-3xl text-orange-500 mb-4"><i class="fa-solid fa-file-powerpoint"></i></div>
+                        <h3 class="text-xl font-extrabold text-gray-800 mb-3">簡報與課堂投影片</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-4">各課程單元簡報、範例圖示與操作流程，便於教師課堂教學與成果推廣。</p>
+                        <span class="inline-flex px-3 py-1 rounded-full bg-orange-50 text-orange-700 text-xs font-extrabold">可作為跨校教學示範</span>
+                    </div>
+                    <div class="bg-white rounded-[2rem] border border-gray-100 shadow-sm p-7">
+                        <div class="text-3xl text-emerald-500 mb-4"><i class="fa-solid fa-book-open-reader"></i></div>
+                        <h3 class="text-xl font-extrabold text-gray-800 mb-3">實驗手冊</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-4">五軸加工、工具機量測、感測器聯網與 PBL 專題操作指引。</p>
+                        <span class="inline-flex px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-extrabold">支援實驗與專題實作</span>
+                    </div>
+                    <div class="bg-white rounded-[2rem] border border-gray-100 shadow-sm p-7">
+                        <div class="text-3xl text-violet-500 mb-4"><i class="fa-solid fa-code"></i></div>
+                        <h3 class="text-xl font-extrabold text-gray-800 mb-3">程式碼與範例</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-4">Python 範例、資料分析流程、影像辨識與感測資料處理腳本。</p>
+                        <span class="inline-flex px-3 py-1 rounded-full bg-violet-50 text-violet-700 text-xs font-extrabold">可重複使用教材</span>
+                    </div>
+                </div>
+                <div class="bg-white rounded-[2.5rem] shadow-sm border border-gray-100 p-8 md:p-10">
+                    <div class="flex flex-col lg:flex-row gap-10 lg:items-start">
+                        <div class="lg:w-1/3">
+                            <h2 class="text-3xl font-extrabold text-gray-800 mb-4">教材共享原則</h2>
+                            <p class="text-gray-500 leading-relaxed">本區以課程別分類，明確標示教材類型、適用對象與授權方式，利於校內外推廣使用。</p>
+                        </div>
+                        <div class="lg:w-2/3 grid md:grid-cols-2 gap-6">
+                            <div class="bg-gray-50 rounded-[1.75rem] p-6 border border-gray-100">
+                                <h3 class="text-lg font-extrabold text-gray-800 mb-3">必備功能</h3>
+                                <ul class="space-y-2 text-sm text-gray-600 font-medium">
+                                    <li>• 依課程分類與搜尋</li>
+                                    <li>• 提供下載連結與檔案格式說明</li>
+                                    <li>• 標示授權與使用範圍</li>
+                                    <li>• 可對應教學影片與專題成果頁面</li>
+                                </ul>
+                            </div>
+                            <div class="bg-blue-50 rounded-[1.75rem] p-6 border border-blue-100">
+                                <h3 class="text-lg font-extrabold text-blue-900 mb-3">跨校使用說明</h3>
+                                <p class="text-sm text-blue-900/80 leading-relaxed">建議在每份教材附上「適用課程、學習目標、操作需求與授權說明」，強化教學資源可擴散性，是審查重點加分項。</p>
+                            </div>
+                            <div class="md:col-span-2 overflow-hidden rounded-[2rem] border border-gray-100 overflow-x-auto">
+                                <table class="w-full text-left border-collapse min-w-[720px]">
+                                    <thead class="bg-gray-100 text-xs font-bold tracking-widest uppercase text-gray-500">
+                                        <tr>
+                                            <th class="p-4 border-r">課程別</th>
+                                            <th class="p-4 border-r">教材類型</th>
+                                            <th class="p-4 border-r">內容示例</th>
+                                            <th class="p-4">授權說明</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="divide-y divide-gray-100 text-sm font-medium text-gray-700">
+                                        <tr>
+                                            <td class="p-4 border-r font-bold">基礎核心課程</td>
+                                            <td class="p-4 border-r">講義 / 簡報</td>
+                                            <td class="p-4 border-r">AI、Python、感測基礎</td>
+                                            <td class="p-4">限教學推廣使用，註明出處</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-4 border-r font-bold">特色模組</td>
+                                            <td class="p-4 border-r">實驗手冊 / 示範影片</td>
+                                            <td class="p-4 border-r">五軸加工、精度量測、組件設計</td>
+                                            <td class="p-4">可供跨校課程交流與示範</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-4 border-r font-bold">PBL 總整課程</td>
+                                            <td class="p-4 border-r">專題成果包 / 程式碼</td>
+                                            <td class="p-4 border-r">監控系統、刀具磨耗預測</td>
+                                            <td class="p-4">需保留合作企業資訊與成果來源</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PAGE: INDUSTRY -->
+        <div id="page-industry" class="section-view">
+            <div class="hero-pattern py-20 text-center text-white relative">
+                <div class="absolute inset-0 bg-black opacity-30"></div>
+                <div class="relative z-10 px-4">
+                    <span class="inline-block py-1.5 px-4 rounded-full bg-white/15 border border-white/20 text-sm font-bold mb-5">Industry Collaboration</span>
+                    <h1 class="text-5xl font-extrabold mb-4 tracking-wider text-shadow">產學合作專區</h1>
+                    <p class="text-blue-100 text-xl font-light italic max-w-3xl mx-auto">讓人看到這不只是學術課程，而是與企業共同出題、共同指導、共同驗證的實作型計畫。</p>
+                </div>
+            </div>
+            <div class="container mx-auto px-4 py-16 max-w-7xl space-y-12">
+                <div class="bg-white rounded-[2.5rem] shadow-sm border border-gray-100 p-8 md:p-10">
+                    <div class="flex flex-col lg:flex-row gap-10 lg:items-center">
+                        <div class="lg:w-1/3">
+                            <h2 class="text-3xl font-extrabold text-gray-800 mb-4">合作模式</h2>
+                            <p class="text-gray-500 leading-relaxed">透過企業出題、業師指導、場域參訪、實習媒合與成果驗證，讓學生專題直接對接真實製造情境。</p>
+                        </div>
+                        <div class="lg:w-2/3 grid md:grid-cols-4 gap-5">
+                            <div class="bg-blue-50 rounded-[1.75rem] p-6 border border-blue-100 text-center"><div class="text-3xl text-blue-600 mb-3"><i class="fa-solid fa-list-check"></i></div><h3 class="font-extrabold text-gray-800 mb-2">企業出題</h3><p class="text-sm text-gray-500">聚焦刀具磨耗、監控、量測、低碳與數位轉型議題</p></div>
+                            <div class="bg-amber-50 rounded-[1.75rem] p-6 border border-amber-100 text-center"><div class="text-3xl text-amber-500 mb-3"><i class="fa-solid fa-user-gear"></i></div><h3 class="font-extrabold text-gray-800 mb-2">業師指導</h3><p class="text-sm text-gray-500">導入實務需求、協助專題修正與成果評估</p></div>
+                            <div class="bg-emerald-50 rounded-[1.75rem] p-6 border border-emerald-100 text-center"><div class="text-3xl text-emerald-500 mb-3"><i class="fa-solid fa-briefcase"></i></div><h3 class="font-extrabold text-gray-800 mb-2">實習媒合</h3><p class="text-sm text-gray-500">串接學生與企業場域，強化就業與應用能力</p></div>
+                            <div class="bg-violet-50 rounded-[1.75rem] p-6 border border-violet-100 text-center"><div class="text-3xl text-violet-500 mb-3"><i class="fa-solid fa-vials"></i></div><h3 class="font-extrabold text-gray-800 mb-2">成果驗證</h3><p class="text-sm text-gray-500">以實驗室與企業場域進行參數驗證與展示</p></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-4">
+                    <div class="bg-white rounded-2xl border border-gray-100 p-5 text-center font-extrabold text-gray-700 shadow-sm">凱柏精機</div>
+                    <div class="bg-white rounded-2xl border border-gray-100 p-5 text-center font-extrabold text-gray-700 shadow-sm">奧奔麥</div>
+                    <div class="bg-white rounded-2xl border border-gray-100 p-5 text-center font-extrabold text-gray-700 shadow-sm">松讚實業</div>
+                    <div class="bg-white rounded-2xl border border-gray-100 p-5 text-center font-extrabold text-gray-700 shadow-sm">健陞機電</div>
+                    <div class="bg-white rounded-2xl border border-gray-100 p-5 text-center font-extrabold text-gray-700 shadow-sm">鼎鳴科技</div>
+                    <div class="bg-white rounded-2xl border border-gray-100 p-5 text-center font-extrabold text-gray-700 shadow-sm">玟揚精密</div>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <div class="bg-white rounded-[2rem] border border-gray-100 shadow-sm p-7">
+                        <span class="project-chip bg-blue-50 text-blue-700 mb-4">實際案例</span>
+                        <h3 class="text-xl font-extrabold text-gray-800 mb-3">智慧刀具磨耗預測系統</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-4">針對加工過程中刀具磨耗難以即時掌握的問題，導入感測與 AI 分析建立預警機制。</p>
+                        <div class="text-sm font-bold text-gray-600">合作形式：企業出題 × 實驗室驗證 × PBL 專題</div>
+                    </div>
+                    <div class="bg-white rounded-[2rem] border border-gray-100 shadow-sm p-7">
+                        <span class="project-chip bg-emerald-50 text-emerald-700 mb-4">實際案例</span>
+                        <h3 class="text-xl font-extrabold text-gray-800 mb-3">加工監控與異常預警系統</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-4">整合感測器聯網、資料分析與儀表板，支援設備狀態監測與製程異常偵測。</p>
+                        <div class="text-sm font-bold text-gray-600">合作形式：業師指導 × 課程導入 × 專題展示</div>
+                    </div>
+                    <div class="bg-white rounded-[2rem] border border-gray-100 shadow-sm p-7">
+                        <span class="project-chip bg-amber-50 text-amber-700 mb-4">實際案例</span>
+                        <h3 class="text-xl font-extrabold text-gray-800 mb-3">綠色製造優化分析</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-4">從加工參數、耗能與品質面向進行優化，支援企業低碳轉型與製造效率提升。</p>
+                        <div class="text-sm font-bold text-gray-600">合作形式：企業題目 × 數據分析 × 改善建議</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+                <!-- PAGE: PROJECTS -->
+        <div id="page-projects" class="section-view">
+            <div class="hero-pattern py-20 text-center text-white relative overflow-hidden">
+                <div class="absolute inset-0 bg-black opacity-35"></div>
+                <div class="relative z-10 px-4">
+                    <span class="inline-block py-1.5 px-4 rounded-full bg-white/15 border border-white/20 text-sm font-bold mb-5">Student Project Achievement</span>
+                    <h1 class="text-5xl font-extrabold mb-4 tracking-wider text-shadow">專題成果專區</h1>
+                    <p class="text-blue-100 text-xl font-light italic max-w-3xl mx-auto">整合課程、實驗室與產業實題，展示學生從學習到落地的專題成果。</p>
+                </div>
+            </div>
+
+            <div class="container mx-auto px-4 py-16 max-w-7xl">
+                <div class="bg-white rounded-[2.5rem] shadow-sm border border-gray-100 p-8 md:p-10 mb-10">
+                    <div class="grid md:grid-cols-4 gap-4 mb-8">
+                        <div class="bg-blue-50 rounded-[1.5rem] p-5 border border-blue-100"><div class="text-sm font-extrabold text-blue-700 mb-2">產業問題</div><div class="text-sm text-gray-600">如刀具磨耗預測、加工監控、低碳製造</div></div>
+                        <div class="bg-emerald-50 rounded-[1.5rem] p-5 border border-emerald-100"><div class="text-sm font-extrabold text-emerald-700 mb-2">技術內容</div><div class="text-sm text-gray-600">AI、CPS、感測、訊號處理與機電整合</div></div>
+                        <div class="bg-amber-50 rounded-[1.5rem] p-5 border border-amber-100"><div class="text-sm font-extrabold text-amber-700 mb-2">成果展示</div><div class="text-sm text-gray-600">成果圖、展示影片、儀表板與專題模型</div></div>
+                        <div class="bg-violet-50 rounded-[1.5rem] p-5 border border-violet-100"><div class="text-sm font-extrabold text-violet-700 mb-2">合作企業</div><div class="text-sm text-gray-600">於卡片中標示合作企業與實際應用情境</div></div>
+                    </div>
+                    <div class="flex flex-col lg:flex-row gap-8 lg:items-center lg:justify-between">
+                        <div class="max-w-3xl">
+                            <h2 class="text-3xl font-extrabold text-gray-800 mb-3">成果展示架構</h2>
+                            <p class="text-gray-500 leading-relaxed">本頁已依計畫書方向整理為可上線之成果版面，可持續補入各年度 PBL 課程、企業實題專題、教學實驗室成果、競賽獲獎與教材展示；後續也可再串接 Supabase 後台擴充。</p>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4 min-w-[260px]">
+                            <div class="bg-blue-50 rounded-2xl p-5 text-center">
+                                <div class="text-3xl font-extrabold text-blue-700 mb-1">4</div>
+                                <div class="text-xs font-bold text-blue-900 tracking-widest">成果主題</div>
+                            </div>
+                            <div class="bg-green-50 rounded-2xl p-5 text-center">
+                                <div class="text-3xl font-extrabold text-green-700 mb-1">11</div>
+                                <div class="text-xs font-bold text-green-900 tracking-widest">合作企業支援</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex flex-wrap gap-3 justify-center mb-10">
+                    <button class="project-filter-btn active px-5 py-3 rounded-full bg-white border border-gray-200 text-gray-700 font-extrabold transition" data-filter="all">全部成果</button>
+                    <button class="project-filter-btn px-5 py-3 rounded-full bg-white border border-gray-200 text-gray-700 font-extrabold transition" data-filter="manufacturing">工具機製造</button>
+                    <button class="project-filter-btn px-5 py-3 rounded-full bg-white border border-gray-200 text-gray-700 font-extrabold transition" data-filter="ai">AI 應用</button>
+                    <button class="project-filter-btn px-5 py-3 rounded-full bg-white border border-gray-200 text-gray-700 font-extrabold transition" data-filter="automation">感測／自動化</button>
+                    <button class="project-filter-btn px-5 py-3 rounded-full bg-white border border-gray-200 text-gray-700 font-extrabold transition" data-filter="semiconductor">實驗室／PBL</button>
+                </div>
+
+                <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+                    <article class="project-card bg-white rounded-[2rem] shadow-sm border border-gray-100 overflow-hidden" data-category="semiconductor manufacturing">
+                        <div class="h-48 bg-gradient-to-br from-blue-700 via-cyan-600 to-sky-500 flex items-center justify-center text-white text-6xl">
+                            <i class="fa-solid fa-microchip"></i>
+                        </div>
+                        <div class="p-7">
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="project-chip bg-blue-50 text-blue-700">半導體</span>
+                                <span class="project-chip bg-cyan-50 text-cyan-700">智慧加工</span>
+                            </div>
+                            <h3 class="text-xl font-extrabold text-gray-800 mb-3">應用於 8 吋碳化矽之智慧化雙旋轉軸線切割系統</h3>
+                            <p class="text-gray-500 text-sm leading-relaxed mb-5">整合雙旋轉軸、感測監測與切割條件優化，驗證高硬脆材料加工之可行性與穩定性。</p>
+                            <div class="space-y-2 text-sm font-medium text-gray-600 mb-6">
+                                <div><span class="font-extrabold text-gray-800">指導方向：</span>晶圓切割、製程優化、智慧監測</div>
+                                <div><span class="font-extrabold text-gray-800">成果亮點：</span>設備整合與專題競賽展示潛力</div>
+                            </div>
+                            <button class="open-project-modal w-full py-3 rounded-2xl bg-blue-600 text-white font-extrabold hover:bg-blue-700 transition"
+                                data-title="應用於 8 吋碳化矽之智慧化雙旋轉軸線切割系統"
+                                data-category="半導體 × 智慧加工"
+                                data-desc="本專題聚焦於碳化矽晶圓切割之加工需求，透過雙旋轉軸機構、感測資訊蒐集與智慧化條件調整，建立切割品質、穩定性與效率兼顧的系統雛形。"
+                                data-tags="雙旋轉軸,SiC 晶圓,智慧監測,製程優化"
+                                data-result="可作為專題競賽、產學合作與設備展示成果之核心案例。"
+                            >查看詳情</button>
+                        </div>
+                    </article>
+
+                    <article class="project-card bg-white rounded-[2rem] shadow-sm border border-gray-100 overflow-hidden" data-category="automation ai">
+                        <div class="h-48 bg-gradient-to-br from-emerald-600 via-green-600 to-lime-500 flex items-center justify-center text-white text-6xl">
+                            <i class="fa-solid fa-robot"></i>
+                        </div>
+                        <div class="p-7">
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="project-chip bg-emerald-50 text-emerald-700">智慧巡檢</span>
+                                <span class="project-chip bg-lime-50 text-lime-700">Raspberry Pi</span>
+                            </div>
+                            <h3 class="text-xl font-extrabold text-gray-800 mb-3">工具機精度量測與誤差分析專題</h3>
+                            <p class="text-gray-500 text-sm leading-relaxed mb-5">結合量測設備、誤差補償觀念與實測分析流程，建立工具機精度檢測與品質判讀之專題成果。</p>
+                            <div class="space-y-2 text-sm font-medium text-gray-600 mb-6">
+                                <div><span class="font-extrabold text-gray-800">應用場域：</span>量測分析、誤差診斷、品質驗證</div>
+                                <div><span class="font-extrabold text-gray-800">成果亮點：</span>工具機精度量測實務落地</div>
+                            </div>
+                            <button class="open-project-modal w-full py-3 rounded-2xl bg-blue-600 text-white font-extrabold hover:bg-blue-700 transition"
+                                data-title="工具機精度量測與誤差分析專題"
+                                data-category="工具機精度量測 × 品質分析"
+                                data-desc="本專題以工具機精度量測模組為基礎，結合誤差分析、量測報告整理與品質判讀流程，培養學生建立可驗證的精度分析能力。"
+                                data-tags="精度量測,誤差分析,品質檢測,工具機"
+                                data-result="可與工具機精度量測模組課程、業師實務案例與教學實驗室成果整合呈現。"
+                            >查看詳情</button>
+                        </div>
+                    </article>
+
+                    <article class="project-card bg-white rounded-[2rem] shadow-sm border border-gray-100 overflow-hidden" data-category="ai manufacturing">
+                        <div class="h-48 bg-gradient-to-br from-violet-600 via-indigo-600 to-blue-500 flex items-center justify-center text-white text-6xl">
+                            <i class="fa-solid fa-chart-line"></i>
+                        </div>
+                        <div class="p-7">
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="project-chip bg-violet-50 text-violet-700">AI 分析</span>
+                                <span class="project-chip bg-indigo-50 text-indigo-700">戰情儀表板</span>
+                            </div>
+                            <h3 class="text-xl font-extrabold text-gray-800 mb-3">Python 訊號處理與影像辨識應用專題</h3>
+                            <p class="text-gray-500 text-sm leading-relaxed mb-5">整合 Python、感測訊號與影像辨識流程，建立製程資料擷取、特徵判讀與異常辨識之應用成果。</p>
+                            <div class="space-y-2 text-sm font-medium text-gray-600 mb-6">
+                                <div><span class="font-extrabold text-gray-800">使用工具：</span>Python、OpenCV、訊號處理邏輯</div>
+                                <div><span class="font-extrabold text-gray-800">成果亮點：</span>跨域感測資料分析能力</div>
+                            </div>
+                            <button class="open-project-modal w-full py-3 rounded-2xl bg-blue-600 text-white font-extrabold hover:bg-blue-700 transition"
+                                data-title="Python 訊號處理與影像辨識應用專題"
+                                data-category="Python 應用 × 訊號／影像辨識"
+                                data-desc="透過 Python 與影像辨識流程，將製程訊號、感測數據與影像特徵轉化為可判讀的分析結果，展現智慧製造資料應用能力。"
+                                data-tags="Python,訊號處理,影像辨識,感測分析"
+                                data-result="適合對接感測、AI 分析與智慧自動化教學主題，作為跨域成果展示。"
+                            >查看詳情</button>
+                        </div>
+                    </article>
+
+                    <article class="project-card bg-white rounded-[2rem] shadow-sm border border-gray-100 overflow-hidden" data-category="automation manufacturing">
+                        <div class="h-48 bg-gradient-to-br from-amber-500 via-orange-500 to-red-500 flex items-center justify-center text-white text-6xl">
+                            <i class="fa-solid fa-gears"></i>
+                        </div>
+                        <div class="p-7">
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="project-chip bg-amber-50 text-amber-700">自動控制</span>
+                                <span class="project-chip bg-orange-50 text-orange-700">機電整合</span>
+                            </div>
+                            <h3 class="text-xl font-extrabold text-gray-800 mb-3">工具機關鍵組件設計專題</h3>
+                            <p class="text-gray-500 text-sm leading-relaxed mb-5">從結構設計、材料選擇到裝配概念，發展工具機關鍵組件設計與功能驗證之專題成果。</p>
+                            <div class="space-y-2 text-sm font-medium text-gray-600 mb-6">
+                                <div><span class="font-extrabold text-gray-800">學習重點：</span>結構設計、組件機能、設計驗證</div>
+                                <div><span class="font-extrabold text-gray-800">成果亮點：</span>關鍵組件設計能力展現</div>
+                            </div>
+                            <button class="open-project-modal w-full py-3 rounded-2xl bg-blue-600 text-white font-extrabold hover:bg-blue-700 transition"
+                                data-title="工具機關鍵組件設計專題"
+                                data-category="關鍵組件設計 × 工具機"
+                                data-desc="本專題以工具機關鍵組件為核心，從設計需求、機構配置到性能驗證建立完整專題流程，對接產業在高值化製造中的設計能力需求。"
+                                data-tags="關鍵組件,結構設計,功能驗證,工具機"
+                                data-result="可作為課程、專題競賽與企業題目導入的重要成果案例。"
+                            >查看詳情</button>
+                        </div>
+                    </article>
+
+                    <article class="project-card bg-white rounded-[2rem] shadow-sm border border-gray-100 overflow-hidden" data-category="ai automation">
+                        <div class="h-48 bg-gradient-to-br from-fuchsia-600 via-pink-600 to-rose-500 flex items-center justify-center text-white text-6xl">
+                            <i class="fa-solid fa-brain"></i>
+                        </div>
+                        <div class="p-7">
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="project-chip bg-fuchsia-50 text-fuchsia-700">技能矩陣</span>
+                                <span class="project-chip bg-rose-50 text-rose-700">人力培育</span>
+                            </div>
+                            <h3 class="text-xl font-extrabold text-gray-800 mb-3">企業實題導向 PBL 專題</h3>
+                            <p class="text-gray-500 text-sm leading-relaxed mb-5">以企業真實問題為題，整合基礎課程與特色模組成果，完成具展示性與應用性的 PBL 專題。</p>
+                            <div class="space-y-2 text-sm font-medium text-gray-600 mb-6">
+                                <div><span class="font-extrabold text-gray-800">使用情境：</span>企業出題、學生解題、成果驗證</div>
+                                <div><span class="font-extrabold text-gray-800">成果亮點：</span>跨域整合與問題解決</div>
+                            </div>
+                            <button class="open-project-modal w-full py-3 rounded-2xl bg-blue-600 text-white font-extrabold hover:bg-blue-700 transition"
+                                data-title="企業實題導向 PBL 專題"
+                                data-category="PBL × 產學實作"
+                                data-desc="依據計畫推動方向，PBL 課程採企業出題、學生解題模式，整合五軸加工、量測、感測與設計等學習成果，發展具落地潛力的整合型專題。"
+                                data-tags="PBL,企業實題,跨域整合,成果展示"
+                                data-result="適合作為年度成果展、企業評核與學生專題發表之核心展示內容。"
+                            >查看詳情</button>
+                        </div>
+                    </article>
+
+                    <article class="project-card bg-white rounded-[2rem] shadow-sm border border-gray-100 overflow-hidden" data-category="manufacturing semiconductor">
+                        <div class="h-48 bg-gradient-to-br from-slate-700 via-gray-700 to-zinc-500 flex items-center justify-center text-white text-6xl">
+                            <i class="fa-solid fa-industry"></i>
+                        </div>
+                        <div class="p-7">
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="project-chip bg-slate-100 text-slate-700">製造轉型</span>
+                                <span class="project-chip bg-gray-100 text-gray-700">製程驗證</span>
+                            </div>
+                            <h3 class="text-xl font-extrabold text-gray-800 mb-3">智慧加工參數分析與刀具磨耗預測</h3>
+                            <p class="text-gray-500 text-sm leading-relaxed mb-5">分析加工訊號、切削狀態與磨耗資訊，建立刀具壽命與加工品質預測模型。</p>
+                            <div class="space-y-2 text-sm font-medium text-gray-600 mb-6">
+                                <div><span class="font-extrabold text-gray-800">研究方向：</span>訊號處理、AI 分析、加工優化</div>
+                                <div><span class="font-extrabold text-gray-800">成果亮點：</span>可對接智慧製造教學與實驗室研究</div>
+                            </div>
+                            <button class="open-project-modal w-full py-3 rounded-2xl bg-blue-600 text-white font-extrabold hover:bg-blue-700 transition"
+                                data-title="智慧加工參數分析與刀具磨耗預測"
+                                data-category="智慧製造 × 數據分析"
+                                data-desc="本專題應用加工訊號、特徵擷取與 AI 分析方法，建立刀具磨耗預測與加工參數優化邏輯，作為智慧加工的重要應用主題。"
+                                data-tags="刀具磨耗,訊號處理,智慧加工,AI 預測"
+                                data-result="可延伸為論文、競賽、企業診斷或教學示範成果。"
+                            >查看詳情</button>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project Modal -->
+        <div id="project-modal" class="hidden fixed inset-0 z-[100001]">
+            <div class="project-modal-backdrop absolute inset-0"></div>
+            <div class="relative min-h-full flex items-center justify-center p-4">
+                <div class="w-full max-w-3xl bg-white rounded-[2rem] shadow-2xl overflow-hidden relative">
+                    <button id="project-modal-close" class="absolute top-5 right-5 w-11 h-11 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 transition z-10">
+                        <i class="fa-solid fa-xmark text-lg"></i>
+                    </button>
+                    <div class="bg-gradient-to-r from-blue-800 to-blue-600 text-white p-8 md:p-10">
+                        <p id="modal-category" class="text-sm font-bold tracking-widest uppercase text-blue-100 mb-3">Project Category</p>
+                        <h3 id="modal-title" class="text-3xl md:text-4xl font-extrabold leading-snug">專題名稱</h3>
+                    </div>
+                    <div class="p-8 md:p-10 space-y-6">
+                        <div>
+                            <h4 class="text-lg font-extrabold text-gray-800 mb-2">專題簡介</h4>
+                            <p id="modal-desc" class="text-gray-600 leading-relaxed">專題內容說明。</p>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-extrabold text-gray-800 mb-3">技術關鍵字</h4>
+                            <div id="modal-tags" class="flex flex-wrap gap-3"></div>
+                        </div>
+                        <div class="bg-blue-50 rounded-[1.5rem] p-6 border border-blue-100">
+                            <h4 class="text-lg font-extrabold text-blue-900 mb-2">成果亮點</h4>
+                            <p id="modal-result" class="text-blue-900/80 leading-relaxed">成果亮點說明。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+<!-- PAGE: PERFORMANCE (Restored) -->
         <div id="page-performance" class="section-view">
             <div class="hero-pattern py-16 text-center text-white relative text-shadow">
                 <div class="absolute inset-0 bg-black opacity-30"></div>
@@ -675,7 +1247,26 @@
             </div>
 
             <div class="container mx-auto px-4 py-12 max-w-7xl">
-                <!-- Table 1: Performance Indices -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-10">
+                    <div class="bg-white rounded-[2rem] p-6 border border-gray-100 shadow-sm"><p class="text-sm font-bold text-gray-500 mb-2">總修課人次</p><div class="text-4xl font-extrabold text-blue-700">200</div><p class="text-xs text-gray-400 mt-2">期中達成率 67%</p></div>
+                    <div class="bg-white rounded-[2rem] p-6 border border-gray-100 shadow-sm"><p class="text-sm font-bold text-gray-500 mb-2">業師參與</p><div class="text-4xl font-extrabold text-amber-500">18</div><p class="text-xs text-gray-400 mt-2">業界投入持續增加</p></div>
+                    <div class="bg-white rounded-[2rem] p-6 border border-gray-100 shadow-sm"><p class="text-sm font-bold text-gray-500 mb-2">產學合作</p><div class="text-4xl font-extrabold text-emerald-600">2</div><p class="text-xs text-gray-400 mt-2">期中已達標 100%</p></div>
+                    <div class="bg-white rounded-[2rem] p-6 border border-gray-100 shadow-sm"><p class="text-sm font-bold text-gray-500 mb-2">教材產出</p><div class="text-4xl font-extrabold text-violet-600">50</div><p class="text-xs text-gray-400 mt-2">上課教材 24 + 數位教材 26</p></div>
+                </div>
+                <div class="bg-white rounded-[2.5rem] border border-gray-100 shadow-sm p-8 mb-10">
+                    <div class="flex flex-col lg:flex-row gap-8 lg:items-end">
+                        <div class="lg:w-1/3">
+                            <h2 class="text-3xl font-extrabold text-gray-800 mb-3">數據儀表板</h2>
+                            <p class="text-gray-500 leading-relaxed">將修課、教材、業師與產學合作以圖卡化方式呈現，讓審查快速掌握期中成果與執行亮點。</p>
+                        </div>
+                        <div class="lg:w-2/3 grid md:grid-cols-2 gap-5">
+                            <div class="bg-blue-50 rounded-[1.75rem] p-5 border border-blue-100"><div class="flex items-center justify-between mb-3"><span class="font-extrabold text-blue-900">修課人數進度</span><span class="text-sm font-bold text-blue-700">200 / 300</span></div><div class="w-full h-3 bg-white rounded-full overflow-hidden"><div class="h-full bg-blue-600 rounded-full" style="width:67%"></div></div></div>
+                            <div class="bg-amber-50 rounded-[1.75rem] p-5 border border-amber-100"><div class="flex items-center justify-between mb-3"><span class="font-extrabold text-amber-900">業師參與進度</span><span class="text-sm font-bold text-amber-700">18 / 30</span></div><div class="w-full h-3 bg-white rounded-full overflow-hidden"><div class="h-full bg-amber-500 rounded-full" style="width:60%"></div></div></div>
+                            <div class="bg-emerald-50 rounded-[1.75rem] p-5 border border-emerald-100"><div class="flex items-center justify-between mb-3"><span class="font-extrabold text-emerald-900">產學合作進度</span><span class="text-sm font-bold text-emerald-700">2 / 2</span></div><div class="w-full h-3 bg-white rounded-full overflow-hidden"><div class="h-full bg-emerald-500 rounded-full" style="width:100%"></div></div></div>
+                            <div class="bg-violet-50 rounded-[1.75rem] p-5 border border-violet-100"><div class="flex items-center justify-between mb-3"><span class="font-extrabold text-violet-900">數位教材進度</span><span class="text-sm font-bold text-violet-700">26 / 35</span></div><div class="w-full h-3 bg-white rounded-full overflow-hidden"><div class="h-full bg-violet-500 rounded-full" style="width:74%"></div></div></div>
+                        </div>
+                    </div>
+                </div>
                 <div class="bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden mb-16">
                     <div class="p-8 border-b border-gray-200 bg-gray-50 flex justify-between items-center text-left">
                         <h2 class="text-2xl font-extrabold text-gray-800 flex items-center tracking-wide">
@@ -685,7 +1276,7 @@
                         <span class="text-xs font-bold text-gray-400 uppercase tracking-tighter italic">P.19-20 Reference</span>
                     </div>
                     <div class="overflow-x-auto">
-                        <table class="w-full text-left border-collapse">
+                        <table class="w-full text-left border-collapse min-w-[1100px]">
                             <thead class="bg-gray-100 font-bold text-gray-500 text-xs tracking-widest uppercase text-center">
                                 <tr>
                                     <th class="p-6 border-r text-left">類別</th>
@@ -699,38 +1290,89 @@
                             <tbody class="divide-y divide-gray-100 text-sm font-bold text-gray-700">
                                 <tr>
                                     <td rowspan="5" class="p-6 border-r bg-gray-50/50 align-top text-left">1. 課程規劃</td>
-                                    <td class="p-6 border-r">基礎/核心課程數</td><td class="p-6 border-r text-center">6</td><td class="p-6 border-r text-center text-blue-600">5</td><td class="p-6 border-r text-center"><span class="status-badge status-gray">83%</span></td>
+                                    <td class="p-6 border-r">基礎/核心課程數</td>
+                                    <td class="p-6 border-r text-center">6</td>
+                                    <td class="p-6 border-r text-center text-blue-600">5</td>
+                                    <td class="p-6 border-r text-center"><span class="status-badge status-gray">83%</span></td>
                                     <td rowspan="5" class="p-6 align-top text-xs font-medium text-gray-500 leading-relaxed text-left">已完成 5 門基礎/核心課程開設，符合進度；與凱柏精機等龍頭企業合作 PBL 課程。</td>
                                 </tr>
-                                <tr><td class="p-6 border-r">特色領域模組數</td><td class="p-6 border-r text-center">5</td><td class="p-6 border-r text-center text-blue-600">0</td><td class="p-6 border-r text-center"><span class="status-badge status-low">0%</span></td></tr>
-                                <tr><td class="p-6 border-r">PBL 總整課程數</td><td class="p-6 border-r text-center">2</td><td class="p-6 border-r text-center text-blue-600">1</td><td class="p-6 border-r text-center"><span class="status-badge status-mid">50%</span></td></tr>
-                                <tr><td class="p-6 border-r">產學合作件數</td><td class="p-6 border-r text-center">2</td><td class="p-6 border-r text-center text-blue-600">2</td><td class="p-6 border-r text-center"><span class="status-badge status-high">100%</span></td></tr>
-                                <tr><td class="p-6 border-r">業師人次</td><td class="p-6 border-r text-center">30</td><td class="p-6 border-r text-center text-blue-600">18</td><td class="p-6 border-r text-center"><span class="status-badge status-mid">60%</span></td></tr>
+                                <tr>
+                                    <td class="p-6 border-r">特色領域模組數</td>
+                                    <td class="p-6 border-r text-center">5</td>
+                                    <td class="p-6 border-r text-center text-blue-600">0</td>
+                                    <td class="p-6 border-r text-center"><span class="status-badge status-low">0%</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="p-6 border-r">PBL 總整課程數</td>
+                                    <td class="p-6 border-r text-center">2</td>
+                                    <td class="p-6 border-r text-center text-blue-600">1</td>
+                                    <td class="p-6 border-r text-center"><span class="status-badge status-mid">50%</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="p-6 border-r">產學合作件數</td>
+                                    <td class="p-6 border-r text-center">2</td>
+                                    <td class="p-6 border-r text-center text-blue-600">2</td>
+                                    <td class="p-6 border-r text-center"><span class="status-badge status-high">100%</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="p-6 border-r">業師人次</td>
+                                    <td class="p-6 border-r text-center">30</td>
+                                    <td class="p-6 border-r text-center text-blue-600">18</td>
+                                    <td class="p-6 border-r text-center"><span class="status-badge status-mid">60%</span></td>
+                                </tr>
                                 <tr class="bg-gray-50/30">
                                     <td rowspan="2" class="p-6 border-r align-top text-left">2. 教材產出</td>
-                                    <td class="p-6 border-r">上課教材件數</td><td class="p-6 border-r text-center">40</td><td class="p-6 border-r text-center text-blue-600">24</td><td class="p-6 border-r text-center"><span class="status-badge status-mid">60%</span></td>
+                                    <td class="p-6 border-r">上課教材件數</td>
+                                    <td class="p-6 border-r text-center">40</td>
+                                    <td class="p-6 border-r text-center text-blue-600">24</td>
+                                    <td class="p-6 border-r text-center"><span class="status-badge status-mid">60%</span></td>
                                     <td rowspan="2" class="p-6 align-top text-xs font-medium text-gray-500 leading-relaxed text-left">已產出 24 件上課教材與 26 件數位/影音教材，有效支撐線上線下混合教學。</td>
                                 </tr>
-                                <tr class="bg-gray-50/30"><td class="p-6 border-r">數位/影音教材件數</td><td class="p-6 border-r text-center">35</td><td class="p-6 border-r text-center text-blue-600">26</td><td class="p-6 border-r text-center"><span class="status-badge status-mid">74%</span></td></tr>
+                                <tr class="bg-gray-50/30">
+                                    <td class="p-6 border-r">數位/影音教材件數</td>
+                                    <td class="p-6 border-r text-center">35</td>
+                                    <td class="p-6 border-r text-center text-blue-600">26</td>
+                                    <td class="p-6 border-r text-center"><span class="status-badge status-mid">74%</span></td>
+                                </tr>
                                 <tr>
                                     <td rowspan="2" class="p-6 border-r bg-gray-50/50 align-top text-left">3. 實驗室建置</td>
-                                    <td class="p-6 border-r">使用比率 (時/週)</td><td class="p-6 border-r text-center">6</td><td class="p-6 border-r text-center text-blue-600">9</td><td class="p-6 border-r text-center"><span class="status-badge status-high">150%</span></td>
+                                    <td class="p-6 border-r">使用比率 (時/週)</td>
+                                    <td class="p-6 border-r text-center">6</td>
+                                    <td class="p-6 border-r text-center text-blue-600">9</td>
+                                    <td class="p-6 border-r text-center"><span class="status-badge status-high">150%</span></td>
                                     <td rowspan="2" class="p-6 align-top text-xs font-medium text-gray-500 leading-relaxed text-left">每週平均使用達 9 小時，優於原訂目標；並已培育 8 位跨系種子助教。</td>
                                 </tr>
-                                <tr><td class="p-6 border-r">種子助教培育人次</td><td class="p-6 border-r text-center">10</td><td class="p-6 border-r text-center text-blue-600">8 (男6 女2)</td><td class="p-6 border-r text-center"><span class="status-badge status-mid">80%</span></td></tr>
+                                <tr>
+                                    <td class="p-6 border-r">種子助教培育人次</td>
+                                    <td class="p-6 border-r text-center">10</td>
+                                    <td class="p-6 border-r text-center text-blue-600">8 (男6 女2)</td>
+                                    <td class="p-6 border-r text-center"><span class="status-badge status-mid">80%</span></td>
+                                </tr>
                                 <tr class="bg-gray-50/30">
                                     <td rowspan="3" class="p-6 border-r align-top text-left">4. 人才培育</td>
-                                    <td class="p-6 border-r">總修課人次</td><td class="p-6 border-r text-center">300</td><td class="p-6 border-r text-center text-blue-600">200 (男:177 女:23)</td><td class="p-6 border-r text-center"><span class="status-badge status-mid">67%</span></td>
+                                    <td class="p-6 border-r">總修課人次</td>
+                                    <td class="p-6 border-r text-center">300</td>
+                                    <td class="p-6 border-r text-center text-blue-600">200 (男:177 女:23)</td>
+                                    <td class="p-6 border-r text-center"><span class="status-badge status-mid">67%</span></td>
                                     <td rowspan="3" class="p-6 align-top text-xs font-medium text-gray-500 leading-relaxed text-left">參與競賽人次 15 人，包含獲全國技能競賽金牌一名。</td>
                                 </tr>
-                                <tr class="bg-gray-50/30"><td class="p-6 border-r">競賽參與人次</td><td class="p-6 border-r text-center">30</td><td class="p-6 border-r text-center text-blue-600">15 (男:12 女:3)</td><td class="p-6 border-r text-center"><span class="status-badge status-mid">50%</span></td></tr>
-                                <tr class="bg-gray-50/30"><td class="p-6 border-r">種子師資培育人次</td><td class="p-6 border-r text-center">20</td><td class="p-6 border-r text-center text-blue-600">20 (男:10 女:10)</td><td class="p-6 border-r text-center"><span class="status-badge status-high">100%</span></td></tr>
+                                <tr class="bg-gray-50/30">
+                                    <td class="p-6 border-r">競賽參與人次</td>
+                                    <td class="p-6 border-r text-center">30</td>
+                                    <td class="p-6 border-r text-center text-blue-600">15 (男:12 女:3)</td>
+                                    <td class="p-6 border-r text-center"><span class="status-badge status-mid">50%</span></td>
+                                </tr>
+                                <tr class="bg-gray-50/30">
+                                    <td class="p-6 border-r">種子師資培育人次</td>
+                                    <td class="p-6 border-r text-center">20</td>
+                                    <td class="p-6 border-r text-center text-blue-600">20 (男:10 女:10)</td>
+                                    <td class="p-6 border-r text-center"><span class="status-badge status-high">100%</span></td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
 
-                <!-- Table 2: Course List -->
                 <div class="bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden">
                     <div class="p-8 border-b border-gray-200 bg-gray-50 text-left">
                         <h2 class="text-2xl font-extrabold text-gray-800 flex items-center tracking-wide">
@@ -738,8 +1380,8 @@
                             114年度課程開設總表 (截至期中)
                         </h2>
                     </div>
-                    <div class="overflow-x-auto -mx-4 px-4">
-                        <table class="w-full text-left border-collapse">
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse min-w-[900px]">
                             <thead class="bg-gray-100 font-bold text-gray-500 text-xs tracking-widest uppercase text-center">
                                 <tr>
                                     <th class="p-6 border-r">屬性</th>
@@ -755,21 +1397,21 @@
                                     <td class="p-6 border-r text-left font-bold">五軸加工技術 (工具機導論)</td>
                                     <td class="p-6 border-r">蘇怡甄</td>
                                     <td class="p-6 border-r text-blue-600">奧奔麥</td>
-                                    <td class="p-6 text-gray-400">上課4 / 數位6</td>
+                                    <td class="p-6 text-gray-500">上課4 / 數位6</td>
                                 </tr>
                                 <tr>
                                     <td class="p-6 border-r">核心</td>
                                     <td class="p-6 border-r text-left font-bold">人工智慧概論</td>
                                     <td class="p-6 border-r">張簡才萬</td>
                                     <td class="p-6 border-r text-gray-400">無</td>
-                                    <td class="p-6 text-gray-400">上課4 / 數位2</td>
+                                    <td class="p-6 text-gray-500">上課4 / 數位2</td>
                                 </tr>
                                 <tr>
                                     <td class="p-6 border-r">PBL</td>
                                     <td class="p-6 border-r text-left font-bold text-[11px] uppercase tracking-tighter">CPS 導向多軸加工監控與刀具預測</td>
                                     <td class="p-6 border-r">林岳鋒</td>
                                     <td class="p-6 border-r text-blue-600">凱柏精機</td>
-                                    <td class="p-6 text-gray-400">數位8</td>
+                                    <td class="p-6 text-gray-500">數位8</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -778,7 +1420,7 @@
             </div>
         </div>
 
-        <!-- PAGE: ACTIVITIES -->
+<!-- PAGE: ACTIVITIES -->
         <div id="page-activities" class="section-view">
             <div class="hero-pattern py-16 text-center text-white relative">
                 <div class="absolute inset-0 bg-black opacity-30"></div>
@@ -786,7 +1428,8 @@
             </div>
             <div class="container mx-auto px-4 py-20 max-w-6xl">
                 <div class="bg-white p-12 rounded-[2.5rem] shadow-xl border border-yellow-100 text-center mb-16">
-                    <h2 class="text-4xl font-extrabold text-gray-800 mb-12 tracking-wider">🥇 學生競賽榮譽榜</h2>
+                    <h2 class="text-4xl font-extrabold text-gray-800 mb-4 tracking-wider">🥇 學生競賽榮譽榜</h2>
+                    <p class="text-gray-500 max-w-2xl mx-auto mb-12">本頁以新聞牆與成果卡方式呈現學生競賽、專題發表、媒體報導與活動紀錄，提升計畫曝光度。</p>
                     
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
     <!-- 卡片 1 -->
@@ -957,6 +1600,12 @@ if (window.lucide && typeof window.lucide.createIcons === "function") {
     if (pageId === "highlights" && typeof updatePyramid === "function") {
       updatePyramid(2);
     }
+    if (pageId !== "videos" && typeof window.resetVideoGalleryState === "function") {
+      window.resetVideoGalleryState();
+    }
+    if (pageId === "videos" && typeof window.resetVideoGalleryState === "function") {
+      window.resetVideoGalleryState();
+    }
   }
 
   // initial load
@@ -976,48 +1625,51 @@ if (window.lucide && typeof window.lucide.createIcons === "function") {
   });
 </script>
 
-<script>
+
+
+ <script>
   const pyramidData = {
     1: {
-      title: "基礎核心課程",
-      badge: "Level 1: 紮根期",
+      title: "基礎/核心課程",
+      badge: "Level 1: Foundation",
       color: "bg-green-600",
-      desc: "建立工具機結構與程式設計之穩固基礎。",
+      desc: "由機械與數位基礎出發，建立工具機與智慧製造核心能力。",
       courses: [
-        "工具機導論 (Intro to MT)",
-        "人工智慧概論 (AI Intro)",
-        "Python 程式設計 (Python Programming)",
-        "數值分析與數值控制 (Numerical Analysis)",
-        "虛實整合技術基礎 (CPS Foundation)"
+        "工具機導論 (3學分)",
+        "人工智慧 (2學分)",
+        "計算機程式 Python (3學分)",
+        "可靠度工程 (3學分)",
+        "數值分析 (3學分)",
+        "虛實整合 (3學分)"
       ],
-      goal: "奠定學生對於工具機系統運作、演算法邏輯與數據分析之基礎認知。"
+      goal: "奠定學生對工具機系統、程式設計、數值分析與虛實整合之基礎認知。"
     },
     2: {
       title: "特色領域模組",
-      badge: "Level 2: 強化期",
+      badge: "Level 2: Module",
       color: "bg-blue-600",
-      desc: "深化五軸加工與感測數據分析技能。",
+      desc: "聚焦工具機關鍵技術與感測數據應用，強化學生跨域實作能力。",
       courses: [
-        "五軸加工技術 (5-Axis Machining)",
-        "工具機精度量測實務 (Accuracy Measurement)",
-        "智慧機電組件設計 (Intelligent Component Design)",
-        "Python 工業訊號處理 (Signal Processing)",
-        "影像辨識應用 (Computer Vision Applications)"
+        "五軸加工 (12小時)",
+        "工具機精度量測 (12小時)",
+        "工具機關鍵組件設計 (12小時)",
+        "Python 應用於訊號處理／影像辨識 (12小時)",
+        "訊號處理與感測器原理 (12小時)"
       ],
-      goal: "透過實機操作與感測器聯網，強化學生具備「機電整合」與「數據驅動」的工程實力。"
+      goal: "透過實機操作、量測分析與 AI 感測應用，培育學生具備跨域整合與問題分析能力。"
     },
     3: {
       title: "PBL 總整課程",
-      badge: "Level 3: 實戰期",
+      badge: "Level 3: PBL",
       color: "bg-yellow-600",
-      desc: "採企業出題、學生解題模式，解決真實產線痛點。",
+      desc: "採企業出題、學生解題之實作型課程，整合前兩階段所學。",
       courses: [
-        "PBL 導向多軸加工監控 (Machining Monitoring)",
-        "智慧刀具磨耗預測系統 (Tool Wear Prediction)",
-        "綠色製造加工系統優化 (GX Optimization)",
-        "智慧監控整合實作 (Integrated Intelligent Control)"
+        "PBL 總整課程（全程 4門）",
+        "每年至少開設 2門",
+        "結合特色教學實驗室",
+        "串接企業實題與業師指導"
       ],
-      goal: "整合前兩階段所學，在業師指導下完成系統雛型開發，驗證解決複雜工業問題之能力。"
+      goal: "透過企業真實題目與跨領域團隊合作，驗證學生解決產業問題與成果展示之能力。"
     }
   };
 
@@ -1083,23 +1735,126 @@ window.addEventListener("DOMContentLoaded", () => {
 </script>
 
 <script>
-function openMainVideo(videoId, tag, title, desc) {
-  const section = document.getElementById("video-player-section");
-  const frame = document.getElementById("main-video-frame");
-  const tagEl = document.getElementById("main-video-tag");
-  const titleEl = document.getElementById("main-video-title");
-  const descEl = document.getElementById("main-video-desc");
+(function () {
+  function resetVideoGalleryState() {
+    const modal = document.getElementById("video-modal");
+    const frame = document.getElementById("video-modal-frame");
+    if (frame) frame.src = "about:blank";
+    if (modal) modal.classList.add("hidden");
+    document.body.classList.remove("overflow-hidden");
+  }
 
-  if (!section || !frame || !tagEl || !titleEl || !descEl) return;
+  function openVideoModal(card) {
+    if (!card) return;
+    const modal = document.getElementById("video-modal");
+    const frame = document.getElementById("video-modal-frame");
+    const tag = document.getElementById("video-modal-tag");
+    const title = document.getElementById("video-modal-title");
+    const desc = document.getElementById("video-modal-desc");
+    const videoId = card.dataset.videoId;
 
-  section.classList.remove("hidden");
-  frame.src = "https://www.youtube-nocookie.com/embed/" + videoId + "?autoplay=1&rel=0&playsinline=1";
-  tagEl.textContent = tag;
-  titleEl.textContent = title;
-  descEl.textContent = desc;
+    if (!modal || !frame || !videoId) return;
 
-  section.scrollIntoView({ behavior: "smooth", block: "start" });
-}
+    if (tag) tag.textContent = card.dataset.videoTag || "教學影片";
+    if (title) title.textContent = card.dataset.videoTitle || "";
+    if (desc) desc.textContent = card.dataset.videoDesc || "";
+
+    frame.src = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0&playsinline=1`;
+    modal.classList.remove("hidden");
+    document.body.classList.add("overflow-hidden");
+  }
+
+  function initVideoGallery() {
+    document.querySelectorAll(".video-thumb-card").forEach((card) => {
+      card.addEventListener("click", () => openVideoModal(card));
+    });
+
+    const closeBtn = document.getElementById("video-modal-close");
+    const modal = document.getElementById("video-modal");
+    if (closeBtn) closeBtn.addEventListener("click", resetVideoGalleryState);
+    if (modal) {
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal || e.target === modal.firstElementChild) resetVideoGalleryState();
+      });
+    }
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") resetVideoGalleryState();
+    });
+
+    window.resetVideoGalleryState = resetVideoGalleryState;
+  }
+
+  window.addEventListener("DOMContentLoaded", initVideoGallery);
+})();
+</script>
+<script>
+(function () {
+  function initProjectFilters() {
+    const buttons = document.querySelectorAll('.project-filter-btn');
+    const cards = document.querySelectorAll('#projects-grid [data-category]');
+    if (!buttons.length || !cards.length) return;
+
+    buttons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const filter = btn.dataset.filter || 'all';
+        buttons.forEach((b) => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        cards.forEach((card) => {
+          const categories = (card.dataset.category || '').split(/\s+/);
+          const show = filter === 'all' || categories.includes(filter);
+          card.classList.toggle('project-hidden', !show);
+        });
+      });
+    });
+  }
+
+  function initProjectModal() {
+    const modal = document.getElementById('project-modal');
+    const closeBtn = document.getElementById('project-modal-close');
+    if (!modal || !closeBtn) return;
+
+    const titleEl = document.getElementById('modal-title');
+    const categoryEl = document.getElementById('modal-category');
+    const descEl = document.getElementById('modal-desc');
+    const tagsEl = document.getElementById('modal-tags');
+    const resultEl = document.getElementById('modal-result');
+
+    const closeModal = () => {
+      modal.classList.add('hidden');
+      document.body.classList.remove('overflow-hidden');
+    };
+
+    const openModal = (btn) => {
+      titleEl.textContent = btn.dataset.title || '專題名稱';
+      categoryEl.textContent = btn.dataset.category || 'Project Category';
+      descEl.textContent = btn.dataset.desc || '';
+      resultEl.textContent = btn.dataset.result || '';
+      const tags = (btn.dataset.tags || '').split(',').map(t => t.trim()).filter(Boolean);
+      tagsEl.innerHTML = tags.map(tag => `<span class="project-chip bg-gray-100 text-gray-700">${tag}</span>`).join('');
+      modal.classList.remove('hidden');
+      document.body.classList.add('overflow-hidden');
+    };
+
+    document.querySelectorAll('.open-project-modal').forEach((btn) => {
+      btn.addEventListener('click', () => openModal(btn));
+    });
+
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal || e.target.classList.contains('project-modal-backdrop')) closeModal();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeModal();
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    initProjectFilters();
+    initProjectModal();
+  });
+})();
 </script>
 
 <script>
