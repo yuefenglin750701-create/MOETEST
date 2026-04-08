@@ -1628,48 +1628,379 @@ if (window.lucide && typeof window.lucide.createIcons === "function") {
 
 
  <script>
+  const syllabusData = {
+    intro_comprehensive: {
+      title: "綜合加工機技術概論",
+      subtitle: "蘇怡甄老師｜開課代碼 S301｜3 學分／3 學時",
+      theme: "green",
+      basic: [
+        ["開課單位", "機械工程系精密機械專班"],
+        ["開課年級", "2 年級"],
+        ["開課學期", "113 學年度第 1 學期"],
+        ["必選修", "選修"],
+        ["主要語言", "國語"],
+        ["先修課程", "機械加工、機械製圖"]
+      ],
+      attributes: ["綠能科技課程", "工作（職場）倫理課程", "工具機技術研發", "對應創意創新、思考推理與專業實務能力"],
+      objectiveTitle1: "知能面",
+      objectives1: ["了解 CNC 與相關設備", "了解程式機能", "了解工作法", "了解 CAD/CAM 軟體"],
+      objectiveTitle2: "技能面",
+      objectives2: ["程式撰寫", "軟體製圖、排刀、轉程式", "機台操作", "控制尺寸與改善製程"],
+      evaluation: ["課堂表現：25%", "團體作業：25%", "個人作業：25%", "期末考試或上機測驗：25%"],
+      outline: "透過本課程讓學生習得綜合加工機技術之種類、方式與應用，培養對機械加工的興趣，並訓練獨立作業能力。",
+      schedule: ["工業安全與衛生", "CNC 機械簡介", "CNC 程式結構與機能", "CNC 機械與控制器使用教學", "CAD/CAM 軟體教學（2D 輪廓）", "加工流程與切削實務練習", "CAD/CAM 軟體教學（加工排程）", "輪廓加工路徑切削實務練習", "尺寸控制切削實務練習", "期末考"]
+    },
+    intro_intelligent_machinery: {
+      title: "智慧機械概論",
+      subtitle: "林岳鋒老師｜開課代碼 1104｜3 學分／3 學時",
+      theme: "blue",
+      basic: [
+        ["開課單位", "機械工程系"],
+        ["開課年級", "3 年級"],
+        ["開課學期", "114 學年度第 1 學期"],
+        ["必選修", "選修"],
+        ["主要語言", "國語"],
+        ["先修課程", "未列明"]
+      ],
+      attributes: ["工業 4.0 課程", "工具機技術研發", "對應創意創新、專業實務與宏觀視野能力"],
+      objectiveTitle1: "課程目標",
+      objectives1: ["了解智慧機械製造技術的發展", "熟悉智能化機械、智慧機器人與設備協同生產", "理解智慧工廠、物聯網、大數據與虛實整合系統"],
+      objectiveTitle2: "課程主題",
+      objectives2: ["工業4.0概論", "虛實合一系統", "物聯網與大數據應用", "半導體製程與智慧製造架構"],
+      evaluation: ["出席：10%", "作業與筆試：30%", "期中報告：30%", "期末報告：30%"],
+      outline: "本課程提供工業4.0相關知識，涵蓋物聯網、虛實系統、大數據、雲端計算、自動化等基礎知識，建立智慧機械整體觀。",
+      schedule: ["課程說明與智慧財產權概述", "工業4.0概論", "虛實合一系統", "嵌入式系統在工業4.0之應用", "物聯網創新與應用", "大數據與雲端計算", "自動化光學檢測", "智能化模具製造", "半導體製程", "智慧型機器人"]
+    },
+    python_programming: {
+      title: "Python程式設計",
+      subtitle: "張俊隆老師｜開課代碼 1347｜3 學分／3 學時",
+      theme: "green",
+      basic: [
+        ["開課單位", "電子工程系"],
+        ["開課年級", "3 年級"],
+        ["開課學期", "114 學年度第 2 學期"],
+        ["必選修", "選修"],
+        ["主要語言", "國語"],
+        ["先修課程", "未列明"]
+      ],
+      attributes: ["一般課程", "AI人工智慧應用", "強調表達溝通與專業實務能力"],
+      objectiveTitle1: "課程目標",
+      objectives1: ["建立運算思維", "具備 Python 基礎知識與工具", "面對問題時能做出適當的邏輯判斷"],
+      objectiveTitle2: "學習重點",
+      objectives2: ["程式設計簡介", "資料儲存容器與控制程序", "副程式與運算思維", "AI 在智慧系統的應用"],
+      evaluation: ["期中考：20%", "期末考：30%", "作業：40%", "其他：10%"],
+      outline: "課程簡介運算思維與 Python 程式設計，包含問題思維、程式架構與流程，以及智慧機械相關應用。",
+      schedule: ["課程大綱與學術倫理規範", "程式設計簡介", "Python 程式設計簡介", "運算思維簡介", "資料儲存容器", "控制程序（判斷、迴圈）", "副程式", "AI在智慧系統應用：洗碗機", "AI在智慧系統應用：網路爬蟲", "AI在智慧系統應用：點餐機"],
+      relations: {
+        foundation: ["Python程式設計", "程式語言", "AI智慧概論"],
+        module: ["智慧製造技術", "Python 應用於訊號處理／影像辨識", "訊號處理與感測原理"],
+        pbl: ["感測器聯網與數據分析"]
+      },
+      resources: [
+        { label: "教學影片", type: "page", target: "videos", icon: "fa-solid fa-circle-play" },
+        { label: "雲端教材", type: "page", target: "resources", icon: "fa-solid fa-cloud-arrow-down" }
+      ]
+    },
+    programming_language: {
+      title: "程式語言",
+      subtitle: "陳聰嘉老師｜開課代碼 1151｜3 學分／3 學時",
+      theme: "slate",
+      basic: [
+        ["開課單位", "機械工程系"],
+        ["開課年級", "1 年級"],
+        ["開課學期", "114 學年度第 1 學期"],
+        ["必選修", "必修"],
+        ["主要語言", "國語"],
+        ["先修課程", "未列明"]
+      ],
+      attributes: ["一般課程", "智慧財產權", "工業 4.0 課程", "以 MATLAB 與數值分析為核心"],
+      objectiveTitle1: "課程目標",
+      objectives1: ["培育 MATLAB 數值分析與工程計算能力", "從基礎語法與結構出發", "結合科學與工程案例解決實際問題"],
+      objectiveTitle2: "內容架構",
+      objectives2: ["程式結構與設計", "矩陣、函數、資料結構", "多項式、統計與迴歸", "數值微分、積分與微分方程數值解"],
+      evaluation: ["出席：10%", "作業：30%", "期中考：30%", "期末考：30%"],
+      outline: "本課程為一年級初次學習計算機程式之課程，使用 MATLAB 建立程式設計、數值分析與工程應用能力。",
+      schedule: ["學術倫理規範、課程概論", "MATLAB基本語法介紹", "程式結構與設計", "矩陣製作", "函數", "內差法與函數近似法", "資料結構", "資料之輸入與輸出", "數值積分", "偏微分方程之數值解"],
+      relations: {
+        foundation: ["程式語言"],
+        module: ["智慧製造技術", "Python 應用於訊號處理／影像辨識", "訊號處理與感測原理"],
+        pbl: ["感測器聯網與數據分析"]
+      }
+    },
+    five_axis: {
+      title: "五軸加工技術",
+      subtitle: "蘇怡甄老師｜開課代碼 1122｜3 學分／3 學時",
+      theme: "blue",
+      basic: [
+        ["開課單位", "機械工程系"],
+        ["開課年級", "4 年級"],
+        ["開課學期", "114 學年度第 1 學期"],
+        ["必選修", "選修"],
+        ["主要語言", "國語"],
+        ["先修課程", "精密製造實習、精密加工技術"]
+      ],
+      attributes: ["綠能科技課程", "工作（職場）倫理課程", "工具機技術研發", "對應創意創新、思考推理、專業實務與宏觀視野能力"],
+      objectiveTitle1: "知能面",
+      objectives1: ["了解 CNC 與相關設備", "了解程式機能", "了解工作法", "了解 CAD/CAM 軟體"],
+      objectiveTitle2: "技能面",
+      objectives2: ["轉程式加工軟體", "軟體製圖與加工工序排程", "機台操作", "控制尺寸與改善製程"],
+      evaluation: ["課堂表現：25%", "期中考試或報告：25%", "個人或團體作業：25%", "期末考試或報告作業：25%"],
+      outline: "本課程為進階工具機課程，學習 CAD/CAM 製作多軸工具機程式，並透過軟體模擬實機運作，搭配五軸切削中心機、小型五軸機與 hyperMILL。",
+      schedule: ["工業安全與衛生、學術倫理規範", "多軸工具機械簡介", "程式結構與多軸機能", "機械與控制器使用教學", "CAD/CAM軟體教學（基礎簡介）", "CAD/CAM軟體教學（後處理與整機模擬）", "加工流程與切削實務練習", "CAD/CAM軟體教學（五軸刀路）", "CAD/CAM軟體教學（多軸同動工序）", "期末考"],
+      relations: {
+        foundation: ["五軸加工技術", "AI智慧概論", "Python程式設計"],
+        module: ["精密加工技術", "五軸加工", "工具機精度量測", "工具機關鍵組件設計"],
+        pbl: ["CPS導向多軸工具機之智慧刀具磨耗預測與加工監控系統設計"]
+      },
+      resources: [
+        { label: "教學影片", type: "page", target: "videos", icon: "fa-solid fa-circle-play" },
+        { label: "雲端教材", type: "page", target: "resources", icon: "fa-solid fa-cloud-arrow-down" }
+      ]
+    },
+    module_precision: {
+      title: "精密加工技術",
+      subtitle: "特色領域模組課程｜下學期｜整合 3 個模組",
+      theme: "green",
+      basic: [
+        ["模組課程名稱", "精密加工技術"],
+        ["開課型態", "特色領域模組課程"],
+        ["開課學期", "下學期"],
+        ["模組數量", "3 個模組"],
+        ["模組教師", "蘇怡甄／林岳鋒、葉彥良／陳紹賢、陳紹賢／林衛助"],
+        ["對應路徑", "基礎核心課程 → 特色領域模組 → PBL總整課程"]
+      ],
+      attributes: ["依照課程培育金字塔圖整合而成", "對應橘色模組群", "串接五軸加工、精度量測與關鍵組件設計", "可向上銜接 PBL 總整課程"],
+      objectiveTitle1: "模組內容",
+      objectives1: ["五軸加工（18 小時）", "工具機精度量測（12 小時）", "工具機關鍵組件設計（12 小時）"],
+      objectiveTitle2: "培育重點",
+      objectives2: ["五軸刀路與加工策略", "量測與誤差診斷能力", "工具機關鍵元件設計與組裝觀念", "跨課程整合實作能力"],
+      evaluation: ["依各模組授課教師規劃", "建議結合作業、實作、成果展示與專題應用"],
+      outline: "此課程為特色領域模組中的第一門模組課程，依圖片內容整合三個模組，作為精密加工與工具機技術主軸之能力延伸。",
+      schedule: ["模組一：五軸加工", "模組二：工具機精度量測", "模組三：工具機關鍵組件設計"],
+      relations: {
+        foundation: ["五軸加工技術", "工具機製造品質工程", "智慧機械概論"],
+        module: ["精密加工技術", "五軸加工", "工具機精度量測", "工具機關鍵組件設計"],
+        pbl: ["CPS導向多軸工具機之智慧刀具磨耗預測與加工監控系統設計"]
+      },
+      resources: [
+        { label: "教學影片", type: "page", target: "videos", icon: "fa-solid fa-circle-play" },
+        { label: "雲端教材", type: "page", target: "resources", icon: "fa-solid fa-cloud-arrow-down" }
+      ]
+    },
+    module_smart_mfg: {
+      title: "智慧製造技術",
+      subtitle: "特色領域模組課程｜下學期｜整合 2 個模組",
+      theme: "blue",
+      basic: [
+        ["模組課程名稱", "智慧製造技術"],
+        ["開課型態", "特色領域模組課程"],
+        ["開課學期", "下學期"],
+        ["模組數量", "2 個模組"],
+        ["模組教師", "張俊隆／陳凱業、黃智勇／李榮茂"],
+        ["對應路徑", "基礎核心課程 → 特色領域模組 → PBL總整課程"]
+      ],
+      attributes: ["依照課程培育金字塔圖整合而成", "對應橘色模組群", "串接 Python 應用與感測訊號分析", "可向上銜接感測器聯網與數據分析 PBL"],
+      objectiveTitle1: "模組內容",
+      objectives1: ["Python 應用於訊號處理／影像辨識（12 小時）", "訊號處理與感測原理（12 小時）"],
+      objectiveTitle2: "培育重點",
+      objectives2: ["以 Python 進行訊號處理與影像辨識", "建立感測器量測與資料分析基礎", "結合資料擷取、特徵分析與智慧決策", "對應智慧製造系統整合應用"],
+      evaluation: ["依各模組授課教師規劃", "建議結合作業、實作、報告與系統展示"],
+      outline: "此課程為特色領域模組中的第二門模組課程，依圖片內容整合兩個模組，強調智慧製造資料處理、感測與分析應用。",
+      schedule: ["模組一：Python 應用於訊號處理／影像辨識", "模組二：訊號處理與感測原理"],
+      relations: {
+        foundation: ["Python程式設計", "程式語言", "智慧機械概論"],
+        module: ["智慧製造技術", "Python 應用於訊號處理／影像辨識", "訊號處理與感測原理"],
+        pbl: ["感測器聯網與數據分析"]
+      },
+      resources: [
+        { label: "教學影片", type: "page", target: "videos", icon: "fa-solid fa-circle-play" },
+        { label: "雲端教材", type: "page", target: "resources", icon: "fa-solid fa-cloud-arrow-down" }
+      ]
+    },
+    machine_tool_assembly: {
+      title: "工具機組裝技術",
+      subtitle: "陳紹賢老師｜開課代碼 1111｜3 學分／3 學時",
+      theme: "blue",
+      basic: [
+        ["開課單位", "機械工程系"],
+        ["開課年級", "3 年級"],
+        ["開課學期", "114 學年度第 2 學期"],
+        ["必選修", "選修"],
+        ["主要語言", "國語"],
+        ["先修課程", "未列明"]
+      ],
+      attributes: ["一般課程", "工具機技術研發", "強調工程分析、精密製造與問題解決能力"],
+      objectiveTitle1: "課程目標",
+      objectives1: ["工具機介紹", "進給系統關鍵元件介紹", "調校關鍵技術：真直、真平、預壓與預拉", "基本鏟花技術與進給系統組裝調校"],
+      objectiveTitle2: "學習重點",
+      objectives2: ["量具應用教學", "鑄件水平調校", "線性滑軌直度與平行度調校", "導螺桿三點校正與預壓預拉調校"],
+      evaluation: ["出席：20%", "作業：20%", "期中考：30%", "期末考：30%"],
+      outline: "使學生了解工具機進給系統實務上最基本的概念、觀念與原則，並將所學應用於設計相關問題。",
+      schedule: ["課程介紹與說明", "工具機種類與元件介紹", "調教工具與量測之應用基本", "量具應用教學（真直、真平）", "組裝實習（鑄件水平調校）", "關鍵元件介紹（線性滑軌與硬軌）", "組裝實習（導螺桿三點校正）", "調校之關鍵技術（真直、真平、預壓與預拉）", "組裝實習（導螺桿預壓與預拉調校）", "期末複習與整理"],
+      relations: {
+        foundation: ["工具機製造品質工程", "程式語言", "智慧機械概論"],
+        module: ["精密加工技術", "工具機關鍵組件設計", "工具機精度量測"],
+        pbl: ["CPS導向多軸工具機之智慧刀具磨耗預測與加工監控系統設計"]
+      },
+      resources: [
+        { label: "教學影片", type: "page", target: "videos", icon: "fa-solid fa-circle-play" },
+        { label: "雲端教材", type: "page", target: "resources", icon: "fa-solid fa-cloud-arrow-down" }
+      ]
+    },
+    precision_machining: {
+      title: "精密加工技術",
+      subtitle: "蘇怡甄老師｜開課代碼 1120｜3 學分／3 學時",
+      theme: "green",
+      basic: [
+        ["開課單位", "機械工程系"],
+        ["開課年級", "3 年級"],
+        ["開課學期", "114 學年度第 2 學期"],
+        ["必選修", "選修"],
+        ["主要語言", "國語"],
+        ["先修課程", "工廠實習、精密製造實習、電腦輔助製圖、工程圖學"]
+      ],
+      attributes: ["一般課程", "工具機技術研發", "工作（職場）倫理課程", "對應創意創新、思考推理、專業實務與表達溝通能力"],
+      objectiveTitle1: "知能面",
+      objectives1: ["了解 CNC 與相關設備", "精密加工技術概論", "了解精密加工技術工作法", "了解 CAD/CAM 軟體", "理解切削、研磨、蝕刻技術"],
+      objectiveTitle2: "技能面",
+      objectives2: ["程式撰寫", "軟體製圖、排刀、轉程式", "機台操作", "控制尺寸", "改善製程"],
+      evaluation: ["課堂表現：25%", "作業：25%", "期中考試：25%", "期末考試：25%"],
+      outline: "課程讓學生了解精密加工技術知能，並以切削技能為實務教學，本學期導入 hyperMILL CAD/CAM 軟體，期末使用軟體轉程式實作工件。",
+      schedule: ["工業安全與衛生", "精密加工技術概述", "精密加工技術－用途", "精密加工技術－工法", "CAD/CAM軟體教學（2D輪廓）", "精密加工流程與切削實務練習", "CAD/CAM軟體教學（加工排程）", "輪廓加工路徑切削實務練習", "尺寸控制切削實務練習", "實作與期末考或期末作業"],
+      relations: {
+        foundation: ["五軸加工技術", "工具機製造品質工程", "智慧機械概論"],
+        module: ["精密加工技術", "五軸加工", "工具機精度量測", "工具機關鍵組件設計"],
+        pbl: ["CPS導向多軸工具機之智慧刀具磨耗預測與加工監控系統設計"]
+      },
+      resources: [
+        { label: "教學影片", type: "page", target: "videos", icon: "fa-solid fa-circle-play" },
+        { label: "雲端教材", type: "page", target: "resources", icon: "fa-solid fa-cloud-arrow-down" }
+      ]
+    },
+    smart_connectivity: {
+      title: "感測器聯網與數據分析",
+      subtitle: "彭達仁老師｜對應課綱：智慧製造設備聯網與感測數據整合技術｜3 學分／3 學時",
+      theme: "blue",
+      basic: [
+        ["對應課程名稱", "感測器聯網與數據分析"],
+        ["課綱來源", "智慧製造設備聯網與感測數據整合技術"],
+        ["開課年級", "4 年級"],
+        ["開課學期", "114 學年度第 2 學期"],
+        ["必選修", "選修"],
+        ["先修課程", "程式語言設計（C#、Python）"]
+      ],
+      attributes: ["一般課程", "AI人工智慧應用", "工具機技術研發", "PBL總整課程對應課綱來源"],
+      objectiveTitle1: "課程目標",
+      objectives1: ["建立設備聯網與感測資料整合架構觀念", "熟悉 FANUC 控制器資料擷取與感測訊號整合", "具備邊緣運算與即時監控系統建構能力"],
+      objectiveTitle2: "能力培養",
+      objectives2: ["訊號處理與特徵萃取", "製程優化與異常監測", "節能控制與效率優化", "系統整合實作與專題規劃"],
+      evaluation: ["平時：40%", "期中：30%", "期末：30%"],
+      outline: "依照你的指定，這門 PBL 課程以『智慧製造設備聯網與感測數據整合技術』作為課綱來源，內容聚焦感測器聯網、資料擷取、訊號分析與智慧決策。",
+      schedule: ["智慧製造與工業4.0概論", "智慧製造數據架構", "感測器原理（一）（二）", "FANUC 控制器資料擷取", "邊緣運算架構", "訊號處理基礎與特徵萃取", "製程監測與智慧決策", "Dashboard 即時監控介面規劃", "系統整合與專題成果發表"],
+      relations: {
+        foundation: ["Python程式設計", "程式語言", "智慧機械概論"],
+        module: ["智慧製造技術", "Python 應用於訊號處理／影像辨識", "訊號處理與感測原理"],
+        pbl: ["感測器聯網與數據分析"]
+      },
+      resources: [
+        { label: "教學影片", type: "page", target: "videos", icon: "fa-solid fa-circle-play" },
+        { label: "雲端教材", type: "page", target: "resources", icon: "fa-solid fa-cloud-arrow-down" }
+      ]
+    },
+    pbl_cps_toolwear: {
+      title: "CPS導向多軸工具機之智慧刀具磨耗預測與加工監控系統設計",
+      subtitle: "林岳鋒老師｜微學分課程｜1.0 學分／18 小時",
+      theme: "pink",
+      basic: [
+        ["課程型態", "PBL 總整課程／微學分課程"],
+        ["課綱來源", "114-1 微學分開課申請表"],
+        ["授課教師", "林岳鋒"],
+        ["協同教師", "黃智勇"],
+        ["開課期間", "114-11-06 至 114-12-18"],
+        ["授課地點", "機械工程系三樓氣液壓教室"]
+      ],
+      attributes: ["PBL 導向", "CPS 智慧製造", "多軸工具機監控", "智慧刀具磨耗預測", "整合加工監控系統設計"],
+      objectiveTitle1: "課程目標",
+      objectives1: ["結合 CPS 概念與多軸工具機加工動態分析", "建立刀具磨耗感測與監測架構", "導入資料擷取、特徵工程與 AI 模型建構", "完成加工監控系統整合展示"],
+      objectiveTitle2: "單元規劃",
+      objectives2: ["智慧製造與 CPS 基礎概念導入", "多軸工具機結構與加工動態特性分析", "刀具磨耗機制與感測技術應用", "資料擷取、特徵工程與 AI 磨耗預測模型建構", "加工監控系統與 CPS 架構整合", "專題實作與系統驗證展示"],
+      evaluation: ["微學分課程以單元參與、實作成果與系統展示為主", "建議採小組專題與成果驗證方式"],
+      outline: "依微學分開課申請表，課程以 CPS 導向智慧製造理念為核心，結合多軸工具機結構分析、刀具磨耗機制與感測技術，培養學生具備監控系統設計、資料分析與整合應用能力。",
+      schedule: ["11/6：智慧製造與 CPS 基礎概念導入", "11/13：多軸工具機結構與加工動態特性分析", "11/27：刀具磨耗機制與感測技術應用", "12/4：資料擷取、特徵工程與 AI 磨耗預測模型建構", "12/11：加工監控系統與 CPS 架構整合", "12/18：專題實作與系統驗證展示"],
+      relations: {
+        foundation: ["五軸加工技術", "AI智慧概論", "智慧機械概論"],
+        module: ["精密加工技術", "五軸加工", "工具機精度量測", "工具機關鍵組件設計"],
+        pbl: ["CPS導向多軸工具機之智慧刀具磨耗預測與加工監控系統設計"]
+      },
+      resources: [
+        { label: "教學影片", type: "page", target: "videos", icon: "fa-solid fa-circle-play" },
+        { label: "雲端教材", type: "page", target: "resources", icon: "fa-solid fa-cloud-arrow-down" }
+      ]
+    }
+  };
+
   const pyramidData = {
     1: {
       title: "基礎/核心課程",
       badge: "Level 1: Foundation",
       color: "bg-green-600",
-      desc: "由機械與數位基礎出發，建立工具機與智慧製造核心能力。",
+      desc: "依照課程培育金字塔圖，先建立工具機、AI、程式設計、品質工程、數值分析與虛實整合的核心基礎。",
       courses: [
-        "工具機導論 (3學分)",
-        "人工智慧 (2學分)",
-        "計算機程式 Python (3學分)",
-        "可靠度工程 (3學分)",
-        "數值分析 (3學分)",
-        "虛實整合 (3學分)"
+        { name: "五軸加工技術", note: "工具機", highlight: true, syllabusKey: "five_axis" },
+        { name: "AI智慧概論", note: "人工智慧", syllabusKey: "intro_intelligent_machinery" },
+        { name: "Python程式設計", note: "計算機程式 Python", syllabusKey: "python_programming" },
+        { name: "工具機製造品質工程", note: "可靠度工程", syllabusKey: "machine_tool_assembly" },
+        { name: "程式語言", note: "數值分析", syllabusKey: "programming_language" },
+        { name: "智慧機械概論", note: "虛實整合", syllabusKey: "intro_intelligent_machinery" }
       ],
-      goal: "奠定學生對工具機系統、程式設計、數值分析與虛實整合之基礎認知。"
+      goal: "奠定學生對工具機技術、智慧機械、程式設計與系統整合之基礎能力，作為進入模組課程與 PBL 總整課程之前的核心能力地基。"
     },
     2: {
       title: "特色領域模組",
       badge: "Level 2: Module",
-      color: "bg-blue-600",
-      desc: "聚焦工具機關鍵技術與感測數據應用，強化學生跨域實作能力。",
+      color: "bg-orange-500",
+      desc: "特色領域模組共 2 門課，依圖片橘色區塊整合成『精密加工技術』與『智慧製造技術』兩門模組課程。",
       courses: [
-        "五軸加工 (12小時)",
-        "工具機精度量測 (12小時)",
-        "工具機關鍵組件設計 (12小時)",
-        "Python 應用於訊號處理／影像辨識 (12小時)",
-        "訊號處理與感測器原理 (12小時)"
+        {
+          name: "精密加工技術",
+          note: "下學期｜3 個模組",
+          syllabusKey: "module_precision",
+          modules: [
+            { name: "五軸加工", hours: "18小時", syllabusKey: "five_axis", resourceButtons: true },
+            { name: "工具機精度量測", hours: "12小時", syllabusKey: "precision_machining", resourceButtons: true },
+            { name: "工具機關鍵組件設計", hours: "12小時", syllabusKey: "machine_tool_assembly", resourceButtons: true }
+          ]
+        },
+        {
+          name: "智慧製造技術",
+          note: "下學期｜2 個模組",
+          syllabusKey: "module_smart_mfg",
+          modules: [
+            { name: "Python 應用於訊號處理／影像辨識", hours: "12小時", syllabusKey: "python_programming", resourceButtons: true },
+            { name: "訊號處理與感測原理", hours: "12小時", syllabusKey: "smart_connectivity", resourceButtons: true }
+          ]
+        }
       ],
-      goal: "透過實機操作、量測分析與 AI 感測應用，培育學生具備跨域整合與問題分析能力。"
+      goal: "透過兩門模組課程與五個模組內容，強化學生在精密加工、量測、關鍵組件設計、Python 應用、訊號處理與感測分析上的跨域整合能力。"
     },
     3: {
       title: "PBL 總整課程",
       badge: "Level 3: PBL",
-      color: "bg-yellow-600",
-      desc: "採企業出題、學生解題之實作型課程，整合前兩階段所學。",
+      color: "bg-pink-600",
+      desc: "PBL 總整課程共 2 門課，依圖片粉紅色區塊設計，承接特色領域模組並以實作與系統整合為核心。",
       courses: [
-        "PBL 總整課程（全程 4門）",
-        "每年至少開設 2門",
-        "結合特色教學實驗室",
-        "串接企業實題與業師指導"
+        {
+          name: "CPS導向多軸工具機之智慧刀具磨耗預測與加工監控系統設計",
+          note: "下學期｜PBL課程",
+          syllabusKey: "pbl_cps_toolwear"
+        },
+        {
+          name: "感測器聯網與數據分析",
+          note: "下學期｜PBL課程",
+          syllabusKey: "smart_connectivity"
+        }
       ],
-      goal: "透過企業真實題目與跨領域團隊合作，驗證學生解決產業問題與成果展示之能力。"
+      goal: "以企業題目、跨域模組與實作整合為導向，完成具展示性、分析性與系統整合能力的 PBL 總整成果。"
     }
   };
 
@@ -1679,26 +2010,54 @@ if (window.lucide && typeof window.lucide.createIcons === "function") {
     if (layer) layer.classList.add("active");
 
     const data = pyramidData[lvl];
-    const panel = document.getElementById("pyr-panel");
-    if (!data || !panel) return;
+    const panels = document.querySelectorAll('#pyr-panel');
+    if (!data || !panels.length) return;
 
-    panel.innerHTML = `
+    const panelHtml = `
       <div class="p-8 ${data.color} text-white rounded-t-[3rem] text-left transition-colors duration-500 shadow-inner">
         <span class="px-3 py-1 bg-white/20 rounded-full text-[10px] font-bold uppercase mb-4 inline-block tracking-widest border border-white/30">
           ${data.badge}
         </span>
         <h3 class="text-3xl font-extrabold mb-2">${data.title}</h3>
-        <p class="text-white/80 font-medium">${data.desc}</p>
+        <p class="text-white/85 font-medium leading-relaxed">${data.desc}</p>
       </div>
-      <div class="p-8 space-y-4">
-        <div class="grid grid-cols-1 gap-3">
-          ${data.courses.map(c => `
-            <div class="p-4 bg-gray-50 rounded-2xl border border-gray-100 font-bold text-gray-700 text-left flex items-center gap-4 hover:bg-white transition group">
-              <div class="w-2.5 h-2.5 rounded-full ${data.color} group-hover:scale-125 transition"></div>
-              <span class="text-sm">${c}</span>
+      <div class="p-8 space-y-5">
+        ${data.courses.map(c => {
+          const clickable = !!c.syllabusKey;
+          const modulesHtml = (c.modules || []).map(m => `
+            <div class="bg-white rounded-2xl border border-orange-100 p-4">
+              <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+                <div class="flex items-center gap-3">
+                  <span class="inline-flex shrink-0 px-3 py-1 rounded-full bg-orange-500 text-white text-xs font-extrabold">${m.hours || ''}</span>
+                  <button ${m.syllabusKey ? `onclick="openSyllabus('${m.syllabusKey}')"` : 'type="button"'} class="text-left font-extrabold text-gray-800 hover:text-blue-700 transition">${m.name}</button>
+                </div>
+                ${m.resourceButtons ? `
+                  <div class="flex flex-wrap gap-2">
+                    <button type="button" onclick="navigateFromSyllabus('videos')" class="inline-flex items-center gap-2 px-3 py-2 rounded-xl bg-blue-600 text-white text-xs font-extrabold hover:bg-blue-700 transition"><i class="fa-solid fa-circle-play"></i>教學影片</button>
+                    <button type="button" onclick="navigateFromSyllabus('resources')" class="inline-flex items-center gap-2 px-3 py-2 rounded-xl bg-white border border-blue-200 text-blue-700 text-xs font-extrabold hover:bg-blue-50 transition"><i class="fa-solid fa-cloud-arrow-down"></i>雲端教材</button>
+                  </div>
+                ` : ''}
+              </div>
             </div>
-          `).join("")}
-        </div>
+          `).join('');
+
+          return `
+            <div class="rounded-[2rem] border ${lvl === 3 ? 'border-pink-100 bg-pink-50/60' : lvl === 2 ? 'border-orange-100 bg-orange-50/50' : 'border-gray-100 bg-gray-50'} p-5 shadow-sm">
+              <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-3">
+                <div>
+                  <div class="flex items-center gap-3 mb-2">
+                    <div class="w-3 h-3 rounded-full ${data.color}"></div>
+                    <h4 class="text-lg font-extrabold text-gray-800">${c.name}</h4>
+                  </div>
+                  ${c.note ? `<p class="text-sm text-gray-500 font-semibold">${c.note}</p>` : ''}
+                </div>
+                ${clickable ? `<button onclick="openSyllabus('${c.syllabusKey}')" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl ${lvl === 3 ? 'bg-pink-600 hover:bg-pink-700' : lvl === 2 ? 'bg-orange-500 hover:bg-orange-600' : 'bg-green-600 hover:bg-green-700'} text-white text-sm font-extrabold transition"><i class="fa-solid fa-book-open"></i>查看課綱</button>` : ''}
+              </div>
+              ${modulesHtml ? `<div class="space-y-3 mt-4">${modulesHtml}</div>` : ''}
+            </div>
+          `;
+        }).join("")}
+
         <div class="pt-6 border-t border-gray-100 text-left">
           <h4 class="text-xs font-bold text-gray-400 uppercase mb-2 tracking-widest">
             <i class="fa-solid fa-bullseye mr-2"></i>培育學習目標
@@ -1707,9 +2066,12 @@ if (window.lucide && typeof window.lucide.createIcons === "function") {
         </div>
       </div>
     `;
+
+    panels.forEach(panel => panel.innerHTML = panelHtml);
   }
 
   function animateStats() {
+
     document.querySelectorAll(".counter").forEach(c => {
       const target = +c.getAttribute("data-target");
       let count = 0;
@@ -1727,10 +2089,9 @@ if (window.lucide && typeof window.lucide.createIcons === "function") {
     });
   }
 
-  // ✅ DOM 就緒後再綁事件，避免抓不到元素
 window.addEventListener("DOMContentLoaded", () => {
   animateStats();
-  updatePyramid(2);
+  updatePyramid(1);
 });
 </script>
 
@@ -1886,5 +2247,274 @@ window.addEventListener("DOMContentLoaded", () => {
   });
 })();
 </script>
+
+<div id="syllabus-modal" class="hidden fixed inset-0 z-[100002]">
+  <div class="absolute inset-0 bg-slate-950/75 backdrop-blur-sm"></div>
+  <div class="relative min-h-screen px-4 py-8 flex items-center justify-center">
+    <div class="w-full max-w-5xl bg-white rounded-[2rem] overflow-hidden shadow-2xl relative max-h-[90vh] flex flex-col">
+      <button id="syllabus-modal-close" type="button" class="absolute top-4 right-4 z-20 w-11 h-11 rounded-full bg-white/90 text-gray-700 hover:bg-gray-100 shadow-lg transition">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <div id="syllabus-header" class="bg-green-600 text-white px-8 py-6">
+        <span class="inline-block px-3 py-1 bg-white/20 rounded-full text-[11px] font-bold tracking-widest mb-3">SYLLABUS</span>
+        <h3 id="syllabus-title" class="text-3xl font-extrabold mb-2"></h3>
+        <p id="syllabus-subtitle" class="text-white/85"></p>
+      </div>
+      <div class="p-8 overflow-y-auto space-y-8">
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100">
+            <h4 class="text-lg font-extrabold text-gray-800 mb-4">課程基本資訊</h4>
+            <div id="syllabus-basic" class="space-y-2 text-sm text-gray-600 leading-relaxed"></div>
+          </div>
+          <div id="syllabus-attr-card" class="bg-blue-50 rounded-2xl p-6 border border-blue-100">
+            <h4 class="text-lg font-extrabold text-blue-900 mb-4">課程屬性</h4>
+            <div id="syllabus-attributes" class="space-y-2 text-sm text-blue-900/80 leading-relaxed"></div>
+          </div>
+        </div>
+
+        <div class="bg-white border border-gray-100 rounded-2xl p-6">
+          <h4 class="text-lg font-extrabold text-gray-800 mb-4">課程目標</h4>
+          <div class="grid md:grid-cols-2 gap-6 text-sm text-gray-600 leading-relaxed">
+            <div>
+              <p id="syllabus-obj1-title" class="font-bold text-gray-800 mb-2"></p>
+              <ul id="syllabus-obj1" class="space-y-1"></ul>
+            </div>
+            <div>
+              <p id="syllabus-obj2-title" class="font-bold text-gray-800 mb-2"></p>
+              <ul id="syllabus-obj2" class="space-y-1"></ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6">
+          <div id="syllabus-eval-card" class="bg-amber-50 rounded-2xl p-6 border border-amber-100">
+            <h4 class="text-lg font-extrabold text-amber-900 mb-4">評量方式</h4>
+            <ul id="syllabus-evaluation" class="space-y-2 text-sm text-amber-900/80"></ul>
+          </div>
+          <div id="syllabus-outline-card" class="bg-emerald-50 rounded-2xl p-6 border border-emerald-100">
+            <h4 class="text-lg font-extrabold text-emerald-900 mb-4">內容綱要</h4>
+            <p id="syllabus-outline" class="text-sm text-emerald-900/80 leading-relaxed"></p>
+          </div>
+        </div>
+
+        <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100">
+          <h4 class="text-lg font-extrabold text-gray-800 mb-4">教學進度重點</h4>
+          <div id="syllabus-schedule" class="grid md:grid-cols-2 gap-x-8 gap-y-2 text-sm text-gray-600"></div>
+        </div>
+
+        <div id="syllabus-related-card" class="bg-white rounded-2xl p-6 border border-gray-100">
+          <h4 class="text-lg font-extrabold text-gray-800 mb-4">課程關聯地圖</h4>
+          <div class="grid md:grid-cols-3 gap-6">
+            <div>
+              <p class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-3">基礎／核心課程</p>
+              <div id="syllabus-related-foundation" class="flex flex-wrap gap-2"></div>
+            </div>
+            <div>
+              <p class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-3">特色領域模組</p>
+              <div id="syllabus-related-module" class="flex flex-wrap gap-2"></div>
+            </div>
+            <div>
+              <p class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-3">PBL 課程</p>
+              <div id="syllabus-related-pbl" class="flex flex-wrap gap-2"></div>
+            </div>
+          </div>
+        </div>
+
+        <div id="syllabus-resource-card" class="bg-gradient-to-r from-blue-50 to-cyan-50 rounded-2xl p-6 border border-blue-100 hidden">
+          <h4 class="text-lg font-extrabold text-blue-900 mb-4">教學成果產出</h4>
+          <div class="flex flex-wrap gap-3 mb-4">
+            <div id="syllabus-resource-buttons" class="flex flex-wrap gap-3"></div>
+            <button type="button" onclick="toggleStudentWorks()" class="inline-flex items-center gap-2 px-4 py-3 rounded-2xl font-extrabold shadow-sm transition bg-rose-600 text-white hover:bg-rose-700">
+              <i class="fa-solid fa-images"></i>學生成果
+            </button>
+          </div>
+          <div id="syllabus-student-works" class="hidden bg-white/80 rounded-2xl border border-blue-100 p-5">
+            <div class="flex items-center justify-between gap-3 mb-4">
+              <div>
+                <h5 class="text-base font-extrabold text-slate-800">學生成果展示區</h5>
+                <p class="text-sm text-slate-500">之後可放入學生照片、簡報照片、專題展示圖、競賽畫面等資料。</p>
+              </div>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              <div class="bg-slate-50 rounded-2xl border border-slate-200 overflow-hidden">
+                <img src="https://picsum.photos/seed/student-work-1/640/420" alt="學生成果示意圖 1" class="w-full h-40 object-cover">
+                <div class="p-4">
+                  <p class="font-bold text-slate-800">學生實作照片</p>
+                  <p class="text-sm text-slate-500">可替換為機台操作、實作過程或展示照片。</p>
+                </div>
+              </div>
+              <div class="bg-slate-50 rounded-2xl border border-slate-200 overflow-hidden">
+                <img src="https://picsum.photos/seed/student-work-2/640/420" alt="學生成果示意圖 2" class="w-full h-40 object-cover">
+                <div class="p-4">
+                  <p class="font-bold text-slate-800">簡報照片</p>
+                  <p class="text-sm text-slate-500">可替換為期中、期末簡報或成果發表照片。</p>
+                </div>
+              </div>
+              <div class="bg-slate-50 rounded-2xl border border-slate-200 overflow-hidden">
+                <img src="https://picsum.photos/seed/student-work-3/640/420" alt="學生成果示意圖 3" class="w-full h-40 object-cover">
+                <div class="p-4">
+                  <p class="font-bold text-slate-800">專題成果展示</p>
+                  <p class="text-sm text-slate-500">可替換為作品實體、海報或競賽成果照片。</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  const themeMap = {
+    green: {
+      header: ['bg-green-600'],
+      attrCard: ['bg-blue-50', 'border-blue-100'],
+      evalCard: ['bg-amber-50', 'border-amber-100'],
+      outlineCard: ['bg-emerald-50', 'border-emerald-100']
+    },
+    blue: {
+      header: ['bg-blue-600'],
+      attrCard: ['bg-cyan-50', 'border-cyan-100'],
+      evalCard: ['bg-indigo-50', 'border-indigo-100'],
+      outlineCard: ['bg-sky-50', 'border-sky-100']
+    },
+    pink: {
+      header: ['bg-pink-600'],
+      attrCard: ['bg-pink-50', 'border-pink-100'],
+      evalCard: ['bg-rose-50', 'border-rose-100'],
+      outlineCard: ['bg-fuchsia-50', 'border-fuchsia-100']
+    },
+    slate: {
+      header: ['bg-slate-700'],
+      attrCard: ['bg-slate-50', 'border-slate-200'],
+      evalCard: ['bg-zinc-50', 'border-zinc-200'],
+      outlineCard: ['bg-stone-50', 'border-stone-200']
+    }
+  };
+
+  function listHtml(items) {
+    return (items || []).map(item => `<li>• ${item}</li>`).join('');
+  }
+
+  function chipHtml(items, tone = 'slate') {
+    const toneMap = {
+      green: 'bg-green-50 text-green-700 border-green-200',
+      blue: 'bg-blue-50 text-blue-700 border-blue-200',
+      pink: 'bg-pink-50 text-pink-700 border-pink-200',
+      slate: 'bg-slate-50 text-slate-700 border-slate-200'
+    };
+    const chipClass = toneMap[tone] || toneMap.slate;
+    if (!items || !items.length) return '<span class="text-sm text-gray-400">尚未設定</span>';
+    return items.map(item => `<span class="inline-flex items-center px-3 py-1.5 rounded-full border text-sm font-bold ${chipClass}">${item}</span>`).join('');
+  }
+
+  function resourceButtonHtml(resource) {
+    if (!resource) return '';
+    const baseClass = 'inline-flex items-center gap-2 px-4 py-3 rounded-2xl font-extrabold shadow-sm transition';
+    if (resource.type === 'page') {
+      return `<button type="button" onclick="navigateFromSyllabus('${resource.target}')" class="${baseClass} bg-blue-600 text-white hover:bg-blue-700"><i class="${resource.icon || 'fa-solid fa-arrow-up-right-from-square'}"></i>${resource.label}</button>`;
+    }
+    return `<a href="${resource.target || '#'}" target="_blank" rel="noopener noreferrer" class="${baseClass} bg-white text-blue-700 border border-blue-200 hover:bg-blue-50"><i class="${resource.icon || 'fa-solid fa-link'}"></i>${resource.label}</a>`;
+  }
+
+  function setTheme(themeKey) {
+    const theme = themeMap[themeKey] || themeMap.green;
+    const header = document.getElementById('syllabus-header');
+    const attrCard = document.getElementById('syllabus-attr-card');
+    const evalCard = document.getElementById('syllabus-eval-card');
+    const outlineCard = document.getElementById('syllabus-outline-card');
+    if (header) header.className = `text-white px-8 py-6 ${theme.header.join(' ')}`;
+    if (attrCard) attrCard.className = `rounded-2xl p-6 border ${theme.attrCard.join(' ')}`;
+    if (evalCard) evalCard.className = `rounded-2xl p-6 border ${theme.evalCard.join(' ')}`;
+    if (outlineCard) outlineCard.className = `rounded-2xl p-6 border ${theme.outlineCard.join(' ')}`;
+  }
+
+  function renderSyllabus(key) {
+    const data = window.syllabusData?.[key] || window.syllabusData?.intro_comprehensive;
+    if (!data) return;
+
+    setTheme(data.theme);
+    document.getElementById('syllabus-title').textContent = data.title || '';
+    document.getElementById('syllabus-subtitle').textContent = data.subtitle || '';
+    document.getElementById('syllabus-basic').innerHTML = (data.basic || []).map(([label, value]) => `<p><span class="font-bold text-gray-800">${label}：</span>${value}</p>`).join('');
+    document.getElementById('syllabus-attributes').innerHTML = (data.attributes || []).map(item => `<p>• ${item}</p>`).join('');
+    document.getElementById('syllabus-obj1-title').textContent = data.objectiveTitle1 || '重點一';
+    document.getElementById('syllabus-obj1').innerHTML = listHtml(data.objectives1 || []);
+    document.getElementById('syllabus-obj2-title').textContent = data.objectiveTitle2 || '重點二';
+    document.getElementById('syllabus-obj2').innerHTML = listHtml(data.objectives2 || []);
+    document.getElementById('syllabus-evaluation').innerHTML = listHtml(data.evaluation || []);
+    document.getElementById('syllabus-outline').textContent = data.outline || '';
+    document.getElementById('syllabus-schedule').innerHTML = (data.schedule || []).map(item => `<div>• ${item}</div>`).join('');
+
+    const related = data.relations || {};
+    document.getElementById('syllabus-related-foundation').innerHTML = chipHtml(related.foundation, 'green');
+    document.getElementById('syllabus-related-module').innerHTML = chipHtml(related.module, 'blue');
+    document.getElementById('syllabus-related-pbl').innerHTML = chipHtml(related.pbl, 'pink');
+
+    const resourceCard = document.getElementById('syllabus-resource-card');
+    const resourceButtons = document.getElementById('syllabus-resource-buttons');
+    const resources = data.resources || [];
+    const studentWorks = document.getElementById('syllabus-student-works');
+    if (studentWorks) studentWorks.classList.add('hidden');
+    if (resources.length) {
+      resourceCard.classList.remove('hidden');
+      resourceButtons.innerHTML = resources.map(resourceButtonHtml).join('');
+    } else {
+      resourceCard.classList.add('hidden');
+      resourceButtons.innerHTML = '';
+    }
+  }
+
+  window.toggleStudentWorks = function () {
+    const works = document.getElementById('syllabus-student-works');
+    if (!works) return;
+    works.classList.toggle('hidden');
+  };
+
+  window.navigateFromSyllabus = function (targetPage) {
+    closeSyllabus();
+    if (typeof showPage === 'function') {
+      showPage(targetPage);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
+  function closeSyllabus() {
+    const modal = document.getElementById('syllabus-modal');
+    if (!modal) return;
+    modal.classList.add('hidden');
+    document.body.classList.remove('overflow-hidden');
+    const works = document.getElementById('syllabus-student-works');
+    if (works) works.classList.add('hidden');
+  }
+
+  window.openSyllabus = function (key = 'intro_comprehensive') {
+    renderSyllabus(key);
+    const modal = document.getElementById('syllabus-modal');
+    if (!modal) return;
+    modal.classList.remove('hidden');
+    document.body.classList.add('overflow-hidden');
+  };
+  window.syllabusData = syllabusData;
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById('syllabus-modal');
+    const closeBtn = document.getElementById('syllabus-modal-close');
+    if (!modal || !closeBtn) return;
+
+    closeBtn.addEventListener('click', closeSyllabus);
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal || e.target.classList.contains('bg-slate-950/75')) closeSyllabus();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeSyllabus();
+    });
+  });
+})();
+</script>
+
+
 </body>
 </html>
