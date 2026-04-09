@@ -1958,7 +1958,7 @@ if (window.lucide && typeof window.lucide.createIcons === "function") {
     2: {
       title: "特色領域模組",
       badge: "Level 2: Module",
-      color: "bg-orange-500",
+      color: "bg-blue-600",
       desc: "特色領域模組共 2 門課，依圖片橘色區塊整合成『精密加工技術』與『智慧製造技術』兩門模組課程。",
       courses: [
         {
@@ -1986,7 +1986,7 @@ if (window.lucide && typeof window.lucide.createIcons === "function") {
     3: {
       title: "PBL 總整課程",
       badge: "Level 3: PBL",
-      color: "bg-pink-600",
+      color: "bg-orange-500",
       desc: "PBL 總整課程共 2 門課，依圖片粉紅色區塊設計，承接特色領域模組並以實作與系統整合為核心。",
       courses: [
         {
@@ -2025,10 +2025,10 @@ if (window.lucide && typeof window.lucide.createIcons === "function") {
         ${data.courses.map(c => {
           const clickable = !!c.syllabusKey;
           const modulesHtml = (c.modules || []).map(m => `
-            <div class="bg-white rounded-2xl border border-orange-100 p-4">
+            <div class="bg-white rounded-2xl border ${lvl === 2 ? 'border-blue-100' : 'border-orange-100'} p-4">
               <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
                 <div class="flex items-center gap-3">
-                  <span class="inline-flex shrink-0 px-3 py-1 rounded-full bg-orange-500 text-white text-xs font-extrabold">${m.hours || ''}</span>
+                  <span class="inline-flex shrink-0 px-3 py-1 rounded-full ${lvl === 2 ? 'bg-blue-600' : 'bg-orange-500'} text-white text-xs font-extrabold">${m.hours || ''}</span>
                   <button ${m.syllabusKey ? `onclick="openSyllabus('${m.syllabusKey}')"` : 'type="button"'} class="text-left font-extrabold text-gray-800 hover:text-blue-700 transition">${m.name}</button>
                 </div>
                 ${m.resourceButtons ? `
@@ -2042,7 +2042,7 @@ if (window.lucide && typeof window.lucide.createIcons === "function") {
           `).join('');
 
           return `
-            <div class="rounded-[2rem] border ${lvl === 3 ? 'border-pink-100 bg-pink-50/60' : lvl === 2 ? 'border-orange-100 bg-orange-50/50' : 'border-gray-100 bg-gray-50'} p-5 shadow-sm">
+            <div class="rounded-[2rem] border ${lvl === 3 ? 'border-orange-100 bg-orange-50/60' : lvl === 2 ? 'border-blue-100 bg-blue-50/50' : 'border-gray-100 bg-gray-50'} p-5 shadow-sm">
               <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-3">
                 <div>
                   <div class="flex items-center gap-3 mb-2">
@@ -2051,7 +2051,7 @@ if (window.lucide && typeof window.lucide.createIcons === "function") {
                   </div>
                   ${c.note ? `<p class="text-sm text-gray-500 font-semibold">${c.note}</p>` : ''}
                 </div>
-                ${clickable ? `<button onclick="openSyllabus('${c.syllabusKey}')" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl ${lvl === 3 ? 'bg-pink-600 hover:bg-pink-700' : lvl === 2 ? 'bg-orange-500 hover:bg-orange-600' : 'bg-green-600 hover:bg-green-700'} text-white text-sm font-extrabold transition"><i class="fa-solid fa-book-open"></i>查看課綱</button>` : ''}
+                ${clickable ? `<button onclick="openSyllabus('${c.syllabusKey}')" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl ${lvl === 3 ? 'bg-orange-500 hover:bg-orange-600' : lvl === 2 ? 'bg-blue-600 hover:bg-blue-700' : 'bg-green-600 hover:bg-green-700'} text-white text-sm font-extrabold transition"><i class="fa-solid fa-book-open"></i>查看課綱</button>` : ''}
               </div>
               ${modulesHtml ? `<div class="space-y-3 mt-4">${modulesHtml}</div>` : ''}
             </div>
