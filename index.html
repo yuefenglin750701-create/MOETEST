@@ -58,7 +58,38 @@
         .project-chip { display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.4rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 700; }
         .project-modal-backdrop { background: rgba(15, 23, 42, 0.72); backdrop-filter: blur(6px); }
         .project-hidden { display: none !important; }
+
+        .lab-modal-backdrop { background: rgba(15, 23, 42, 0.72); backdrop-filter: blur(6px); }
+        .lab-detail-scroll::-webkit-scrollbar { width: 8px; }
+        .lab-detail-scroll::-webkit-scrollbar-thumb { background: #94a3b8; border-radius: 9999px; }
         
+
+        .uniform-action-row { display:flex; flex-wrap:wrap; gap:0.75rem; align-items:center; }
+        .uniform-btn {
+            display:inline-flex; align-items:center; justify-content:center; gap:0.5rem;
+            min-height:44px; padding:0.75rem 1rem; border-radius:0.875rem;
+            font-size:0.875rem; font-weight:800; transition:all 0.25s ease;
+            line-height:1; white-space:nowrap;
+        }
+        .uniform-btn:hover { transform:translateY(-2px); box-shadow:0 12px 24px rgba(15,23,42,0.12); }
+        .uniform-btn-primary-orange { background:#f97316; color:#fff; }
+        .uniform-btn-primary-orange:hover { background:#ea580c; }
+        .uniform-btn-primary-blue { background:#2563eb; color:#fff; }
+        .uniform-btn-primary-blue:hover { background:#1d4ed8; }
+        .uniform-btn-primary-green { background:#16a34a; color:#fff; }
+        .uniform-btn-primary-green:hover { background:#15803d; }
+        .uniform-btn-outline {
+            background:#fff; color:#1d4ed8; border:1px solid #bfdbfe;
+        }
+        .uniform-btn-outline:hover { background:#eff6ff; }
+        .pyramid-course-card, .pyramid-module-card, .page-lab-block {
+            transition:transform 0.28s ease, box-shadow 0.28s ease;
+        }
+        .pyramid-course-card:hover, .pyramid-module-card:hover, .page-lab-block:hover {
+            transform:translateY(-4px);
+            box-shadow:0 16px 32px rgba(15,23,42,0.10);
+        }
+
     </style>
 </head>
 <body class="bg-gray-50 flex flex-col min-h-screen text-gray-800 overflow-x-hidden">
@@ -800,13 +831,8 @@
             </div>
 
             <div class="container mx-auto px-4 py-20 max-w-6xl space-y-32">
-                <div class="grid md:grid-cols-3 gap-6">
-                    <div class="bg-white rounded-[2rem] p-7 border border-gray-100 shadow-sm"><h3 class="text-xl font-extrabold text-gray-800 mb-3">多軸加工實驗室</h3><p class="text-gray-500 text-sm leading-relaxed">支援五軸加工、加工參數驗證與工具機相關實作課程。</p></div>
-                    <div class="bg-white rounded-[2rem] p-7 border border-gray-100 shadow-sm"><h3 class="text-xl font-extrabold text-gray-800 mb-3">智慧監控設備</h3><p class="text-gray-500 text-sm leading-relaxed">整合感測器、資料擷取與製程監測，對應感測器聯網與數據分析課程。</p></div>
-                    <div class="bg-white rounded-[2rem] p-7 border border-gray-100 shadow-sm"><h3 class="text-xl font-extrabold text-gray-800 mb-3">量測與分析場域</h3><p class="text-gray-500 text-sm leading-relaxed">用於精度量測、誤差分析與影像辨識應用，支援特色模組與專題成果驗證。</p></div>
-                </div>
                 <!-- Field 1 -->
-                <div class="flex flex-col lg:flex-row gap-16 items-center">
+                <div class="page-lab-block flex flex-col lg:flex-row gap-16 items-center">
                     <div class="lg:w-1/2">
                         <div class="bg-gray-200 rounded-[3rem] shadow-2xl h-80 flex flex-col items-center justify-center relative overflow-hidden group">
                             <span class="text-gray-400 font-bold italic z-10">[場域照片/介紹影片 準備中]</span>
@@ -815,19 +841,20 @@
                     </div>
                     <div class="lg:w-1/2 text-left">
                         <span class="inline-block px-4 py-1 bg-orange-100 text-orange-700 text-xs font-bold rounded-full mb-4 uppercase tracking-widest">機械工程系</span>
-                        <h2 class="text-4xl font-extrabold mb-8 flex items-center gap-4 text-gray-800"><i data-lucide="wrench" class="text-orange-600"></i>多功能實習工廠</h2>
+                        <h2 class="text-4xl font-extrabold mb-8 flex items-center gap-4 text-gray-800"><i data-lucide="wrench" class="text-orange-600"></i>多軸加工實驗室</h2>
                         <p class="text-gray-600 leading-relaxed text-lg mb-8 italic">
                             結合本校創新研發大樓與機械系實作場域，支援工具機人才訓練、產學合作與專題實作。
                         </p>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
                             <div class="bg-white p-5 rounded-2xl border-l-4 border-orange-500 shadow-sm font-bold text-gray-700 flex items-center gap-2"><i class="fa-solid fa-circle-check text-orange-400"></i>工具機實作與加工訓練</div>
                             <div class="bg-white p-5 rounded-2xl border-l-4 border-orange-500 shadow-sm font-bold text-gray-700 flex items-center gap-2"><i class="fa-solid fa-circle-check text-orange-400"></i>企業專題與實作課程支援</div>
                         </div>
+                        <button type="button" onclick="openLabDetail('multi_axis')" class="inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-orange-500 text-white font-extrabold hover:bg-orange-600 transition"><i class="fa-solid fa-circle-info"></i>實驗室詳細資訊</button>
                     </div>
                 </div>
 
                 <!-- Field 2 -->
-                <div class="flex flex-col lg:flex-row-reverse gap-16 items-center">
+                <div class="page-lab-block flex flex-col lg:flex-row-reverse gap-16 items-center">
                     <div class="lg:w-1/2">
                         <div class="bg-gray-200 rounded-[3rem] shadow-2xl h-80 flex flex-col items-center justify-center relative overflow-hidden group">
                             <span class="text-gray-400 font-bold italic z-10">[場域照片/介紹影片 準備中]</span>
@@ -836,14 +863,15 @@
                     </div>
                     <div class="lg:w-1/2 text-left">
                         <span class="inline-block px-4 py-1 bg-indigo-100 text-indigo-700 text-xs font-bold rounded-full mb-4 uppercase tracking-widest">智慧自動化工程系</span>
-                        <h2 class="text-4xl font-extrabold mb-8 flex items-center gap-4 text-gray-800"><i data-lucide="cpu" class="text-indigo-600"></i>工具機產業學院大樓</h2>
+                        <h2 class="text-4xl font-extrabold mb-8 flex items-center gap-4 text-gray-800"><i data-lucide="cpu" class="text-indigo-600"></i>智慧多軸複合技術實驗室</h2>
                         <p class="text-gray-600 leading-relaxed text-lg mb-8 italic">
                             整合多軸加工、量測與關鍵組件訓練空間，作為長期培育優秀專業人才與精進實務技術基地。
                         </p>
-                        <div class="space-y-4">
+                        <div class="space-y-4 mb-6">
                             <div class="bg-white p-5 rounded-2xl border-l-4 border-indigo-500 shadow-sm font-bold text-gray-700 flex items-center gap-3"><i class="fa-solid fa-code text-indigo-400"></i> 多軸複合技術與加工訓練</div>
                             <div class="bg-white p-5 rounded-2xl border-l-4 border-indigo-500 shadow-sm font-bold text-gray-700 flex items-center gap-3"><i class="fa-solid fa-brain text-indigo-400"></i> 量測與關鍵組件檢測支援</div>
                         </div>
+                        <button type="button" onclick="openLabDetail('smart_multi_axis')" class="inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-indigo-600 text-white font-extrabold hover:bg-indigo-700 transition"><i class="fa-solid fa-circle-info"></i>實驗室詳細資訊</button>
                     </div>
                 </div>
 
@@ -1496,7 +1524,20 @@
             </div>
         </div>
 
-    </main>
+    
+    <div id="lab-detail-modal" class="hidden fixed inset-0 z-[100002]">
+        <div class="absolute inset-0 lab-modal-backdrop"></div>
+        <div class="relative min-h-screen px-4 py-8 flex items-center justify-center">
+            <div class="w-full max-w-6xl bg-white rounded-[2rem] overflow-hidden shadow-2xl relative">
+                <button id="lab-detail-close" type="button" onclick="closeLabDetail()" class="absolute top-4 right-4 z-20 w-11 h-11 rounded-full bg-white/90 text-gray-700 hover:bg-gray-100 shadow-lg transition">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+                <div id="lab-detail-body" class="lab-detail-scroll max-h-[88vh] overflow-y-auto"></div>
+            </div>
+        </div>
+    </div>
+
+</main>
 
     <!-- Footer (RESTORED MASTER FOOTER) -->
     <footer class="bg-gray-900 text-gray-400 py-16 mt-auto">
@@ -1946,10 +1987,10 @@ if (window.lucide && typeof window.lucide.createIcons === "function") {
       color: "bg-green-600",
       desc: "依照課程培育金字塔圖，先建立工具機、AI、程式設計、品質工程、數值分析與虛實整合的核心基礎。",
       courses: [
-        { name: "五軸加工技術", note: "工具機", highlight: true, syllabusKey: "five_axis" },
+        { name: "五軸加工技術", note: "工具機", highlight: true, syllabusKey: "five_axis", labKey: "multi_axis" },
         { name: "AI智慧概論", note: "人工智慧", syllabusKey: "intro_intelligent_machinery" },
         { name: "Python程式設計", note: "計算機程式 Python", syllabusKey: "python_programming" },
-        { name: "工具機製造品質工程", note: "可靠度工程", syllabusKey: "machine_tool_assembly" },
+        { name: "工具機製造品質工程", note: "可靠度工程", syllabusKey: "machine_tool_assembly", labKey: "multi_axis" },
         { name: "程式語言", note: "數值分析", syllabusKey: "programming_language" },
         { name: "智慧機械概論", note: "虛實整合", syllabusKey: "intro_intelligent_machinery" }
       ],
@@ -1959,12 +2000,13 @@ if (window.lucide && typeof window.lucide.createIcons === "function") {
       title: "特色領域模組",
       badge: "Level 2: Module",
       color: "bg-blue-600",
-      desc: "特色領域模組共 2 門課，依圖片橘色區塊整合成『精密加工技術』與『智慧製造技術』兩門模組課程。",
+      desc: "特色領域模組共 2 門課，依圖片藍色區塊整合成『精密加工技術』與『智慧製造技術』兩門模組課程。",
       courses: [
         {
           name: "精密加工技術",
           note: "下學期｜3 個模組",
           syllabusKey: "module_precision",
+          labKey: "multi_axis",
           modules: [
             { name: "五軸加工", hours: "18小時", syllabusKey: "five_axis", resourceButtons: true },
             { name: "工具機精度量測", hours: "12小時", syllabusKey: "precision_machining", resourceButtons: true },
@@ -1975,6 +2017,7 @@ if (window.lucide && typeof window.lucide.createIcons === "function") {
           name: "智慧製造技術",
           note: "下學期｜2 個模組",
           syllabusKey: "module_smart_mfg",
+          labKey: "smart_multi_axis",
           modules: [
             { name: "Python 應用於訊號處理／影像辨識", hours: "12小時", syllabusKey: "python_programming", resourceButtons: true },
             { name: "訊號處理與感測原理", hours: "12小時", syllabusKey: "smart_connectivity", resourceButtons: true }
@@ -1987,17 +2030,19 @@ if (window.lucide && typeof window.lucide.createIcons === "function") {
       title: "PBL 總整課程",
       badge: "Level 3: PBL",
       color: "bg-orange-500",
-      desc: "PBL 總整課程共 2 門課，依圖片粉紅色區塊設計，承接特色領域模組並以實作與系統整合為核心。",
+      desc: "PBL 總整課程共 2 門課，依圖片橘色區塊設計，承接特色領域模組並以實作與系統整合為核心。",
       courses: [
         {
           name: "CPS導向多軸工具機之智慧刀具磨耗預測與加工監控系統設計",
           note: "下學期｜PBL課程",
-          syllabusKey: "pbl_cps_toolwear"
+          syllabusKey: "pbl_cps_toolwear",
+          labKey: null
         },
         {
           name: "感測器聯網與數據分析",
           note: "下學期｜PBL課程",
-          syllabusKey: "smart_connectivity"
+          syllabusKey: "smart_connectivity",
+          labKey: "smart_multi_axis"
         }
       ],
       goal: "以企業題目、跨域模組與實作整合為導向，完成具展示性、分析性與系統整合能力的 PBL 總整成果。"
@@ -2025,7 +2070,7 @@ if (window.lucide && typeof window.lucide.createIcons === "function") {
         ${data.courses.map(c => {
           const clickable = !!c.syllabusKey;
           const modulesHtml = (c.modules || []).map(m => `
-            <div class="bg-white rounded-2xl border ${lvl === 2 ? 'border-blue-100' : 'border-orange-100'} p-4">
+            <div class="pyramid-module-card bg-white rounded-2xl border ${lvl === 2 ? 'border-blue-100' : 'border-orange-100'} p-4">
               <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
                 <div class="flex items-center gap-3">
                   <span class="inline-flex shrink-0 px-3 py-1 rounded-full ${lvl === 2 ? 'bg-blue-600' : 'bg-orange-500'} text-white text-xs font-extrabold">${m.hours || ''}</span>
@@ -2033,8 +2078,8 @@ if (window.lucide && typeof window.lucide.createIcons === "function") {
                 </div>
                 ${m.resourceButtons ? `
                   <div class="flex flex-wrap gap-2">
-                    <button type="button" onclick="navigateFromSyllabus('videos')" class="inline-flex items-center gap-2 px-3 py-2 rounded-xl bg-blue-600 text-white text-xs font-extrabold hover:bg-blue-700 transition"><i class="fa-solid fa-circle-play"></i>教學影片</button>
-                    <button type="button" onclick="navigateFromSyllabus('resources')" class="inline-flex items-center gap-2 px-3 py-2 rounded-xl bg-white border border-blue-200 text-blue-700 text-xs font-extrabold hover:bg-blue-50 transition"><i class="fa-solid fa-cloud-arrow-down"></i>雲端教材</button>
+                    <button type="button" onclick="navigateFromSyllabus('videos')" class="uniform-btn uniform-btn-primary-blue text-xs"><i class="fa-solid fa-circle-play"></i>教學影片</button>
+                    <button type="button" onclick="navigateFromSyllabus('resources')" class="uniform-btn uniform-btn-outline text-xs"><i class="fa-solid fa-cloud-arrow-down"></i>雲端教材</button>
                   </div>
                 ` : ''}
               </div>
@@ -2042,17 +2087,19 @@ if (window.lucide && typeof window.lucide.createIcons === "function") {
           `).join('');
 
           return `
-            <div class="rounded-[2rem] border ${lvl === 3 ? 'border-orange-100 bg-orange-50/60' : lvl === 2 ? 'border-blue-100 bg-blue-50/50' : 'border-gray-100 bg-gray-50'} p-5 shadow-sm">
-              <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-3">
-                <div>
-                  <div class="flex items-center gap-3 mb-2">
-                    <div class="w-3 h-3 rounded-full ${data.color}"></div>
-                    <h4 class="text-lg font-extrabold text-gray-800">${c.name}</h4>
-                  </div>
-                  ${c.note ? `<p class="text-sm text-gray-500 font-semibold">${c.note}</p>` : ''}
+            <div class="pyramid-course-card rounded-[2rem] border ${lvl === 3 ? 'border-orange-100 bg-orange-50/60' : lvl === 2 ? 'border-blue-100 bg-blue-50/50' : 'border-gray-100 bg-gray-50'} p-5 shadow-sm">
+              <div class="mb-3">
+                <div class="flex items-center gap-3 mb-2">
+                  <div class="w-3 h-3 rounded-full ${data.color}"></div>
+                  <h4 class="text-lg font-extrabold text-gray-800">${c.name}</h4>
                 </div>
-                ${clickable ? `<button onclick="openSyllabus('${c.syllabusKey}')" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl ${lvl === 3 ? 'bg-orange-500 hover:bg-orange-600' : lvl === 2 ? 'bg-blue-600 hover:bg-blue-700' : 'bg-green-600 hover:bg-green-700'} text-white text-sm font-extrabold transition"><i class="fa-solid fa-book-open"></i>查看課綱</button>` : ''}
+                ${c.note ? `<p class="text-sm text-gray-500 font-semibold">${c.note}</p>` : ''}
               </div>
+              ${(clickable || c.labKey) ? `
+              <div class="uniform-action-row mt-4">
+                ${clickable ? `<button onclick="openSyllabus('${c.syllabusKey}')" class="uniform-btn ${lvl === 3 ? 'uniform-btn-primary-orange' : lvl === 2 ? 'uniform-btn-primary-blue' : 'uniform-btn-primary-green'}"><i class="fa-solid fa-book-open"></i>查看課綱</button>` : ''}
+                ${c.labKey ? `<button type="button" onclick="openLabDetailFromPyramid('${c.labKey}')" class="uniform-btn uniform-btn-outline"><i class="fa-solid fa-flask-vial"></i>特色實驗室</button>` : ''}
+              </div>` : ''}
               ${modulesHtml ? `<div class="space-y-3 mt-4">${modulesHtml}</div>` : ''}
             </div>
           `;
@@ -2515,6 +2562,168 @@ window.addEventListener("DOMContentLoaded", () => {
 })();
 </script>
 
+
+
+<script>
+const labDetails = {
+  multi_axis: {
+    title: "多軸加工實驗室",
+    badge: "五軸加工 × 機械工程系",
+    color: "orange",
+    summary: "整合傳統加工設備與先進五軸同動機、CNC 程式模擬器、3D-CAD/CAM 教學與 NC 模擬平台，讓學生能在加工前先行模擬驗證，再接軌實機操作，達到虛實整合教學效果。",
+    teacher: [
+      "蘇怡甄",
+      "講師級專業人員",
+      "電話：04-23924505 #7170",
+      "E-Mail：ejsu@ncut.edu.tw"
+    ],
+    manpower: ["碩士生 10 名"],
+    goals: [
+      "建置多軸加工與模擬教學平台：整合五軸同動加工機、CNC 模擬器與 CAD/CAM 軟體，支援「五軸加工技術」「工具機導論」等課程，訓練學生熟悉加工路徑設計、模擬驗證與基本操作流程。",
+      "支援 PBL 專題與跨課程整合：以實驗室為據點，協助學生進行 CNC 程式路徑優化、五軸加工件製作等專題實作，提供設備操作指導、模擬驗證與刀具資源。",
+      "強化學生加工模擬與問題診斷能力：由研究生與助教帶領，指導學生運用模擬工具進行路徑分析、碰撞預測與加工誤差排除，建立加工模擬思維與實務操作經驗。"
+    ],
+    equipment: [
+      "電動滾圓機",
+      "高速車床 7 台",
+      "平面磨床",
+      "立式銑床 2 台",
+      "砲塔型立式銑床",
+      "線床",
+      "CNC 綜合加工切削中心",
+      "立式綜合切削中心機",
+      "龍門式空壓鉚槍",
+      "智慧型 CNC 程式模擬器 5 台",
+      "NC 程式設計模擬器",
+      "迷你型刀桿燒結機",
+      "立式加工中心機控制器",
+      "角度倍力虎鉗 HPAC-20",
+      "銑床 NST#40 主軸組",
+      "CNC 綜合加工切削中心",
+      "立式綜合切削中心機",
+      "沖孔工具座",
+      "尖嘴壓縮成形工具",
+      "雷射校刀器",
+      "五軸同動綜合加工機",
+      "電離子焊接產生器",
+      "變頻式直流脈波氬銲機",
+      "CNC 接觸式探針機上檢測器",
+      "全功能防護防水攝影機",
+      "數字型光學顯示尺",
+      "XZ 軸傳動系統伺服控制",
+      "多軸控制資料記錄系統",
+      "NC 程式設計模擬器",
+      "刀具儲存櫃",
+      "MasterCAD 3D-CAD/CAM",
+      "CNC 模擬軟體"
+    ]
+  },
+  smart_multi_axis: {
+    title: "智慧多軸複合技術實驗室",
+    badge: "Python／訊號處理／影像辨識",
+    color: "indigo",
+    summary: "強調 Python 程式設計與數據視覺化應用，適合零基礎學生入門程式實作。可支援加工參數分析、IoT 資料整合學習，並為後續與通識課程與跨域學習鋪路。",
+    teacher: [
+      "彭達仁",
+      "助理教授兼研發處產學合作組組長",
+      "電話：04-23924505 #8057",
+      "E-Mail：TJPeng@ncut.edu.tw"
+    ],
+    manpower: ["碩士生 3 名"],
+    goals: [
+      "建立通識導向程式實作環境：配合 Python 雲基礎應用課程，導入 IoT 模擬裝置與 Python 開發環境，讓學生可在無需資工背景下完成資料分析初探。",
+      "設計模組化教學與操作範本：由碩士生規劃多套可重複使用的教學案例，涵蓋資料收集、視覺化呈現與自動化報表輸出等技能。",
+      "推動程式設計與機械知識的橋接教學：鼓勵非資訊背景學生從加工流程與參數分析切入，導入 Python 邏輯概念、資料結構與視覺化呈現，降低學習門檻並強化學用合一。"
+    ],
+    equipment: [
+      "Python 開發平台（PC 端）20 台，安裝 Jupyter Notebook 與相關資料視覺化套件（matplotlib、seaborn）",
+      "加工機模擬控制平台 2 組，搭接實際感測（進給率、主軸轉速、震動值）",
+      "工業感測模擬器（提供 JSON／CSV 格式輸出）"
+    ]
+  }
+};
+
+function renderLabDetail(detail){
+  const accent = detail.color === 'orange'
+    ? {
+        hero: 'from-orange-500 to-amber-500',
+        chip: 'bg-orange-50 text-orange-700',
+        border: 'border-orange-100',
+        btn: 'bg-orange-500 hover:bg-orange-600'
+      }
+    : {
+        hero: 'from-indigo-600 to-blue-600',
+        chip: 'bg-indigo-50 text-indigo-700',
+        border: 'border-indigo-100',
+        btn: 'bg-indigo-600 hover:bg-indigo-700'
+      };
+
+  return `
+    <div class="bg-gradient-to-r ${accent.hero} text-white px-8 md:px-10 py-8">
+      <span class="inline-flex px-3 py-1 rounded-full bg-white/20 border border-white/25 text-xs font-extrabold mb-4">${detail.badge}</span>
+      <h3 class="text-3xl md:text-4xl font-extrabold mb-3">${detail.title}</h3>
+      <p class="text-white/90 leading-relaxed max-w-4xl">${detail.summary}</p>
+    </div>
+    <div class="p-8 md:p-10 grid grid-cols-1 xl:grid-cols-2 gap-8">
+      <div class="space-y-6">
+        <div class="bg-white rounded-[1.75rem] border ${accent.border} p-6 shadow-sm">
+          <h4 class="text-lg font-extrabold text-gray-800 mb-4">實驗室負責教師</h4>
+          <div class="space-y-2 text-gray-600 font-medium">
+            ${detail.teacher.map(item => `<div>${item}</div>`).join('')}
+          </div>
+        </div>
+        <div class="bg-white rounded-[1.75rem] border ${accent.border} p-6 shadow-sm">
+          <h4 class="text-lg font-extrabold text-gray-800 mb-4">實驗室人力配置</h4>
+          <ul class="space-y-2 text-gray-600 font-medium">
+            ${detail.manpower.map(item => `<li>• ${item}</li>`).join('')}
+          </ul>
+        </div>
+        <div class="bg-white rounded-[1.75rem] border ${accent.border} p-6 shadow-sm">
+          <h4 class="text-lg font-extrabold text-gray-800 mb-4">實驗室短期目標</h4>
+          <ul class="space-y-3 text-gray-600 leading-relaxed">
+            ${detail.goals.map(item => `<li class="flex gap-3"><span class="mt-1 text-blue-600 font-extrabold">•</span><span>${item}</span></li>`).join('')}
+          </ul>
+        </div>
+      </div>
+      <div class="bg-white rounded-[1.75rem] border ${accent.border} p-6 shadow-sm">
+        <div class="flex items-center justify-between gap-4 mb-4">
+          <h4 class="text-lg font-extrabold text-gray-800">實驗室現有設備</h4>
+          <span class="inline-flex px-3 py-1 rounded-full ${accent.chip} text-xs font-extrabold">${detail.equipment.length} 項</span>
+        </div>
+        <div class="grid grid-cols-1 gap-3 text-gray-600">
+          ${detail.equipment.map(item => `<div class="rounded-xl bg-gray-50 border border-gray-100 px-4 py-3 font-medium">${item}</div>`).join('')}
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function openLabDetail(key){
+  const detail = labDetails[key];
+  const modal = document.getElementById('lab-detail-modal');
+  const body = document.getElementById('lab-detail-body');
+  if(!detail || !modal || !body) return;
+  body.innerHTML = renderLabDetail(detail);
+  modal.classList.remove('hidden');
+  document.body.classList.add('overflow-hidden');
+}
+function closeLabDetail(){
+  const modal = document.getElementById('lab-detail-modal');
+  const body = document.getElementById('lab-detail-body');
+  if(modal) modal.classList.add('hidden');
+  if(body) body.innerHTML = '';
+  document.body.classList.remove('overflow-hidden');
+}
+function openLabDetailFromPyramid(key){
+  showPage('labs');
+  setTimeout(() => {
+    openLabDetail(key);
+  }, 120);
+}
+document.addEventListener('keydown', (e) => {
+  if(e.key === 'Escape') closeLabDetail();
+});
+</script>
 
 </body>
 </html>
