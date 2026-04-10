@@ -572,13 +572,13 @@
                         <h2 class="text-3xl font-extrabold text-gray-800 mb-12 flex items-center gap-3"><i class="fa-solid fa-shapes text-blue-600"></i>課程培育金字塔</h2>
                         <svg viewBox="0 0 500 440" class="w-full max-w-lg drop-shadow-2xl">
                             <defs>
-                                <linearGradient id="gT" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#f59e0b"/><stop offset="100%" style="stop-color:#d97706"/></linearGradient>
-                                <linearGradient id="gM" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#3b82f6"/><stop offset="100%" style="stop-color:#2563eb"/></linearGradient>
-                                <linearGradient id="gB" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#10b981"/><stop offset="100%" style="stop-color:#059669"/></linearGradient>
+                                <linearGradient id="gT-home" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#f59e0b"/><stop offset="100%" style="stop-color:#d97706"/></linearGradient>
+                                <linearGradient id="gM-home" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#3b82f6"/><stop offset="100%" style="stop-color:#2563eb"/></linearGradient>
+                                <linearGradient id="gB-home" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#10b981"/><stop offset="100%" style="stop-color:#059669"/></linearGradient>
                             </defs>
-                            <g onclick="updatePyramid(3)"><path id="l3" d="M250,10 L336,160 L164,160 Z" fill="url(#gT)" class="pyramid-layer"/></g>
-                            <g onclick="updatePyramid(2)"><path id="l2" d="M164,165 L336,165 L423,315 L77,315 Z" fill="url(#gM)" class="pyramid-layer active"/></g>
-                            <g onclick="updatePyramid(1)"><path id="l1" d="M77,320 L423,320 L500,453 L0,453 Z" fill="url(#gB)" class="pyramid-layer"/></g>
+                            <g onclick="updatePyramid(3)"><path id="l3-home" data-pyramid-layer="3" d="M250,10 L336,160 L164,160 Z" fill="url(#gT-home)" class="pyramid-layer"/></g>
+                            <g onclick="updatePyramid(2)"><path id="l2-home" data-pyramid-layer="2" d="M164,165 L336,165 L423,315 L77,315 Z" fill="url(#gM-home)" class="pyramid-layer active"/></g>
+                            <g onclick="updatePyramid(1)"><path id="l1-home" data-pyramid-layer="1" d="M77,320 L423,320 L500,453 L0,453 Z" fill="url(#gB-home)" class="pyramid-layer"/></g>
                             <text x="250" y="110" class="pyramid-text">PBL 總整課程</text>
                             <text x="250" y="255" class="pyramid-text">特色領域模組</text>
                             <text x="250" y="400" class="pyramid-text">基礎核心課程</text>
@@ -586,7 +586,7 @@
                         <p class="mt-12 text-gray-400 font-bold italic">點擊金字塔各層級查看詳細規劃</p>
                     </div>
                     <div class="lg:w-1/2">
-                        <div id="pyr-panel" class="bg-white rounded-[3rem] shadow-xl border border-gray-100 overflow-hidden min-h-[550px] relative">
+                        <div id="pyr-panel-home" class="bg-white rounded-[3rem] shadow-xl border border-gray-100 overflow-hidden min-h-[550px] relative">
                             <!-- Injected by JS -->
                         </div>
                     </div>
@@ -1115,13 +1115,13 @@
                         <h2 class="text-3xl font-extrabold text-gray-800 mb-12 flex items-center gap-3"><i class="fa-solid fa-shapes text-blue-600"></i>課程培育金字塔</h2>
                         <svg viewBox="0 0 500 440" class="w-full max-w-lg drop-shadow-2xl">
                             <defs>
-                                <linearGradient id="gT" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#f59e0b"/><stop offset="100%" style="stop-color:#d97706"/></linearGradient>
-                                <linearGradient id="gM" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#3b82f6"/><stop offset="100%" style="stop-color:#2563eb"/></linearGradient>
-                                <linearGradient id="gB" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#10b981"/><stop offset="100%" style="stop-color:#059669"/></linearGradient>
+                                <linearGradient id="gT-highlights" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#f59e0b"/><stop offset="100%" style="stop-color:#d97706"/></linearGradient>
+                                <linearGradient id="gM-highlights" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#3b82f6"/><stop offset="100%" style="stop-color:#2563eb"/></linearGradient>
+                                <linearGradient id="gB-highlights" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#10b981"/><stop offset="100%" style="stop-color:#059669"/></linearGradient>
                             </defs>
-                            <g onclick="updatePyramid(3)"><path id="l3" d="M250,10 L336,160 L164,160 Z" fill="url(#gT)" class="pyramid-layer"/></g>
-                            <g onclick="updatePyramid(2)"><path id="l2" d="M164,165 L336,165 L423,315 L77,315 Z" fill="url(#gM)" class="pyramid-layer active"/></g>
-                            <g onclick="updatePyramid(1)"><path id="l1" d="M77,320 L423,320 L500,453 L0,453 Z" fill="url(#gB)" class="pyramid-layer"/></g>
+                            <g onclick="updatePyramid(3)"><path id="l3-highlights" data-pyramid-layer="3" d="M250,10 L336,160 L164,160 Z" fill="url(#gT-highlights)" class="pyramid-layer"/></g>
+                            <g onclick="updatePyramid(2)"><path id="l2-highlights" data-pyramid-layer="2" d="M164,165 L336,165 L423,315 L77,315 Z" fill="url(#gM-highlights)" class="pyramid-layer active"/></g>
+                            <g onclick="updatePyramid(1)"><path id="l1-highlights" data-pyramid-layer="1" d="M77,320 L423,320 L500,453 L0,453 Z" fill="url(#gB-highlights)" class="pyramid-layer"/></g>
                             <text x="250" y="110" class="pyramid-text">PBL 總整課程</text>
                             <text x="250" y="255" class="pyramid-text">特色領域模組</text>
                             <text x="250" y="400" class="pyramid-text">基礎核心課程</text>
@@ -1129,7 +1129,7 @@
                         <p class="mt-12 text-gray-400 font-bold italic">點擊金字塔各層級查看詳細規劃</p>
                     </div>
                     <div class="lg:w-1/2">
-                        <div id="pyr-panel" class="bg-white rounded-[3rem] shadow-xl border border-gray-100 overflow-hidden min-h-[550px] relative">
+                        <div id="pyr-panel-highlights" class="bg-white rounded-[3rem] shadow-xl border border-gray-100 overflow-hidden min-h-[550px] relative">
                             <!-- Injected by JS -->
                         </div>
                     </div>
@@ -1996,7 +1996,7 @@ if (window.lucide && typeof window.lucide.createIcons === "function") {
       setTimeout(animateStats, 150);
     }
     if (pageId === "highlights" && typeof updatePyramid === "function") {
-      updatePyramid(2);
+      setTimeout(() => updatePyramid(2), 0);
     }
     if (pageId !== "videos" && typeof window.resetVideoGalleryState === "function") {
       window.resetVideoGalleryState();
@@ -2462,11 +2462,10 @@ if (window.lucide && typeof window.lucide.createIcons === "function") {
 
   function updatePyramid(lvl) {
     document.querySelectorAll(".pyramid-layer").forEach(l => l.classList.remove("active"));
-    const layer = document.getElementById("l" + lvl);
-    if (layer) layer.classList.add("active");
+    document.querySelectorAll(`[data-pyramid-layer="${lvl}"]`).forEach(layer => layer.classList.add("active"));
 
     const data = pyramidData[lvl];
-    const panels = document.querySelectorAll('#pyr-panel');
+    const panels = document.querySelectorAll('#pyr-panel-home, #pyr-panel-highlights');
     if (!data || !panels.length) return;
 
     const panelHtml = `
