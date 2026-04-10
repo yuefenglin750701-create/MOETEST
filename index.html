@@ -90,6 +90,248 @@
             box-shadow:0 16px 32px rgba(15,23,42,0.10);
         }
 
+        .nav-select-dropdown {
+            position: relative;
+            padding-bottom: 0.7rem;
+            margin-bottom: -0.7rem;
+        }
+        .nav-select-dropdown::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 100%;
+            height: 0.9rem;
+        }
+        .nav-select-trigger {
+            min-width: auto;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.45rem;
+            padding: 0.75rem 0.2rem;
+            border: none;
+            background: transparent;
+            box-shadow: none;
+            color: #4b5563;
+            font-weight: 800;
+            transition: all 0.22s ease;
+        }
+        .nav-select-trigger:hover,
+        .nav-select-dropdown:hover .nav-select-trigger,
+        .nav-select-dropdown.open .nav-select-trigger {
+            color: #1d4ed8;
+        }
+        .nav-select-trigger i {
+            transition: transform 0.22s ease;
+        }
+        .nav-select-dropdown:hover .nav-select-trigger i,
+        .nav-select-dropdown.open .nav-select-trigger i {
+            transform: rotate(180deg);
+        }
+        .nav-select-menu {
+            position: absolute;
+            top: calc(100% + 0.1rem);
+            left: 50%;
+            min-width: 190px;
+            padding: 0.55rem;
+            border-radius: 1rem;
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 20px 40px rgba(15, 23, 42, 0.16);
+            opacity: 0;
+            pointer-events: none;
+            transform: translateX(-50%) translateY(4px);
+            transition: all 0.22s ease;
+            z-index: 10020;
+        }
+        .nav-select-dropdown:hover .nav-select-menu,
+        .nav-select-dropdown.open .nav-select-menu {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateX(-50%) translateY(0);
+        }
+        .nav-select-item {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            text-align: left;
+            padding: 0.8rem 0.95rem;
+            border-radius: 0.85rem;
+            color: #374151;
+            font-weight: 800;
+            transition: all 0.18s ease;
+        }
+        .nav-select-item:hover {
+            background: #eef4ff;
+            color: #1d4ed8;
+        }
+        .mobile-select-menu {
+            display: grid;
+            grid-template-rows: 0fr;
+            transition: grid-template-rows 0.25s ease;
+        }
+        .mobile-select-menu > * {
+            overflow: hidden;
+        }
+        .mobile-select-dropdown.open .mobile-select-menu {
+            grid-template-rows: 1fr;
+        }
+        .mobile-select-dropdown.open .mobile-select-trigger i {
+            transform: rotate(180deg);
+        }
+        .mobile-select-item {
+            width: 100%;
+            text-align: left;
+            padding: 0.9rem 1.5rem;
+            color: #334155;
+            font-weight: 800;
+            border-top: 1px solid #e5e7eb;
+            transition: all 0.18s ease;
+        }
+        .mobile-select-item:hover {
+            background: #eff6ff;
+            color: #1d4ed8;
+        }
+
+        .lab-carousel {
+            position: relative;
+            isolation: isolate;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        }
+        .lab-carousel-track { position: relative; width: 100%; height: 100%; }
+        .lab-carousel-slide {
+            position: absolute; inset: 0; opacity: 0; pointer-events: none;
+            transition: opacity 0.7s ease, transform 0.9s ease;
+            transform: scale(1.04);
+        }
+        .lab-carousel-slide.active { opacity: 1; pointer-events: auto; transform: scale(1); }
+        .lab-carousel-slide img {
+            width: 100%; height: 100%; object-fit: cover; display: block;
+            transition: transform 0.8s ease;
+        }
+        .lab-carousel:hover .lab-carousel-slide.active img { transform: scale(1.03); }
+        .lab-carousel-overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(180deg, rgba(15,23,42,0.12) 0%, rgba(15,23,42,0.10) 38%, rgba(15,23,42,0.62) 100%);
+            z-index: 3; pointer-events: none;
+        }
+        .lab-carousel-glow {
+            position: absolute; inset: auto auto -22% -10%;
+            width: 56%; height: 50%; border-radius: 9999px;
+            background: radial-gradient(circle, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0) 72%);
+            z-index: 2; pointer-events: none;
+        }
+        .lab-carousel-topbar {
+            position: absolute; top: 1rem; left: 1rem; right: 1rem; z-index: 5;
+            display: flex; align-items: center; justify-content: space-between; gap: 0.75rem;
+        }
+        .lab-carousel-badge,
+        .lab-carousel-count,
+        .lab-carousel-hint {
+            display: inline-flex; align-items: center; gap: 0.45rem;
+            padding: 0.5rem 0.85rem; border-radius: 9999px;
+            background: rgba(255,255,255,0.16); color: #fff; backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.18); font-size: 0.78rem; font-weight: 800;
+            box-shadow: 0 10px 30px rgba(15,23,42,0.16);
+        }
+        .lab-carousel-topbar-right { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; justify-content: flex-end; }
+        .lab-carousel-caption {
+            position: absolute; left: 1.25rem; right: 1.25rem; bottom: 1.25rem; z-index: 5;
+            display: flex; align-items: end; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+        }
+        .lab-carousel-caption-main {
+            max-width: min(72%, 520px);
+            padding: 1rem 1.1rem; border-radius: 1.25rem; color: #fff;
+            background: rgba(15,23,42,0.34); backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.14);
+            box-shadow: 0 18px 40px rgba(15,23,42,0.24);
+        }
+        .lab-carousel-title { font-size: 1.05rem; font-weight: 900; line-height: 1.3; margin-bottom: 0.3rem; }
+        .lab-carousel-subtitle { font-size: 0.82rem; color: rgba(255,255,255,0.88); line-height: 1.55; }
+        .lab-carousel-nav { display: flex; align-items: center; gap: 0.75rem; }
+        .lab-carousel-btn {
+            position: absolute; top: 50%; transform: translateY(-50%); z-index: 6;
+            width: 52px; height: 52px; border-radius: 9999px; border: 1px solid rgba(255,255,255,0.22);
+            display: flex; align-items: center; justify-content: center;
+            background: rgba(255,255,255,0.92); color: #0f172a;
+            box-shadow: 0 16px 36px rgba(15,23,42,0.22);
+            transition: all 0.25s ease; cursor: pointer;
+        }
+        .lab-carousel-btn:hover { background: #ffffff; transform: translateY(-50%) scale(1.08); }
+        .lab-carousel-btn:active { transform: translateY(-50%) scale(0.96); }
+        .lab-carousel-btn.prev { left: 1rem; }
+        .lab-carousel-btn.next { right: 1rem; }
+        .lab-carousel-dots {
+            position: static; transform: none; z-index: 6; display: flex; gap: 0.55rem;
+            padding: 0.55rem 0.8rem; border-radius: 9999px;
+            background: rgba(15,23,42,0.36); backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.14);
+            box-shadow: 0 14px 30px rgba(15,23,42,0.22);
+        }
+        .lab-carousel-dot {
+            width: 10px; height: 10px; border-radius: 9999px; border: 0;
+            background: rgba(255,255,255,0.42); cursor: pointer; transition: all 0.25s ease;
+        }
+        .lab-carousel-dot.active { background: #fff; transform: scale(1.18); box-shadow: 0 0 0 4px rgba(255,255,255,0.18); }
+        .lab-carousel-progress {
+            position: absolute; left: 1.25rem; right: 1.25rem; bottom: 0.75rem; height: 4px;
+            z-index: 5; border-radius: 9999px; overflow: hidden;
+            background: rgba(255,255,255,0.2);
+        }
+        .lab-carousel-progress-bar {
+            height: 100%; width: 0%; border-radius: inherit;
+            background: linear-gradient(90deg, rgba(255,255,255,0.96), rgba(255,255,255,0.55));
+            transition: width 0.18s linear;
+        }
+        .lab-carousel[data-paused="true"] .lab-carousel-hint::after {
+            content: '已暫停';
+        }
+        .lab-carousel[data-paused="false"] .lab-carousel-hint::after {
+            content: '自動播放';
+        }
+        .lab-carousel-hint { min-width: 88px; justify-content: center; }
+        .lab-carousel-lightbox {
+            position: fixed; inset: 0; z-index: 100100; display: none;
+            align-items: center; justify-content: center; padding: 1.5rem;
+            background: rgba(2, 6, 23, 0.88); backdrop-filter: blur(8px);
+        }
+        .lab-carousel-lightbox.active { display: flex; }
+        .lab-carousel-lightbox-content {
+            position: relative; width: min(1100px, 100%); max-height: 90vh;
+            border-radius: 2rem; overflow: hidden; background: #0f172a;
+            box-shadow: 0 24px 80px rgba(0,0,0,0.45);
+        }
+        .lab-carousel-lightbox img { width: 100%; max-height: 90vh; object-fit: contain; background: #0f172a; }
+        .lab-carousel-lightbox-close {
+            position: absolute; top: 1rem; right: 1rem; z-index: 3;
+            width: 48px; height: 48px; border-radius: 9999px; border: 0;
+            background: rgba(255,255,255,0.92); color: #0f172a; font-size: 1.1rem; cursor: pointer;
+            box-shadow: 0 14px 30px rgba(15,23,42,0.3);
+        }
+        .lab-carousel-lightbox-meta {
+            position: absolute; left: 1rem; bottom: 1rem; right: 1rem;
+            display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+            color: #fff; z-index: 3;
+        }
+        .lab-carousel-lightbox-title {
+            display: inline-flex; align-items: center; gap: 0.55rem;
+            padding: 0.7rem 1rem; border-radius: 9999px; background: rgba(15,23,42,0.55);
+            border: 1px solid rgba(255,255,255,0.14); backdrop-filter: blur(8px); font-weight: 800;
+        }
+        @media (max-width: 767px) {
+            .lab-carousel-btn { width: 46px; height: 46px; }
+            .lab-carousel-caption { left: 0.9rem; right: 0.9rem; bottom: 0.95rem; }
+            .lab-carousel-caption-main { max-width: 100%; padding: 0.9rem 1rem; }
+            .lab-carousel-title { font-size: 0.95rem; }
+            .lab-carousel-subtitle { font-size: 0.75rem; }
+            .lab-carousel-topbar { top: 0.8rem; left: 0.8rem; right: 0.8rem; }
+            .lab-carousel-badge, .lab-carousel-count, .lab-carousel-hint { font-size: 0.72rem; padding: 0.42rem 0.7rem; }
+            .lab-carousel-progress { left: 0.9rem; right: 0.9rem; bottom: 0.55rem; }
+        }
+
+
     </style>
 </head>
 <body class="bg-gray-50 flex flex-col min-h-screen text-gray-800 overflow-x-hidden">
@@ -126,18 +368,54 @@
 </a>
 <div class="flex-1 min-w-0 flex items-center justify-end gap-2">
   <!-- Desktop Navigation (only show on lg+) -->
-  <nav id="desktop-nav" class="hidden lg:flex flex-wrap gap-1 text-sm font-bold text-gray-600">
-    <button onclick="showPage('home')" class="nav-btn px-3 py-2 whitespace-nowrap rounded-lg hover:bg-blue-50 hover:text-blue-900 transition">首頁</button>
-    <button onclick="showPage('about')" class="nav-btn px-3 py-2 whitespace-nowrap rounded-lg hover:bg-blue-50 hover:text-blue-900 transition">關於我們</button>
-    <button onclick="showPage('summary')" class="nav-btn px-3 py-2 whitespace-nowrap rounded-lg hover:bg-blue-50 hover:text-blue-900 transition">計畫簡介</button>
-    <button onclick="showPage('structure')" class="nav-btn px-3 py-2 whitespace-nowrap rounded-lg hover:bg-blue-50 hover:text-blue-900 transition">計畫組成</button>
-    <button onclick="showPage('videos')" class="nav-btn px-3 py-2 whitespace-nowrap rounded-lg hover:bg-blue-50 hover:text-blue-900 transition">教學影片</button>
-    <button onclick="showPage('projects')" class="nav-btn px-3 py-2 whitespace-nowrap rounded-lg hover:bg-blue-50 hover:text-blue-900 transition">專題成果</button>
-    <button onclick="showPage('resources')" class="nav-btn px-3 py-2 whitespace-nowrap rounded-lg hover:bg-blue-50 hover:text-blue-900 transition">共享教材</button>
-    <button onclick="showPage('industry')" class="nav-btn px-3 py-2 whitespace-nowrap rounded-lg hover:bg-blue-50 hover:text-blue-900 transition">產學合作</button>
-    <button onclick="showPage('labs')" class="nav-btn px-3 py-2 whitespace-nowrap rounded-lg hover:bg-blue-50 hover:text-blue-900 transition">特色實驗室</button>
-    <button onclick="showPage('performance')" class="nav-btn px-3 py-2 rounded-lg hover:bg-blue-50 hover:text-blue-900 transition">執行績效</button>
-    <button onclick="showPage('activities')" class="nav-btn px-3 py-2 rounded-lg hover:bg-blue-50 hover:text-blue-900 transition">活動競賽</button>
+  <nav id="desktop-nav" class="hidden lg:flex flex-wrap items-center gap-3 text-sm font-bold text-gray-600">
+    <button onclick="showPage('home')" class="nav-btn px-4 py-3 whitespace-nowrap rounded-2xl hover:bg-blue-50 hover:text-blue-900 transition">首頁</button>
+
+    <div class="nav-select-dropdown">
+      <button type="button" class="nav-select-trigger" aria-expanded="false">
+        <span>計畫資訊</span>
+        <i class="fa-solid fa-chevron-down text-xs"></i>
+      </button>
+      <div class="nav-select-menu">
+        <button onclick="showPage('about')" class="nav-select-item"><span>關於我們</span></button>
+        <button onclick="showPage('summary')" class="nav-select-item"><span>計畫簡介</span></button>
+        <button onclick="showPage('structure')" class="nav-select-item"><span>計畫組成</span></button>
+      </div>
+    </div>
+
+    <div class="nav-select-dropdown">
+      <button type="button" class="nav-select-trigger" aria-expanded="false">
+        <span>教學資源</span>
+        <i class="fa-solid fa-chevron-down text-xs"></i>
+      </button>
+      <div class="nav-select-menu">
+        <button onclick="showPage('videos')" class="nav-select-item"><span>教學影片</span></button>
+        <button onclick="showPage('resources')" class="nav-select-item"><span>共享教材</span></button>
+      </div>
+    </div>
+
+    <div class="nav-select-dropdown">
+      <button type="button" class="nav-select-trigger" aria-expanded="false">
+        <span>成果展示</span>
+        <i class="fa-solid fa-chevron-down text-xs"></i>
+      </button>
+      <div class="nav-select-menu">
+        <button onclick="showPage('projects')" class="nav-select-item"><span>專題成果</span></button>
+        <button onclick="showPage('performance')" class="nav-select-item"><span>執行績效</span></button>
+        <button onclick="showPage('activities')" class="nav-select-item"><span>活動競賽</span></button>
+      </div>
+    </div>
+
+    <div class="nav-select-dropdown">
+      <button type="button" class="nav-select-trigger" aria-expanded="false">
+        <span>產學與場域</span>
+        <i class="fa-solid fa-chevron-down text-xs"></i>
+      </button>
+      <div class="nav-select-menu">
+        <button onclick="showPage('industry')" class="nav-select-item"><span>產學合作</span></button>
+        <button onclick="showPage('labs')" class="nav-select-item"><span>特色實驗室</span></button>
+      </div>
+    </div>
   </nav>
 
   <!-- Mobile Hamburger (show below lg) -->
@@ -153,18 +431,54 @@
         <!-- Mobile Menu -->
 
 <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-100 absolute top-full left-0 w-full shadow-2xl z-[10000]">
-            <div class="flex flex-col p-4 space-y-2 font-bold text-gray-700">
-                <button onclick="showPage('home')" class="text-left py-3 px-4 hover:bg-blue-50 rounded-xl">首頁</button>
-                <button onclick="showPage('about')" class="text-left py-3 px-4 hover:bg-blue-50 rounded-xl">關於我們</button>
-                <button onclick="showPage('summary')" class="text-left py-3 px-4 hover:bg-blue-50 rounded-xl">計畫簡介</button>
-                <button onclick="showPage('structure')" class="text-left py-3 px-4 hover:bg-blue-50 rounded-xl">計畫組成</button>
-                <button onclick="showPage('videos')" class="text-left py-3 px-4 hover:bg-blue-50 rounded-xl">教學影片</button>
-                <button onclick="showPage('projects')" class="text-left py-3 px-4 hover:bg-blue-50 rounded-xl">專題成果</button>
-                <button onclick="showPage('resources')" class="text-left py-3 px-4 hover:bg-blue-50 rounded-xl">共享教材</button>
-                <button onclick="showPage('industry')" class="text-left py-3 px-4 hover:bg-blue-50 rounded-xl">產學合作</button>
-                <button onclick="showPage('labs')" class="text-left py-3 px-4 hover:bg-blue-50 rounded-xl">特色實驗室</button>
-                <button onclick="showPage('performance')" class="text-left py-3 px-4 hover:bg-blue-50 rounded-xl">執行績效</button>
-                <button onclick="showPage('activities')" class="text-left py-3 px-4 hover:bg-blue-50 rounded-xl">活動競賽</button>
+            <div class="flex flex-col p-4 space-y-3 font-bold text-gray-700">
+                <button onclick="showPage('home')" class="text-left py-3 px-4 hover:bg-blue-50 rounded-2xl">首頁</button>
+
+                <div class="mobile-select-dropdown rounded-2xl border border-gray-100 overflow-hidden">
+                    <button type="button" class="mobile-select-trigger w-full flex items-center justify-between text-left py-3 px-4 hover:bg-blue-50" data-target="mobile-plan-submenu">
+                        <span>計畫資訊</span>
+                        <i class="fa-solid fa-chevron-down text-sm transition-transform duration-200"></i>
+                    </button>
+                    <div id="mobile-plan-submenu" class="mobile-select-menu bg-gray-50">
+                        <button onclick="showPage('about')" class="mobile-select-item">關於我們</button>
+                        <button onclick="showPage('summary')" class="mobile-select-item">計畫簡介</button>
+                        <button onclick="showPage('structure')" class="mobile-select-item">計畫組成</button>
+                    </div>
+                </div>
+
+                <div class="mobile-select-dropdown rounded-2xl border border-gray-100 overflow-hidden">
+                    <button type="button" class="mobile-select-trigger w-full flex items-center justify-between text-left py-3 px-4 hover:bg-blue-50" data-target="mobile-teaching-submenu">
+                        <span>教學資源</span>
+                        <i class="fa-solid fa-chevron-down text-sm transition-transform duration-200"></i>
+                    </button>
+                    <div id="mobile-teaching-submenu" class="mobile-select-menu bg-gray-50">
+                        <button onclick="showPage('videos')" class="mobile-select-item">教學影片</button>
+                        <button onclick="showPage('resources')" class="mobile-select-item">共享教材</button>
+                    </div>
+                </div>
+
+                <div class="mobile-select-dropdown rounded-2xl border border-gray-100 overflow-hidden">
+                    <button type="button" class="mobile-select-trigger w-full flex items-center justify-between text-left py-3 px-4 hover:bg-blue-50" data-target="mobile-result-submenu">
+                        <span>成果展示</span>
+                        <i class="fa-solid fa-chevron-down text-sm transition-transform duration-200"></i>
+                    </button>
+                    <div id="mobile-result-submenu" class="mobile-select-menu bg-gray-50">
+                        <button onclick="showPage('projects')" class="mobile-select-item">專題成果</button>
+                        <button onclick="showPage('performance')" class="mobile-select-item">執行績效</button>
+                        <button onclick="showPage('activities')" class="mobile-select-item">活動競賽</button>
+                    </div>
+                </div>
+
+                <div class="mobile-select-dropdown rounded-2xl border border-gray-100 overflow-hidden">
+                    <button type="button" class="mobile-select-trigger w-full flex items-center justify-between text-left py-3 px-4 hover:bg-blue-50" data-target="mobile-industry-submenu">
+                        <span>產學與場域</span>
+                        <i class="fa-solid fa-chevron-down text-sm transition-transform duration-200"></i>
+                    </button>
+                    <div id="mobile-industry-submenu" class="mobile-select-menu bg-gray-50">
+                        <button onclick="showPage('industry')" class="mobile-select-item">產學合作</button>
+                        <button onclick="showPage('labs')" class="mobile-select-item">特色實驗室</button>
+                    </div>
+                </div>
             </div>
         </div>
     </header>
@@ -837,9 +1151,29 @@
                 <!-- Field 1 -->
                 <div class="page-lab-block flex flex-col lg:flex-row gap-16 items-center">
                     <div class="lg:w-1/2">
-                        <div class="bg-gray-200 rounded-[3rem] shadow-2xl h-80 flex flex-col items-center justify-center relative overflow-hidden group">
-                            <span class="text-gray-400 font-bold italic z-10">[場域照片/介紹影片 準備中]</span>
-                            <div class="absolute inset-0 bg-blue-900/10 group-hover:bg-transparent transition duration-500"></div>
+                        <div class="lab-carousel rounded-[3rem] shadow-2xl h-80 relative overflow-hidden group" data-carousel="multi-axis-main" data-carousel-label="多軸加工實驗室" data-paused="false" tabindex="0">
+                            <div class="lab-carousel-track"></div>
+                            <div class="lab-carousel-glow"></div>
+                            <div class="lab-carousel-overlay"></div>
+                            <div class="lab-carousel-topbar">
+                                <div class="lab-carousel-badge"><i class="fa-solid fa-images"></i><span>場域精選輪播</span></div>
+                                <div class="lab-carousel-topbar-right">
+                                    <div class="lab-carousel-count">01 / 03</div>
+                                    <div class="lab-carousel-hint"><i class="fa-solid fa-circle-play"></i></div>
+                                </div>
+                            </div>
+                            <button type="button" class="lab-carousel-btn prev" aria-label="上一張"><i class="fa-solid fa-chevron-left"></i></button>
+                            <button type="button" class="lab-carousel-btn next" aria-label="下一張"><i class="fa-solid fa-chevron-right"></i></button>
+                            <div class="lab-carousel-caption">
+                                <div class="lab-carousel-caption-main">
+                                    <div class="lab-carousel-title">多軸加工實驗室</div>
+                                    <div class="lab-carousel-subtitle">點擊左右箭頭、下方圓點，或在手機上左右滑動切換圖片。</div>
+                                </div>
+                                <div class="lab-carousel-nav">
+                                    <div class="lab-carousel-dots"></div>
+                                </div>
+                            </div>
+                            <div class="lab-carousel-progress"><div class="lab-carousel-progress-bar"></div></div>
                         </div>
                     </div>
                     <div class="lg:w-1/2 text-left">
@@ -859,9 +1193,29 @@
                 <!-- Field 2 -->
                 <div class="page-lab-block flex flex-col lg:flex-row-reverse gap-16 items-center">
                     <div class="lg:w-1/2">
-                        <div class="bg-gray-200 rounded-[3rem] shadow-2xl h-80 flex flex-col items-center justify-center relative overflow-hidden group">
-                            <span class="text-gray-400 font-bold italic z-10">[場域照片/介紹影片 準備中]</span>
-                            <div class="absolute inset-0 bg-indigo-900/10 group-hover:bg-transparent transition duration-500"></div>
+                        <div class="lab-carousel rounded-[3rem] shadow-2xl h-80 relative overflow-hidden group" data-carousel="smart-multi-axis-main" data-carousel-label="智慧多軸複合技術實驗室" data-paused="false" tabindex="0">
+                            <div class="lab-carousel-track"></div>
+                            <div class="lab-carousel-glow"></div>
+                            <div class="lab-carousel-overlay"></div>
+                            <div class="lab-carousel-topbar">
+                                <div class="lab-carousel-badge"><i class="fa-solid fa-images"></i><span>場域精選輪播</span></div>
+                                <div class="lab-carousel-topbar-right">
+                                    <div class="lab-carousel-count">01 / 03</div>
+                                    <div class="lab-carousel-hint"><i class="fa-solid fa-circle-play"></i></div>
+                                </div>
+                            </div>
+                            <button type="button" class="lab-carousel-btn prev" aria-label="上一張"><i class="fa-solid fa-chevron-left"></i></button>
+                            <button type="button" class="lab-carousel-btn next" aria-label="下一張"><i class="fa-solid fa-chevron-right"></i></button>
+                            <div class="lab-carousel-caption">
+                                <div class="lab-carousel-caption-main">
+                                    <div class="lab-carousel-title">智慧多軸複合技術實驗室</div>
+                                    <div class="lab-carousel-subtitle">支援自動播放、滑鼠移入暫停、鍵盤左右鍵與手機滑動切換。</div>
+                                </div>
+                                <div class="lab-carousel-nav">
+                                    <div class="lab-carousel-dots"></div>
+                                </div>
+                            </div>
+                            <div class="lab-carousel-progress"><div class="lab-carousel-progress-bar"></div></div>
                         </div>
                     </div>
                     <div class="lg:w-1/2 text-left">
@@ -1660,7 +2014,61 @@ if (window.lucide && typeof window.lucide.createIcons === "function") {
     // mobile menu toggle
     const btn = document.getElementById("mobile-menu-btn");
     const menu = document.getElementById("mobile-menu");
-    if (btn && menu) btn.addEventListener("click", () => menu.classList.toggle("hidden"));
+    if (btn && menu) {
+      btn.addEventListener("click", () => menu.classList.toggle("hidden"));
+    }
+
+    // desktop dropdown: hover to open, keyboard focus/click as fallback
+    const desktopDropdowns = Array.from(document.querySelectorAll('.nav-select-dropdown'));
+    const closeDesktopDropdowns = () => {
+      desktopDropdowns.forEach(dropdown => {
+        dropdown.classList.remove('open');
+        const trigger = dropdown.querySelector('.nav-select-trigger');
+        if (trigger) trigger.setAttribute('aria-expanded', 'false');
+      });
+    };
+    desktopDropdowns.forEach(dropdown => {
+      const trigger = dropdown.querySelector('.nav-select-trigger');
+      if (!trigger) return;
+      dropdown.addEventListener('mouseenter', () => {
+        closeDesktopDropdowns();
+        dropdown.classList.add('open');
+        trigger.setAttribute('aria-expanded', 'true');
+      });
+      dropdown.addEventListener('mouseleave', () => {
+        dropdown.classList.remove('open');
+        trigger.setAttribute('aria-expanded', 'false');
+      });
+      trigger.addEventListener('focus', () => {
+        closeDesktopDropdowns();
+        dropdown.classList.add('open');
+        trigger.setAttribute('aria-expanded', 'true');
+      });
+      trigger.addEventListener('click', (e) => {
+        e.preventDefault();
+        const willOpen = !dropdown.classList.contains('open');
+        closeDesktopDropdowns();
+        if (willOpen) {
+          dropdown.classList.add('open');
+          trigger.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.nav-select-dropdown')) closeDesktopDropdowns();
+    });
+
+    // mobile submenu toggle
+    const mobileDropdowns = Array.from(document.querySelectorAll('.mobile-select-dropdown'));
+    mobileDropdowns.forEach(dropdown => {
+      const trigger = dropdown.querySelector('.mobile-select-trigger');
+      if (!trigger) return;
+      trigger.addEventListener('click', () => {
+        const willOpen = !dropdown.classList.contains('open');
+        mobileDropdowns.forEach(item => item.classList.remove('open'));
+        if (willOpen) dropdown.classList.add('open');
+      });
+    });
   });
 
   // hash change
@@ -2646,6 +3054,220 @@ const labDetails = {
   }
 };
 
+
+const labCarouselData = {
+  'multi-axis-main': [
+    { src: '圖片1.jpg', alt: '圖片1', title: '圖片1', subtitle: '請將第一個實驗室的第一張照片檔名命名為「圖片1.jpg」。' },
+    { src: '圖片2.jpg', alt: '圖片2', title: '圖片2', subtitle: '請將第一個實驗室的第二張照片檔名命名為「圖片2.jpg」。' },
+    { src: '圖片3.jpg', alt: '圖片3', title: '圖片3', subtitle: '請將第一個實驗室的第三張照片檔名命名為「圖片3.jpg」。' }
+  ],
+  'smart-multi-axis-main': [
+    { src: '圖片4.jpg', alt: '圖片4', title: '圖片4', subtitle: '請將第二個實驗室的第一張照片檔名命名為「圖片4.jpg」。' },
+    { src: '圖片5.jpg', alt: '圖片5', title: '圖片5', subtitle: '請將第二個實驗室的第二張照片檔名命名為「圖片5.jpg」。' },
+    { src: '圖片6.jpg', alt: '圖片6', title: '圖片6', subtitle: '請將第二個實驗室的第三張照片檔名命名為「圖片6.jpg」。' }
+  ]
+};
+
+function initLabCarousels(){
+  const AUTOPLAY_DELAY = 4200;
+  let lightbox = document.getElementById('lab-carousel-lightbox');
+  if(!lightbox){
+    lightbox = document.createElement('div');
+    lightbox.id = 'lab-carousel-lightbox';
+    lightbox.className = 'lab-carousel-lightbox';
+    lightbox.innerHTML = `
+      <div class="lab-carousel-lightbox-content">
+        <button type="button" class="lab-carousel-lightbox-close" aria-label="關閉放大圖片"><i class="fa-solid fa-xmark"></i></button>
+        <img src="" alt="放大圖片預覽">
+        <div class="lab-carousel-lightbox-meta">
+          <div class="lab-carousel-lightbox-title"><i class="fa-solid fa-image"></i><span>圖片預覽</span></div>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(lightbox);
+    lightbox.addEventListener('click', (e) => {
+      if(e.target === lightbox || e.target.closest('.lab-carousel-lightbox-close')){
+        lightbox.classList.remove('active');
+        document.body.classList.remove('overflow-hidden');
+      }
+    });
+  }
+
+  const lightboxImg = lightbox.querySelector('img');
+  const lightboxTitle = lightbox.querySelector('.lab-carousel-lightbox-title span');
+
+  document.querySelectorAll('.lab-carousel').forEach((carousel) => {
+    const key = carousel.dataset.carousel;
+    const slides = labCarouselData[key] || [];
+    const track = carousel.querySelector('.lab-carousel-track');
+    const dotsWrap = carousel.querySelector('.lab-carousel-dots');
+    const prevBtn = carousel.querySelector('.lab-carousel-btn.prev');
+    const nextBtn = carousel.querySelector('.lab-carousel-btn.next');
+    const countEl = carousel.querySelector('.lab-carousel-count');
+    const titleEl = carousel.querySelector('.lab-carousel-title');
+    const subtitleEl = carousel.querySelector('.lab-carousel-subtitle');
+    const progressBar = carousel.querySelector('.lab-carousel-progress-bar');
+    const label = carousel.dataset.carouselLabel || '實驗室輪播';
+
+    if(!track || !dotsWrap || slides.length === 0) return;
+
+    track.innerHTML = slides.map((item, idx) => `
+      <div class="lab-carousel-slide ${idx === 0 ? 'active' : ''}" data-title="${item.title || item.alt || ''}" data-subtitle="${item.subtitle || ''}">
+        <img src="${item.src}" alt="${item.alt}" loading="lazy" data-lightbox-title="${label}｜${item.title || item.alt}">
+      </div>
+    `).join('');
+
+    dotsWrap.innerHTML = slides.map((_, idx) => `
+      <button type="button" class="lab-carousel-dot ${idx === 0 ? 'active' : ''}" aria-label="切換到第 ${idx + 1} 張"></button>
+    `).join('');
+
+    const slideEls = Array.from(track.querySelectorAll('.lab-carousel-slide'));
+    const dotEls = Array.from(dotsWrap.querySelectorAll('.lab-carousel-dot'));
+    let current = 0;
+    let timer = null;
+    let progressTimer = null;
+    let progress = 0;
+    let isPaused = false;
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    const setPausedState = (paused) => {
+      isPaused = paused;
+      carousel.dataset.paused = paused ? 'true' : 'false';
+    };
+
+    const stopProgress = () => {
+      if(progressTimer) clearInterval(progressTimer);
+      progressTimer = null;
+    };
+
+    const resetProgress = () => {
+      progress = 0;
+      if(progressBar) progressBar.style.width = '0%';
+    };
+
+    const startProgress = () => {
+      stopProgress();
+      resetProgress();
+      progressTimer = setInterval(() => {
+        progress += 100 / (AUTOPLAY_DELAY / 100);
+        if(progressBar) progressBar.style.width = `${Math.min(progress, 100)}%`;
+      }, 100);
+    };
+
+    const render = (index) => {
+      current = (index + slideEls.length) % slideEls.length;
+      slideEls.forEach((slide, i) => slide.classList.toggle('active', i === current));
+      dotEls.forEach((dot, i) => dot.classList.toggle('active', i === current));
+      const currentItem = slides[current];
+      if(countEl) countEl.textContent = `${String(current + 1).padStart(2, '0')} / ${String(slideEls.length).padStart(2, '0')}`;
+      if(titleEl) titleEl.textContent = currentItem.title || currentItem.alt || label;
+      if(subtitleEl) subtitleEl.textContent = currentItem.subtitle || '可使用左右箭頭、圓點或手機滑動來切換圖片。';
+      if(!isPaused){
+        startProgress();
+      }
+    };
+
+    const stopAutoplay = () => {
+      if(timer) clearInterval(timer);
+      timer = null;
+      stopProgress();
+      setPausedState(true);
+    };
+
+    const startAutoplay = () => {
+      if(timer) clearInterval(timer);
+      setPausedState(false);
+      startProgress();
+      timer = setInterval(() => render(current + 1), AUTOPLAY_DELAY);
+    };
+
+    prevBtn?.addEventListener('click', () => {
+      render(current - 1);
+      startAutoplay();
+    });
+    nextBtn?.addEventListener('click', () => {
+      render(current + 1);
+      startAutoplay();
+    });
+    dotEls.forEach((dot, idx) => dot.addEventListener('click', () => {
+      render(idx);
+      startAutoplay();
+    }));
+
+    carousel.addEventListener('mouseenter', stopAutoplay);
+    carousel.addEventListener('mouseleave', startAutoplay);
+    carousel.addEventListener('focusin', stopAutoplay);
+    carousel.addEventListener('focusout', startAutoplay);
+
+    carousel.addEventListener('keydown', (e) => {
+      if(e.key === 'ArrowLeft'){
+        e.preventDefault();
+        render(current - 1);
+        startAutoplay();
+      }
+      if(e.key === 'ArrowRight'){
+        e.preventDefault();
+        render(current + 1);
+        startAutoplay();
+      }
+      if(e.key === 'Enter'){
+        const activeImg = slideEls[current]?.querySelector('img');
+        if(activeImg){
+          lightboxImg.src = activeImg.src;
+          lightboxImg.alt = activeImg.alt;
+          lightboxTitle.textContent = activeImg.dataset.lightboxTitle || activeImg.alt;
+          lightbox.classList.add('active');
+          document.body.classList.add('overflow-hidden');
+        }
+      }
+    });
+
+    carousel.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+      stopAutoplay();
+    }, { passive: true });
+
+    carousel.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      const diff = touchEndX - touchStartX;
+      if(Math.abs(diff) > 45){
+        if(diff > 0){
+          render(current - 1);
+        } else {
+          render(current + 1);
+        }
+      }
+      startAutoplay();
+    }, { passive: true });
+
+    slideEls.forEach((slide, idx) => {
+      slide.addEventListener('click', () => {
+        const img = slide.querySelector('img');
+        if(!img) return;
+        current = idx;
+        render(idx);
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+        lightboxTitle.textContent = img.dataset.lightboxTitle || img.alt;
+        lightbox.classList.add('active');
+        document.body.classList.add('overflow-hidden');
+      });
+    });
+
+    render(0);
+    startAutoplay();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    const openLightbox = document.querySelector('.lab-carousel-lightbox.active');
+    if(openLightbox && e.key === 'Escape'){
+      openLightbox.classList.remove('active');
+      document.body.classList.remove('overflow-hidden');
+    }
+  });
+}
+
 function renderLabDetail(detail){
   const accent = detail.color === 'orange'
     ? {
@@ -2725,6 +3347,10 @@ function openLabDetailFromPyramid(key){
 }
 document.addEventListener('keydown', (e) => {
   if(e.key === 'Escape') closeLabDetail();
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  initLabCarousels();
 });
 </script>
 
