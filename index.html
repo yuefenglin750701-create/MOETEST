@@ -332,6 +332,58 @@
         }
 
 
+
+        .activity-feature-wrap { margin-bottom: 3rem; }
+        .activity-filter-btn {
+            display:inline-flex; align-items:center; justify-content:center; gap:.5rem;
+            padding:.7rem 1.1rem; border-radius:9999px; font-size:.85rem; font-weight:800;
+            border:1px solid #dbeafe; background:#fff; color:#1d4ed8; transition:all .22s ease;
+        }
+        .activity-filter-btn:hover, .activity-filter-btn.active {
+            background:#1d4ed8; color:#fff; box-shadow:0 12px 24px rgba(29,78,216,.18);
+        }
+        .activity-strip-card {
+            display:flex; gap:1.1rem; align-items:stretch;
+            background:#fff; border:1px solid #e5e7eb; border-radius:1.75rem;
+            padding:1rem; box-shadow:0 12px 28px rgba(15,23,42,.06);
+            transition:all .25s ease; cursor:pointer;
+        }
+        .activity-strip-card:hover {
+            transform:translateY(-4px); box-shadow:0 20px 38px rgba(15,23,42,.12);
+            border-color:#bfdbfe;
+        }
+        .activity-strip-thumb {
+            width:180px; min-width:180px; height:118px; overflow:hidden; border-radius:1.2rem;
+            background:#e5e7eb;
+        }
+        .activity-strip-thumb img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .35s ease; }
+        .activity-strip-card:hover .activity-strip-thumb img { transform:scale(1.06); }
+        .activity-strip-body { flex:1; min-width:0; display:flex; flex-direction:column; justify-content:center; }
+        .activity-strip-meta { display:flex; flex-wrap:wrap; gap:.5rem; margin-bottom:.55rem; }
+        .activity-strip-chip {
+            display:inline-flex; align-items:center; gap:.4rem; padding:.35rem .75rem; border-radius:9999px;
+            font-size:.75rem; font-weight:800;
+        }
+        .activity-strip-title { font-size:1.25rem; font-weight:900; color:#1f2937; line-height:1.4; margin-bottom:.45rem; }
+        .activity-strip-desc { color:#6b7280; font-size:.95rem; line-height:1.7; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+        .activity-strip-arrow { align-self:center; color:#94a3b8; font-size:1.1rem; }
+        .activity-modal-backdrop { background:rgba(15,23,42,.78); backdrop-filter:blur(8px); }
+        .activity-gallery-main { width:100%; border-radius:1.4rem; overflow:hidden; background:#e5e7eb; }
+        .activity-gallery-main img { width:100%; height:100%; max-height:420px; object-fit:cover; display:block; }
+        .activity-gallery-thumbs { display:grid; grid-template-columns:repeat(auto-fit,minmax(92px,1fr)); gap:.75rem; }
+        .activity-gallery-thumb {
+            border-radius:1rem; overflow:hidden; border:2px solid transparent; cursor:pointer; background:#e5e7eb;
+            transition:all .2s ease;
+        }
+        .activity-gallery-thumb.active { border-color:#2563eb; box-shadow:0 8px 16px rgba(37,99,235,.18); }
+        .activity-gallery-thumb img { width:100%; height:72px; object-fit:cover; display:block; }
+        .activity-hidden { display:none !important; }
+        @media (max-width: 768px) {
+            .activity-strip-card { flex-direction:column; }
+            .activity-strip-thumb { width:100%; min-width:100%; height:190px; }
+            .activity-strip-arrow { display:none; }
+        }
+
     </style>
 </head>
 <body class="bg-gray-50 flex flex-col min-h-screen text-gray-800 overflow-x-hidden">
@@ -572,13 +624,13 @@
                         <h2 class="text-3xl font-extrabold text-gray-800 mb-12 flex items-center gap-3"><i class="fa-solid fa-shapes text-blue-600"></i>課程培育金字塔</h2>
                         <svg viewBox="0 0 500 440" class="w-full max-w-lg drop-shadow-2xl">
                             <defs>
-                                <linearGradient id="gT-home" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#f59e0b"/><stop offset="100%" style="stop-color:#d97706"/></linearGradient>
-                                <linearGradient id="gM-home" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#3b82f6"/><stop offset="100%" style="stop-color:#2563eb"/></linearGradient>
-                                <linearGradient id="gB-home" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#10b981"/><stop offset="100%" style="stop-color:#059669"/></linearGradient>
+                                <linearGradient id="gT" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#f59e0b"/><stop offset="100%" style="stop-color:#d97706"/></linearGradient>
+                                <linearGradient id="gM" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#3b82f6"/><stop offset="100%" style="stop-color:#2563eb"/></linearGradient>
+                                <linearGradient id="gB" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#10b981"/><stop offset="100%" style="stop-color:#059669"/></linearGradient>
                             </defs>
-                            <g onclick="updatePyramid(3)"><path id="l3-home" data-pyramid-layer="3" d="M250,10 L336,160 L164,160 Z" fill="url(#gT-home)" class="pyramid-layer"/></g>
-                            <g onclick="updatePyramid(2)"><path id="l2-home" data-pyramid-layer="2" d="M164,165 L336,165 L423,315 L77,315 Z" fill="url(#gM-home)" class="pyramid-layer active"/></g>
-                            <g onclick="updatePyramid(1)"><path id="l1-home" data-pyramid-layer="1" d="M77,320 L423,320 L500,453 L0,453 Z" fill="url(#gB-home)" class="pyramid-layer"/></g>
+                            <g onclick="updatePyramid(3)"><path id="l3" d="M250,10 L336,160 L164,160 Z" fill="url(#gT)" class="pyramid-layer"/></g>
+                            <g onclick="updatePyramid(2)"><path id="l2" d="M164,165 L336,165 L423,315 L77,315 Z" fill="url(#gM)" class="pyramid-layer active"/></g>
+                            <g onclick="updatePyramid(1)"><path id="l1" d="M77,320 L423,320 L500,453 L0,453 Z" fill="url(#gB)" class="pyramid-layer"/></g>
                             <text x="250" y="110" class="pyramid-text">PBL 總整課程</text>
                             <text x="250" y="255" class="pyramid-text">特色領域模組</text>
                             <text x="250" y="400" class="pyramid-text">基礎核心課程</text>
@@ -586,7 +638,7 @@
                         <p class="mt-12 text-gray-400 font-bold italic">點擊金字塔各層級查看詳細規劃</p>
                     </div>
                     <div class="lg:w-1/2">
-                        <div id="pyr-panel-home" class="bg-white rounded-[3rem] shadow-xl border border-gray-100 overflow-hidden min-h-[550px] relative">
+                        <div id="pyr-panel" class="bg-white rounded-[3rem] shadow-xl border border-gray-100 overflow-hidden min-h-[550px] relative">
                             <!-- Injected by JS -->
                         </div>
                     </div>
@@ -1115,13 +1167,13 @@
                         <h2 class="text-3xl font-extrabold text-gray-800 mb-12 flex items-center gap-3"><i class="fa-solid fa-shapes text-blue-600"></i>課程培育金字塔</h2>
                         <svg viewBox="0 0 500 440" class="w-full max-w-lg drop-shadow-2xl">
                             <defs>
-                                <linearGradient id="gT-highlights" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#f59e0b"/><stop offset="100%" style="stop-color:#d97706"/></linearGradient>
-                                <linearGradient id="gM-highlights" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#3b82f6"/><stop offset="100%" style="stop-color:#2563eb"/></linearGradient>
-                                <linearGradient id="gB-highlights" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#10b981"/><stop offset="100%" style="stop-color:#059669"/></linearGradient>
+                                <linearGradient id="gT" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#f59e0b"/><stop offset="100%" style="stop-color:#d97706"/></linearGradient>
+                                <linearGradient id="gM" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#3b82f6"/><stop offset="100%" style="stop-color:#2563eb"/></linearGradient>
+                                <linearGradient id="gB" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#10b981"/><stop offset="100%" style="stop-color:#059669"/></linearGradient>
                             </defs>
-                            <g onclick="updatePyramid(3)"><path id="l3-highlights" data-pyramid-layer="3" d="M250,10 L336,160 L164,160 Z" fill="url(#gT-highlights)" class="pyramid-layer"/></g>
-                            <g onclick="updatePyramid(2)"><path id="l2-highlights" data-pyramid-layer="2" d="M164,165 L336,165 L423,315 L77,315 Z" fill="url(#gM-highlights)" class="pyramid-layer active"/></g>
-                            <g onclick="updatePyramid(1)"><path id="l1-highlights" data-pyramid-layer="1" d="M77,320 L423,320 L500,453 L0,453 Z" fill="url(#gB-highlights)" class="pyramid-layer"/></g>
+                            <g onclick="updatePyramid(3)"><path id="l3" d="M250,10 L336,160 L164,160 Z" fill="url(#gT)" class="pyramid-layer"/></g>
+                            <g onclick="updatePyramid(2)"><path id="l2" d="M164,165 L336,165 L423,315 L77,315 Z" fill="url(#gM)" class="pyramid-layer active"/></g>
+                            <g onclick="updatePyramid(1)"><path id="l1" d="M77,320 L423,320 L500,453 L0,453 Z" fill="url(#gB)" class="pyramid-layer"/></g>
                             <text x="250" y="110" class="pyramid-text">PBL 總整課程</text>
                             <text x="250" y="255" class="pyramid-text">特色領域模組</text>
                             <text x="250" y="400" class="pyramid-text">基礎核心課程</text>
@@ -1129,7 +1181,7 @@
                         <p class="mt-12 text-gray-400 font-bold italic">點擊金字塔各層級查看詳細規劃</p>
                     </div>
                     <div class="lg:w-1/2">
-                        <div id="pyr-panel-highlights" class="bg-white rounded-[3rem] shadow-xl border border-gray-100 overflow-hidden min-h-[550px] relative">
+                        <div id="pyr-panel" class="bg-white rounded-[3rem] shadow-xl border border-gray-100 overflow-hidden min-h-[550px] relative">
                             <!-- Injected by JS -->
                         </div>
                     </div>
@@ -1812,6 +1864,56 @@
                 <div class="relative z-10"><h1 class="text-5xl font-extrabold mb-4 tracking-wider text-shadow">活動競賽紀錄</h1><p class="text-blue-100 italic">榮耀時刻與技術交流實錄</p></div>
             </div>
             <div class="container mx-auto px-4 py-20 max-w-6xl">
+
+                <div class="activity-feature-wrap">
+                    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-8">
+                        <div>
+                            <span class="inline-flex px-4 py-1.5 rounded-full bg-blue-50 text-blue-700 text-sm font-extrabold mb-4">Activity Highlights</span>
+                            <h2 class="text-4xl font-extrabold text-gray-800 mb-3 tracking-wider">活動競賽精選紀錄</h2>
+                            <p class="text-gray-500 max-w-3xl leading-relaxed">將活動、競賽、得獎與交流紀錄整合成長條式精選列表，點擊後可查看完整圖片與詳細說明，讓成果展示更像正式大學官網。</p>
+                        </div>
+                        <div class="flex flex-wrap gap-3">
+                            <button type="button" class="activity-filter-btn active" data-activity-filter="all">全部</button>
+                            <button type="button" class="activity-filter-btn" data-activity-filter="activity">活動</button>
+                            <button type="button" class="activity-filter-btn" data-activity-filter="award">獲獎</button>
+                        </div>
+                    </div>
+
+                    <div class="space-y-5" id="activity-feature-list">
+                        <button type="button" class="activity-strip-card text-left w-full" data-activity-category="activity"
+                            onclick="openActivityDetail('activity_1')">
+                            <div class="activity-strip-thumb">
+                                <img src="activity_thumb_1.jpg" alt="活動競賽精選紀錄縮圖1">
+                            </div>
+                            <div class="activity-strip-body">
+                                <div class="activity-strip-meta">
+                                    <span class="activity-strip-chip bg-blue-50 text-blue-700"><i class="fa-solid fa-calendar-days"></i>2026 / 01 / 18</span>
+                                    <span class="activity-strip-chip bg-emerald-50 text-emerald-700"><i class="fa-solid fa-bullhorn"></i>活動</span>
+                                </div>
+                                <div class="activity-strip-title">智慧製造活動交流紀錄</div>
+                                <div class="activity-strip-desc">收錄技術交流、現場活動與成果展示照片，可點擊查看完整圖片與說明內容。</div>
+                            </div>
+                            <div class="activity-strip-arrow"><i class="fa-solid fa-chevron-right"></i></div>
+                        </button>
+
+                        <button type="button" class="activity-strip-card text-left w-full" data-activity-category="award"
+                            onclick="openActivityDetail('award_1')">
+                            <div class="activity-strip-thumb">
+                                <img src="activity_thumb_2.jpg" alt="活動競賽精選紀錄縮圖2">
+                            </div>
+                            <div class="activity-strip-body">
+                                <div class="activity-strip-meta">
+                                    <span class="activity-strip-chip bg-blue-50 text-blue-700"><i class="fa-solid fa-calendar-days"></i>2025 / 11 / 06</span>
+                                    <span class="activity-strip-chip bg-amber-50 text-amber-700"><i class="fa-solid fa-award"></i>獲獎</span>
+                                </div>
+                                <div class="activity-strip-title">台灣精密工程學會專題與論文佳作</div>
+                                <div class="activity-strip-desc">呈現學生獲獎紀錄、活動照片與獎項說明，作為計畫成果亮點展示。</div>
+                            </div>
+                            <div class="activity-strip-arrow"><i class="fa-solid fa-chevron-right"></i></div>
+                        </button>
+                    </div>
+                </div>
+
                 <div class="bg-white p-12 rounded-[2.5rem] shadow-xl border border-yellow-100 text-center mb-16">
                     <h2 class="text-4xl font-extrabold text-gray-800 mb-4 tracking-wider">🥇 學生競賽榮譽榜</h2>
                     <p class="text-gray-500 max-w-2xl mx-auto mb-12">本頁以新聞牆與成果卡方式呈現學生競賽、專題發表、媒體報導與活動紀錄，提升計畫曝光度。</p>
@@ -1996,7 +2098,7 @@ if (window.lucide && typeof window.lucide.createIcons === "function") {
       setTimeout(animateStats, 150);
     }
     if (pageId === "highlights" && typeof updatePyramid === "function") {
-      setTimeout(() => updatePyramid(2), 0);
+      updatePyramid(2);
     }
     if (pageId !== "videos" && typeof window.resetVideoGalleryState === "function") {
       window.resetVideoGalleryState();
@@ -2462,10 +2564,11 @@ if (window.lucide && typeof window.lucide.createIcons === "function") {
 
   function updatePyramid(lvl) {
     document.querySelectorAll(".pyramid-layer").forEach(l => l.classList.remove("active"));
-    document.querySelectorAll(`[data-pyramid-layer="${lvl}"]`).forEach(layer => layer.classList.add("active"));
+    const layer = document.getElementById("l" + lvl);
+    if (layer) layer.classList.add("active");
 
     const data = pyramidData[lvl];
-    const panels = document.querySelectorAll('#pyr-panel-home, #pyr-panel-highlights');
+    const panels = document.querySelectorAll('#pyr-panel');
     if (!data || !panels.length) return;
 
     const panelHtml = `
@@ -3033,6 +3136,7 @@ const labDetails = {
     badge: "Python／訊號處理／影像辨識",
     color: "indigo",
     summary: "強調 Python 程式設計與數據視覺化應用，適合零基礎學生入門程式實作。可支援加工參數分析、IoT 資料整合學習，並為後續與通識課程與跨域學習鋪路。",
+    videoEmbed: "https://www.youtube.com/embed/sP_Za7tD5eg?si=HDTxa1dbrGQtV04x",
     teacher: [
       "彭達仁",
       "助理教授兼研發處產學合作組組長",
@@ -3282,6 +3386,18 @@ function renderLabDetail(detail){
         btn: 'bg-indigo-600 hover:bg-indigo-700'
       };
 
+  const videoBlock = detail.videoEmbed ? `
+        <div class="bg-white rounded-[1.75rem] border ${accent.border} p-6 shadow-sm">
+          <div class="flex items-center justify-between gap-4 mb-4 flex-wrap">
+            <h4 class="text-lg font-extrabold text-gray-800">實驗室介紹影片</h4>
+            <span class="inline-flex px-3 py-1 rounded-full ${accent.chip} text-xs font-extrabold">影音展示</span>
+          </div>
+          <div class="aspect-video overflow-hidden rounded-2xl border border-gray-200 bg-black shadow-sm">
+            <iframe class="w-full h-full" src="${detail.videoEmbed}" title="${detail.title} 介紹影片" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          </div>
+        </div>
+      ` : '';
+
   return `
     <div class="bg-gradient-to-r ${accent.hero} text-white px-8 md:px-10 py-8">
       <span class="inline-flex px-3 py-1 rounded-full bg-white/20 border border-white/25 text-xs font-extrabold mb-4">${detail.badge}</span>
@@ -3308,6 +3424,7 @@ function renderLabDetail(detail){
             ${detail.goals.map(item => `<li class="flex gap-3"><span class="mt-1 text-blue-600 font-extrabold">•</span><span>${item}</span></li>`).join('')}
           </ul>
         </div>
+        ${videoBlock}
       </div>
       <div class="bg-white rounded-[1.75rem] border ${accent.border} p-6 shadow-sm">
         <div class="flex items-center justify-between gap-4 mb-4">
@@ -3350,6 +3467,112 @@ document.addEventListener('keydown', (e) => {
 
 document.addEventListener('DOMContentLoaded', () => {
   initLabCarousels();
+});
+</script>
+
+<script>
+const activityDetails = {
+  activity_1: {
+    category: 'activity',
+    date: '2026 / 01 / 18',
+    title: '智慧製造活動交流紀錄',
+    tag: '活動',
+    description: '本活動紀錄收錄智慧製造相關交流、成果展示與現場互動照片，可用於網站成果頁面與計畫亮點展示。',
+    highlights: ['可作為網站活動成果主視覺', '適合放置活動照片與說明文字', '可延伸新增更多活動紀錄卡片'],
+    images: ['activity_detail_1.jpg', 'activity_detail_2.jpg', 'activity_detail_3.jpg']
+  },
+  award_1: {
+    category: 'award',
+    date: '2025 / 11 / 06',
+    title: '台灣精密工程學會專題與論文佳作',
+    tag: '獲獎',
+    description: '本紀錄用於呈現學生參與專題與論文競賽之得獎成果，可結合照片、獎項說明與成果文字進一步強化成果頁面。',
+    highlights: ['適合展示獲獎照片與證書', '可強化成果頁曝光度', '可作為招生與計畫成果亮點'],
+    images: ['activity_detail_4.jpg', 'activity_detail_5.jpg']
+  }
+};
+
+function renderActivityDetail(key){
+  const detail = activityDetails[key];
+  if(!detail) return '';
+  const chips = detail.highlights.map(item => `<div class="rounded-xl bg-gray-50 border border-gray-100 px-4 py-3 font-medium text-gray-600">${item}</div>`).join('');
+  const thumbs = detail.images.map((src, index) => `
+    <button type="button" class="activity-gallery-thumb ${index === 0 ? 'active' : ''}" onclick="setActivityMainImage('${src}', this)">
+      <img src="${src}" alt="${detail.title} ${index + 1}">
+    </button>
+  `).join('');
+
+  return `
+    <div class="grid grid-cols-1 lg:grid-cols-[1.2fr_0.9fr] gap-8">
+      <div class="space-y-5">
+        <div class="activity-gallery-main">
+          <img id="activity-main-image" src="${detail.images[0]}" alt="${detail.title}">
+        </div>
+        <div class="activity-gallery-thumbs">${thumbs}</div>
+      </div>
+      <div class="space-y-6">
+        <div>
+          <div class="flex flex-wrap gap-3 mb-4">
+            <span class="activity-strip-chip bg-blue-50 text-blue-700"><i class="fa-solid fa-calendar-days"></i>${detail.date}</span>
+            <span class="activity-strip-chip ${detail.category === 'award' ? 'bg-amber-50 text-amber-700' : 'bg-emerald-50 text-emerald-700'}">
+              <i class="fa-solid ${detail.category === 'award' ? 'fa-award' : 'fa-bullhorn'}"></i>${detail.tag}
+            </span>
+          </div>
+          <h3 class="text-3xl font-extrabold text-gray-800 mb-4 leading-snug">${detail.title}</h3>
+          <p class="text-gray-600 leading-relaxed">${detail.description}</p>
+        </div>
+        <div class="bg-blue-50 border border-blue-100 rounded-[1.5rem] p-6">
+          <h4 class="text-lg font-extrabold text-blue-900 mb-4">內容可放置資訊</h4>
+          <div class="grid grid-cols-1 gap-3">${chips}</div>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function setActivityMainImage(src, el){
+  const img = document.getElementById('activity-main-image');
+  if(img) img.src = src;
+  document.querySelectorAll('.activity-gallery-thumb').forEach(node => node.classList.remove('active'));
+  if(el) el.classList.add('active');
+}
+function openActivityDetail(key){
+  const body = document.getElementById('activity-detail-body');
+  const modal = document.getElementById('activity-detail-modal');
+  if(!body || !modal) return;
+  body.innerHTML = renderActivityDetail(key);
+  modal.classList.remove('hidden');
+  document.body.classList.add('overflow-hidden');
+}
+function closeActivityDetail(){
+  const body = document.getElementById('activity-detail-body');
+  const modal = document.getElementById('activity-detail-modal');
+  if(body) body.innerHTML = '';
+  if(modal) modal.classList.add('hidden');
+  document.body.classList.remove('overflow-hidden');
+}
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('[data-activity-filter]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const key = btn.dataset.activityFilter;
+      document.querySelectorAll('[data-activity-filter]').forEach(item => item.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('#activity-feature-list [data-activity-category]').forEach(card => {
+        const matched = key === 'all' || card.dataset.activityCategory === key;
+        card.classList.toggle('activity-hidden', !matched);
+      });
+    });
+  });
+
+  const modal = document.getElementById('activity-detail-modal');
+  if(modal){
+    modal.addEventListener('click', (e) => {
+      if(e.target === modal || e.target.classList.contains('activity-modal-backdrop')) closeActivityDetail();
+    });
+  }
+  document.addEventListener('keydown', (e) => {
+    if(e.key === 'Escape') closeActivityDetail();
+  });
 });
 </script>
 
