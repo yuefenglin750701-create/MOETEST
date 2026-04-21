@@ -384,13 +384,18 @@
             .activity-strip-arrow { display:none; }
         }
 
-    </style>
+    
+.project-section-panel.hidden { display: none; }
+.project-section-toggle.active { background: #ffedd5; border-color: #fdba74; box-shadow: 0 10px 24px rgba(249,115,22,.12); }
+.project-section-toggle.active i { transform: rotate(180deg); }
+
+</style>
 </head>
 <body class="bg-gray-50 flex flex-col min-h-screen text-gray-800 overflow-x-hidden">
     <!-- Splash Screen -->
 <!-- Splash Screen -->
 <div id="splash-screen" class="fixed inset-0 bg-white flex items-center justify-center z-[99999] transition-opacity duration-700 pointer-events-none">
-    <img src="教育部計畫logo.png" alt="Logo" class="w-72 md:w-96 animate-pulse">
+    <img src="115-1.JPEG" alt="Logo" class="w-72 md:w-96 animate-pulse">
 </div>
 
     <!-- Header -->
@@ -398,14 +403,12 @@
         <div class="container mx-auto px-4 py-3 flex items-center gap-4 min-w-0">
        <a href="javascript:void(0)" onclick="showPage('home')" class="flex items-center gap-4 group shrink-0">
     <div class="flex flex-row items-center gap-3 whitespace-nowrap">
-        <img src="教育部計畫logo.png"
-             alt="教育部智慧製造人才培育計畫 Logo"
+        <img src="教育部115-2.JPEG            alt="教育部智慧製造人才培育計畫 Logo"
              class="h-12 md:h-14 w-auto object-contain transition duration-300 group-hover:scale-105">
 
         <span class="text-gray-700 text-2xl md:text-3xl font-extrabold leading-none">×</span>
 
-        <img src="logo.png"
-             alt="國立勤益科技大學 Logo"
+        <img src="logo.p115-3.JPEG         alt="國立勤益科技大學 Logo"
              class="h-12 md:h-14 w-auto object-contain transition duration-300 group-hover:scale-105">
     </div>
 
@@ -1495,15 +1498,15 @@
             <div class="container mx-auto px-4 py-16 max-w-7xl">
                 <div class="bg-white rounded-[2.5rem] shadow-sm border border-gray-100 p-8 md:p-10 mb-10">
                     <div class="grid md:grid-cols-4 gap-4 mb-8">
-                        <div class="bg-blue-50 rounded-[1.5rem] p-5 border border-blue-100"><div class="text-sm font-extrabold text-blue-700 mb-2">產業問題</div><div class="text-sm text-gray-600">如刀具磨耗預測、加工監控、低碳製造</div></div>
-                        <div class="bg-emerald-50 rounded-[1.5rem] p-5 border border-emerald-100"><div class="text-sm font-extrabold text-emerald-700 mb-2">技術內容</div><div class="text-sm text-gray-600">AI、CPS、感測、訊號處理與機電整合</div></div>
-                        <div class="bg-amber-50 rounded-[1.5rem] p-5 border border-amber-100"><div class="text-sm font-extrabold text-amber-700 mb-2">成果展示</div><div class="text-sm text-gray-600">成果圖、展示影片、儀表板與專題模型</div></div>
-                        <div class="bg-violet-50 rounded-[1.5rem] p-5 border border-violet-100"><div class="text-sm font-extrabold text-violet-700 mb-2">合作企業</div><div class="text-sm text-gray-600">於卡片中標示合作企業與實際應用情境</div></div>
+                        <div class="bg-blue-50 rounded-[1.5rem] p-5 border border-blue-100"><div class="text-sm font-extrabold text-blue-700 mb-2">產業問題</div><div class="text-sm text-gray-600">聚焦巡檢量測、加工監測、智慧夾取與產線自動化等真實痛點</div></div>
+                        <div class="bg-emerald-50 rounded-[1.5rem] p-5 border border-emerald-100"><div class="text-sm font-extrabold text-emerald-700 mb-2">技術內容</div><div class="text-sm text-gray-600">AI 視覺辨識、感測資料分析、參數最佳化與機械手臂整合</div></div>
+                        <div class="bg-amber-50 rounded-[1.5rem] p-5 border border-amber-100"><div class="text-sm font-extrabold text-amber-700 mb-2">成果展示</div><div class="text-sm text-gray-600">可於查看詳情中放入簡報內容、成果照片與後續補充資料</div></div>
+                        <div class="bg-violet-50 rounded-[1.5rem] p-5 border border-violet-100"><div class="text-sm font-extrabold text-violet-700 mb-2">合作企業</div><div class="text-sm text-gray-600">目前以宇隆科技、東台精機／松讚實業、銳泰精密工具為主</div></div>
                     </div>
                     <div class="flex flex-col lg:flex-row gap-8 lg:items-center lg:justify-between">
                         <div class="max-w-3xl">
                             <h2 class="text-3xl font-extrabold text-gray-800 mb-3">成果展示架構</h2>
-                            <p class="text-gray-500 leading-relaxed">本頁已依計畫書方向整理為可上線之成果版面，可持續補入各年度 PBL 課程、企業實題專題、教學實驗室成果、競賽獲獎與教材展示；後續也可再串接 Supabase 後台擴充。</p>
+                            <p class="text-gray-500 leading-relaxed">本頁目前保留 4 個專題卡片，其中前 3 個已依照你提供的 PBL 簡報內容整理完成，並於查看詳情中加入可直接對應圖片檔名的展示區塊；第 4 個卡片先作為預留專題，你之後只要更換標題、文字與圖片即可延伸使用。</p>
                         </div>
                         <div class="grid grid-cols-2 gap-4 min-w-[260px]">
                             <div class="bg-blue-50 rounded-2xl p-5 text-center">
@@ -1511,8 +1514,8 @@
                                 <div class="text-xs font-bold text-blue-900 tracking-widest">成果主題</div>
                             </div>
                             <div class="bg-green-50 rounded-2xl p-5 text-center">
-                                <div class="text-3xl font-extrabold text-green-700 mb-1">11</div>
-                                <div class="text-xs font-bold text-green-900 tracking-widest">合作企業支援</div>
+                                <div class="text-3xl font-extrabold text-green-700 mb-1">3</div>
+                                <div class="text-xs font-bold text-green-900 tracking-widest">已完成匯入</div>
                             </div>
                         </div>
                     </div>
@@ -1520,159 +1523,129 @@
 
                 <div class="flex flex-wrap gap-3 justify-center mb-10">
                     <button class="project-filter-btn active px-5 py-3 rounded-full bg-white border border-gray-200 text-gray-700 font-extrabold transition" data-filter="all">全部成果</button>
-                    <button class="project-filter-btn px-5 py-3 rounded-full bg-white border border-gray-200 text-gray-700 font-extrabold transition" data-filter="manufacturing">工具機製造</button>
-                    <button class="project-filter-btn px-5 py-3 rounded-full bg-white border border-gray-200 text-gray-700 font-extrabold transition" data-filter="ai">AI 應用</button>
-                    <button class="project-filter-btn px-5 py-3 rounded-full bg-white border border-gray-200 text-gray-700 font-extrabold transition" data-filter="automation">感測／自動化</button>
-                    <button class="project-filter-btn px-5 py-3 rounded-full bg-white border border-gray-200 text-gray-700 font-extrabold transition" data-filter="semiconductor">實驗室／PBL</button>
+                    <button class="project-filter-btn px-5 py-3 rounded-full bg-white border border-gray-200 text-gray-700 font-extrabold transition" data-filter="inspection">智慧巡檢</button>
+                    <button class="project-filter-btn px-5 py-3 rounded-full bg-white border border-gray-200 text-gray-700 font-extrabold transition" data-filter="machining">智慧加工</button>
+                    <button class="project-filter-btn px-5 py-3 rounded-full bg-white border border-gray-200 text-gray-700 font-extrabold transition" data-filter="robot">智慧夾取</button>
+                    <button class="project-filter-btn px-5 py-3 rounded-full bg-white border border-gray-200 text-gray-700 font-extrabold transition" data-filter="reserve">預留專題</button>
                 </div>
 
-                <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
-                    <article class="project-card bg-white rounded-[2rem] shadow-sm border border-gray-100 overflow-hidden" data-category="semiconductor manufacturing">
+                <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8">
+                    <article class="project-card bg-white rounded-[2rem] shadow-sm border border-gray-100 overflow-hidden" data-category="inspection ai automation">
                         <div class="h-48 bg-gradient-to-br from-blue-700 via-cyan-600 to-sky-500 flex items-center justify-center text-white text-6xl">
-                            <i class="fa-solid fa-microchip"></i>
+                            <i class="fa-solid fa-eye"></i>
                         </div>
                         <div class="p-7">
                             <div class="flex flex-wrap gap-2 mb-4">
-                                <span class="project-chip bg-blue-50 text-blue-700">半導體</span>
-                                <span class="project-chip bg-cyan-50 text-cyan-700">智慧加工</span>
+                                <span class="project-chip bg-blue-50 text-blue-700">115-1</span>
+                                <span class="project-chip bg-cyan-50 text-cyan-700">智慧巡檢</span>
                             </div>
-                            <h3 class="text-xl font-extrabold text-gray-800 mb-3">應用於 8 吋碳化矽之智慧化雙旋轉軸線切割系統</h3>
-                            <p class="text-gray-500 text-sm leading-relaxed mb-5">整合雙旋轉軸、感測監測與切割條件優化，驗證高硬脆材料加工之可行性與穩定性。</p>
+                            <h3 class="text-xl font-extrabold text-gray-800 mb-3">智慧製造產線視覺巡檢量測系統開發</h3>
+                            <p class="text-gray-500 text-sm leading-relaxed mb-5">與宇隆科技合作，針對巡檢與量測流程不確實、效率低與難以追溯等問題，建置 AI 視覺輔助監控與量測管理系統。</p>
                             <div class="space-y-2 text-sm font-medium text-gray-600 mb-6">
-                                <div><span class="font-extrabold text-gray-800">指導方向：</span>晶圓切割、製程優化、智慧監測</div>
-                                <div><span class="font-extrabold text-gray-800">成果亮點：</span>設備整合與專題競賽展示潛力</div>
+                                <div><span class="font-extrabold text-gray-800">合作企業：</span>宇隆科技</div>
+                                <div><span class="font-extrabold text-gray-800">成果亮點：</span>作業準確率 92% 提升至 98%</div>
                             </div>
                             <button class="open-project-modal w-full py-3 rounded-2xl bg-blue-600 text-white font-extrabold hover:bg-blue-700 transition"
-                                data-title="應用於 8 吋碳化矽之智慧化雙旋轉軸線切割系統"
-                                data-category="半導體 × 智慧加工"
-                                data-desc="本專題聚焦於碳化矽晶圓切割之加工需求，透過雙旋轉軸機構、感測資訊蒐集與智慧化條件調整，建立切割品質、穩定性與效率兼顧的系統雛形。"
-                                data-tags="雙旋轉軸,SiC 晶圓,智慧監測,製程優化"
-                                data-result="可作為專題競賽、產學合作與設備展示成果之核心案例。"
+                                data-title="智慧製造產線視覺巡檢量測系統開發"
+                                data-category="115-1 × 宇隆科技 × 智慧巡檢"
+                                data-desc="本專題以宇隆科技產線巡檢與量測流程為問題來源，透過操作側鏡頭、料車鏡頭、量具辨識、量測動作偵測與影像回溯分析，建置一套可支援工件／量具辨識、流程監控與異常追溯的智慧 AI 巡檢站。"
+                                data-tags="宇隆科技,YOLO,視覺辨識,量具辨識,影像回溯"
+                                data-result="教學成效顯示作業準確率由 92% 提升至 98%，尺寸判定平均時間由 52 秒縮短至 32 秒，品質異常率由 4.2% 降低至 1.5%。"
+                                data-details="• 問題來源：來自宇隆科技產線巡檢與量測流程的實際需求。
+• 問題定義：解決人工巡檢易錯漏、量具混用、量測步驟遺漏與管理者難以掌握進度等痛點。
+• 方法設備：智慧鏡頭、各式量具、YOLO 深度學習模型、前端 HMI 介面、Python。
+• 預計產出：完成工件／量具辨識、流程監控、異常警示與影像回溯功能。"
+                                data-images="專題1-1,專題1-2,專題1-3"
                             >查看詳情</button>
                         </div>
                     </article>
 
-                    <article class="project-card bg-white rounded-[2rem] shadow-sm border border-gray-100 overflow-hidden" data-category="automation ai">
+                    <article class="project-card bg-white rounded-[2rem] shadow-sm border border-gray-100 overflow-hidden" data-category="machining ai automation">
                         <div class="h-48 bg-gradient-to-br from-emerald-600 via-green-600 to-lime-500 flex items-center justify-center text-white text-6xl">
-                            <i class="fa-solid fa-robot"></i>
-                        </div>
-                        <div class="p-7">
-                            <div class="flex flex-wrap gap-2 mb-4">
-                                <span class="project-chip bg-emerald-50 text-emerald-700">智慧巡檢</span>
-                                <span class="project-chip bg-lime-50 text-lime-700">Raspberry Pi</span>
-                            </div>
-                            <h3 class="text-xl font-extrabold text-gray-800 mb-3">工具機精度量測與誤差分析專題</h3>
-                            <p class="text-gray-500 text-sm leading-relaxed mb-5">結合量測設備、誤差補償觀念與實測分析流程，建立工具機精度檢測與品質判讀之專題成果。</p>
-                            <div class="space-y-2 text-sm font-medium text-gray-600 mb-6">
-                                <div><span class="font-extrabold text-gray-800">應用場域：</span>量測分析、誤差診斷、品質驗證</div>
-                                <div><span class="font-extrabold text-gray-800">成果亮點：</span>工具機精度量測實務落地</div>
-                            </div>
-                            <button class="open-project-modal w-full py-3 rounded-2xl bg-blue-600 text-white font-extrabold hover:bg-blue-700 transition"
-                                data-title="工具機精度量測與誤差分析專題"
-                                data-category="工具機精度量測 × 品質分析"
-                                data-desc="本專題以工具機精度量測模組為基礎，結合誤差分析、量測報告整理與品質判讀流程，培養學生建立可驗證的精度分析能力。"
-                                data-tags="精度量測,誤差分析,品質檢測,工具機"
-                                data-result="可與工具機精度量測模組課程、業師實務案例與教學實驗室成果整合呈現。"
-                            >查看詳情</button>
-                        </div>
-                    </article>
-
-                    <article class="project-card bg-white rounded-[2rem] shadow-sm border border-gray-100 overflow-hidden" data-category="ai manufacturing">
-                        <div class="h-48 bg-gradient-to-br from-violet-600 via-indigo-600 to-blue-500 flex items-center justify-center text-white text-6xl">
                             <i class="fa-solid fa-chart-line"></i>
                         </div>
                         <div class="p-7">
                             <div class="flex flex-wrap gap-2 mb-4">
-                                <span class="project-chip bg-violet-50 text-violet-700">AI 分析</span>
-                                <span class="project-chip bg-indigo-50 text-indigo-700">戰情儀表板</span>
+                                <span class="project-chip bg-emerald-50 text-emerald-700">115-2</span>
+                                <span class="project-chip bg-lime-50 text-lime-700">智慧加工</span>
                             </div>
-                            <h3 class="text-xl font-extrabold text-gray-800 mb-3">Python 訊號處理與影像辨識應用專題</h3>
-                            <p class="text-gray-500 text-sm leading-relaxed mb-5">整合 Python、感測訊號與影像辨識流程，建立製程資料擷取、特徵判讀與異常辨識之應用成果。</p>
+                            <h3 class="text-xl font-extrabold text-gray-800 mb-3">智慧加工監測與切削參數最佳化系統開發</h3>
+                            <p class="text-gray-500 text-sm leading-relaxed mb-5">與東台精機、松讚實業合作，針對加工參數仰賴經驗設定、效率與品質難以兼顧的問題，建立智慧監測與參數最佳化系統。</p>
                             <div class="space-y-2 text-sm font-medium text-gray-600 mb-6">
-                                <div><span class="font-extrabold text-gray-800">使用工具：</span>Python、OpenCV、訊號處理邏輯</div>
-                                <div><span class="font-extrabold text-gray-800">成果亮點：</span>跨域感測資料分析能力</div>
+                                <div><span class="font-extrabold text-gray-800">合作企業：</span>東台精機、松讚實業</div>
+                                <div><span class="font-extrabold text-gray-800">成果亮點：</span>加工週期預計縮短 15%–20%</div>
                             </div>
                             <button class="open-project-modal w-full py-3 rounded-2xl bg-blue-600 text-white font-extrabold hover:bg-blue-700 transition"
-                                data-title="Python 訊號處理與影像辨識應用專題"
-                                data-category="Python 應用 × 訊號／影像辨識"
-                                data-desc="透過 Python 與影像辨識流程，將製程訊號、感測數據與影像特徵轉化為可判讀的分析結果，展現智慧製造資料應用能力。"
-                                data-tags="Python,訊號處理,影像辨識,感測分析"
-                                data-result="適合對接感測、AI 分析與智慧自動化教學主題，作為跨域成果展示。"
+                                data-title="智慧加工監測與切削參數最佳化系統開發"
+                                data-category="115-2 × 東台精機／松讚實業 × 智慧加工"
+                                data-desc="本專題從加工現場切入，蒐集主軸負載、進給率、加工座標與切削條件資料，結合 AI 分析、參數最佳化與即時監控介面，建立可兼顧效率、品質與能耗的智慧加工系統。"
+                                data-tags="東台精機,松讚實業,主軸負載,AI最佳化,加工監測"
+                                data-result="教學成效以量化指標驗證：加工週期時間預計可縮短 15%–20%，表面粗糙度穩定性預計提升 10%–15%，單件能耗預計降低 8%–12%。"
+                                data-details="• 問題來源：來自東台精機協助產業客戶推動智慧製造升級之實際需求。
+• 問題定義：解決切削參數設定高度依賴經驗、加工負載不易即時掌握與異常難以預警等問題。
+• 方法設備：加工機台、感測器、加工資料分析平台、AI 最佳化模型、前端監控介面。
+• 預計產出：建立整套智慧加工監測、切削參數最佳化、異常預警與效能分析功能。"
+                                data-images="專題2-1,專題2-2,專題2-3"
                             >查看詳情</button>
                         </div>
                     </article>
 
-                    <article class="project-card bg-white rounded-[2rem] shadow-sm border border-gray-100 overflow-hidden" data-category="automation manufacturing">
-                        <div class="h-48 bg-gradient-to-br from-amber-500 via-orange-500 to-red-500 flex items-center justify-center text-white text-6xl">
-                            <i class="fa-solid fa-gears"></i>
+                    <article class="project-card bg-white rounded-[2rem] shadow-sm border border-gray-100 overflow-hidden" data-category="robot ai automation">
+                        <div class="h-48 bg-gradient-to-br from-violet-600 via-indigo-600 to-blue-500 flex items-center justify-center text-white text-6xl">
+                            <i class="fa-solid fa-robot"></i>
                         </div>
                         <div class="p-7">
                             <div class="flex flex-wrap gap-2 mb-4">
-                                <span class="project-chip bg-amber-50 text-amber-700">自動控制</span>
-                                <span class="project-chip bg-orange-50 text-orange-700">機電整合</span>
+                                <span class="project-chip bg-violet-50 text-violet-700">115-3</span>
+                                <span class="project-chip bg-indigo-50 text-indigo-700">智慧夾取</span>
                             </div>
-                            <h3 class="text-xl font-extrabold text-gray-800 mb-3">工具機關鍵組件設計專題</h3>
-                            <p class="text-gray-500 text-sm leading-relaxed mb-5">從結構設計、材料選擇到裝配概念，發展工具機關鍵組件設計與功能驗證之專題成果。</p>
+                            <h3 class="text-xl font-extrabold text-gray-800 mb-3">亮面金屬工件智慧夾取系統</h3>
+                            <p class="text-gray-500 text-sm leading-relaxed mb-5">與銳泰精密工具合作，針對亮面金屬工件辨識不穩、點雲破碎與夾取成功率低等問題，發展智慧夾取與 bin picking 應用。</p>
                             <div class="space-y-2 text-sm font-medium text-gray-600 mb-6">
-                                <div><span class="font-extrabold text-gray-800">學習重點：</span>結構設計、組件機能、設計驗證</div>
-                                <div><span class="font-extrabold text-gray-800">成果亮點：</span>關鍵組件設計能力展現</div>
+                                <div><span class="font-extrabold text-gray-800">合作企業：</span>銳泰精密工具</div>
+                                <div><span class="font-extrabold text-gray-800">成果亮點：</span>夾取成功率由 23% 提升至 93%</div>
                             </div>
                             <button class="open-project-modal w-full py-3 rounded-2xl bg-blue-600 text-white font-extrabold hover:bg-blue-700 transition"
-                                data-title="工具機關鍵組件設計專題"
-                                data-category="關鍵組件設計 × 工具機"
-                                data-desc="本專題以工具機關鍵組件為核心，從設計需求、機構配置到性能驗證建立完整專題流程，對接產業在高值化製造中的設計能力需求。"
-                                data-tags="關鍵組件,結構設計,功能驗證,工具機"
-                                data-result="可作為課程、專題競賽與企業題目導入的重要成果案例。"
+                                data-title="亮面金屬工件智慧夾取系統"
+                                data-category="115-3 × 銳泰精密工具 × 智慧夾取"
+                                data-desc="本專題聚焦於亮面金屬工件在鏡面反射下難以穩定辨識與夾取的問題，結合 2D 影像分割、2D–3D 投影映射、點雲補全與機械手臂整合，提升自動化夾取的可靠性與效率。"
+                                data-tags="銳泰精密工具,PCN,點雲補全,bin picking,機械手臂"
+                                data-result="教學成效顯示夾取成功率由 23% 提升至 93%，背景分割準確度（IoU）由 0.67 提升至 0.91，模型訓練時間由 12 小時縮短至 2 小時。"
+                                data-details="• 問題來源：來自銳泰精密工具亮面金屬工件自動化夾取的實際需求。
+• 問題定義：解決鏡面反射造成點雲缺失、姿態估測誤差大與隨機堆疊下夾取成功率低等問題。
+• 方法設備：Zivid 3D 相機、2D 影像分割、2D–3D 投影映射、點雲補全（PCN）、機械手臂整合。
+• 預計產出：建置亮面工件辨識、姿態判定與智慧夾取驗證系統。"
+                                data-images="專題3-1,專題3-2,專題3-3"
                             >查看詳情</button>
                         </div>
                     </article>
 
-                    <article class="project-card bg-white rounded-[2rem] shadow-sm border border-gray-100 overflow-hidden" data-category="ai automation">
-                        <div class="h-48 bg-gradient-to-br from-fuchsia-600 via-pink-600 to-rose-500 flex items-center justify-center text-white text-6xl">
-                            <i class="fa-solid fa-brain"></i>
-                        </div>
-                        <div class="p-7">
-                            <div class="flex flex-wrap gap-2 mb-4">
-                                <span class="project-chip bg-fuchsia-50 text-fuchsia-700">技能矩陣</span>
-                                <span class="project-chip bg-rose-50 text-rose-700">人力培育</span>
-                            </div>
-                            <h3 class="text-xl font-extrabold text-gray-800 mb-3">企業實題導向 PBL 專題</h3>
-                            <p class="text-gray-500 text-sm leading-relaxed mb-5">以企業真實問題為題，整合基礎課程與特色模組成果，完成具展示性與應用性的 PBL 專題。</p>
-                            <div class="space-y-2 text-sm font-medium text-gray-600 mb-6">
-                                <div><span class="font-extrabold text-gray-800">使用情境：</span>企業出題、學生解題、成果驗證</div>
-                                <div><span class="font-extrabold text-gray-800">成果亮點：</span>跨域整合與問題解決</div>
-                            </div>
-                            <button class="open-project-modal w-full py-3 rounded-2xl bg-blue-600 text-white font-extrabold hover:bg-blue-700 transition"
-                                data-title="企業實題導向 PBL 專題"
-                                data-category="PBL × 產學實作"
-                                data-desc="依據計畫推動方向，PBL 課程採企業出題、學生解題模式，整合五軸加工、量測、感測與設計等學習成果，發展具落地潛力的整合型專題。"
-                                data-tags="PBL,企業實題,跨域整合,成果展示"
-                                data-result="適合作為年度成果展、企業評核與學生專題發表之核心展示內容。"
-                            >查看詳情</button>
-                        </div>
-                    </article>
-
-                    <article class="project-card bg-white rounded-[2rem] shadow-sm border border-gray-100 overflow-hidden" data-category="manufacturing semiconductor">
+                    <article class="project-card bg-white rounded-[2rem] shadow-sm border border-gray-100 overflow-hidden" data-category="reserve manufacturing">
                         <div class="h-48 bg-gradient-to-br from-slate-700 via-gray-700 to-zinc-500 flex items-center justify-center text-white text-6xl">
-                            <i class="fa-solid fa-industry"></i>
+                            <i class="fa-solid fa-folder-plus"></i>
                         </div>
                         <div class="p-7">
                             <div class="flex flex-wrap gap-2 mb-4">
-                                <span class="project-chip bg-slate-100 text-slate-700">製造轉型</span>
-                                <span class="project-chip bg-gray-100 text-gray-700">製程驗證</span>
+                                <span class="project-chip bg-slate-100 text-slate-700">預留專題</span>
+                                <span class="project-chip bg-gray-100 text-gray-700">可自行替換</span>
                             </div>
-                            <h3 class="text-xl font-extrabold text-gray-800 mb-3">智慧加工參數分析與刀具磨耗預測</h3>
-                            <p class="text-gray-500 text-sm leading-relaxed mb-5">分析加工訊號、切削狀態與磨耗資訊，建立刀具壽命與加工品質預測模型。</p>
+                            <h3 class="text-xl font-extrabold text-gray-800 mb-3">第四個專題（預留）</h3>
+                            <p class="text-gray-500 text-sm leading-relaxed mb-5">此卡片已先保留版型與詳情彈窗，之後你只要替換標題、摘要、詳細文字與圖片檔名即可直接上線使用。</p>
                             <div class="space-y-2 text-sm font-medium text-gray-600 mb-6">
-                                <div><span class="font-extrabold text-gray-800">研究方向：</span>訊號處理、AI 分析、加工優化</div>
-                                <div><span class="font-extrabold text-gray-800">成果亮點：</span>可對接智慧製造教學與實驗室研究</div>
+                                <div><span class="font-extrabold text-gray-800">建議用途：</span>放第四個 PBL、競賽成果或教材展示</div>
+                                <div><span class="font-extrabold text-gray-800">圖片命名：</span>專題4-1、專題4-2、專題4-3</div>
                             </div>
                             <button class="open-project-modal w-full py-3 rounded-2xl bg-blue-600 text-white font-extrabold hover:bg-blue-700 transition"
-                                data-title="智慧加工參數分析與刀具磨耗預測"
-                                data-category="智慧製造 × 數據分析"
-                                data-desc="本專題應用加工訊號、特徵擷取與 AI 分析方法，建立刀具磨耗預測與加工參數優化邏輯，作為智慧加工的重要應用主題。"
-                                data-tags="刀具磨耗,訊號處理,智慧加工,AI 預測"
-                                data-result="可延伸為論文、競賽、企業診斷或教學示範成果。"
+                                data-title="第四個專題（預留）"
+                                data-category="預留成果 × 後續補充"
+                                data-desc="此區塊已預留給你後續新增第 4 個專題使用，你可以直接修改卡片文字與查看詳情內容，並將對應圖片放入同一個資料夾中。"
+                                data-tags="預留,後續新增,圖片展示,專題擴充"
+                                data-result="當你補齊第 4 個專題內容後，只需修改文字與圖片檔名即可立即完成更新。"
+                                data-details="• 使用方式：可替換為你的第 4 個正式專題。
+• 文字區：建議放問題來源、技術方法、驗證成果與應用場域。
+• 圖片區：請將圖片命名為專題4-1、專題4-2、專題4-3 並放在同一資料夾。
+• 後續擴充：也可改成競賽成果、專利成果或教學教材成果展示。"
+                                data-images="專題4-1,專題4-2,專題4-3"
                             >查看詳情</button>
                         </div>
                     </article>
@@ -1681,10 +1654,10 @@
         </div>
 
         <!-- Project Modal -->
-        <div id="project-modal" class="hidden fixed inset-0 z-[100001]">
+        <div id="project-modal" class="hidden fixed inset-0 z-[100001] overflow-y-auto">
             <div class="project-modal-backdrop absolute inset-0"></div>
-            <div class="relative min-h-full flex items-center justify-center p-4">
-                <div class="w-full max-w-3xl bg-white rounded-[2rem] shadow-2xl overflow-hidden relative">
+            <div class="relative min-h-full flex items-start justify-center p-4 md:p-5">
+                <div class="w-full max-w-5xl bg-white rounded-[2rem] shadow-2xl overflow-hidden relative my-4 md:my-6 flex flex-col max-h-[calc(100vh-2rem)] md:max-h-[calc(100vh-3rem)]">
                     <button id="project-modal-close" class="absolute top-5 right-5 w-11 h-11 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 transition z-10">
                         <i class="fa-solid fa-xmark text-lg"></i>
                     </button>
@@ -1692,7 +1665,7 @@
                         <p id="modal-category" class="text-sm font-bold tracking-widest uppercase text-blue-100 mb-3">Project Category</p>
                         <h3 id="modal-title" class="text-3xl md:text-4xl font-extrabold leading-snug">專題名稱</h3>
                     </div>
-                    <div class="p-8 md:p-10 space-y-6">
+                    <div class="p-8 md:p-10 space-y-8 flex-1 overflow-y-auto min-h-0">
                         <div>
                             <h4 class="text-lg font-extrabold text-gray-800 mb-2">專題簡介</h4>
                             <p id="modal-desc" class="text-gray-600 leading-relaxed">專題內容說明。</p>
@@ -1704,6 +1677,17 @@
                         <div class="bg-blue-50 rounded-[1.5rem] p-6 border border-blue-100">
                             <h4 class="text-lg font-extrabold text-blue-900 mb-2">成果亮點</h4>
                             <p id="modal-result" class="text-blue-900/80 leading-relaxed">成果亮點說明。</p>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-extrabold text-gray-800 mb-3">簡報重點整理</h4>
+                            <div id="modal-details" class="space-y-3 text-gray-600 leading-relaxed"></div>
+                        </div>
+                        <div>
+                            <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+                                <h4 class="text-lg font-extrabold text-gray-800">成果圖片展示區</h4>
+                                <p class="text-sm text-gray-500">將圖片放在與 HTML 相同資料夾，檔名依下方提示命名即可自動對應</p>
+                            </div>
+                            <div id="modal-gallery" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"></div>
                         </div>
                     </div>
                 </div>
@@ -2779,10 +2763,233 @@ window.addEventListener("DOMContentLoaded", () => {
     const descEl = document.getElementById('modal-desc');
     const tagsEl = document.getElementById('modal-tags');
     const resultEl = document.getElementById('modal-result');
+    const detailsEl = document.getElementById('modal-details');
+    const galleryEl = document.getElementById('modal-gallery');
 
     const closeModal = () => {
       modal.classList.add('hidden');
       document.body.classList.remove('overflow-hidden');
+    };
+
+    const buildDetailList = (detailsText) => {
+      const items = (detailsText || '').split('\n').map(item => item.trim()).filter(Boolean);
+      if (!items.length) {
+        return '<p class="text-gray-500">目前尚未填入詳細內容。</p>';
+      }
+      return items.map(item => `
+        <div class="bg-gray-50 border border-gray-100 rounded-2xl px-5 py-4 text-gray-700">${item}</div>
+      `).join('');
+    };
+
+    const buildGallery = (imagesText) => {
+      const images = (imagesText || '').split(',').map(item => item.trim()).filter(Boolean);
+      if (!images.length) {
+        return '<p class="text-gray-500">目前尚未設定圖片檔名。</p>';
+      }
+      return images.map(name => `
+        <div class="rounded-[1.5rem] border border-gray-200 overflow-hidden bg-white shadow-sm">
+          <div class="aspect-[4/3] bg-gray-100 flex items-center justify-center overflow-hidden">
+            <img src="${name}.jpg" alt="${name}" class="w-full h-full object-cover"
+                 onerror="if(!this.dataset.fallback){this.dataset.fallback='png';this.src='${name}.png';}else if(this.dataset.fallback==='png'){this.dataset.fallback='jpeg';this.src='${name}.jpeg';}else{this.style.display='none'; this.parentElement.innerHTML='<div class=&quot;w-full h-full flex flex-col items-center justify-center text-center px-4 text-gray-400 bg-gray-50&quot;><i class=&quot;fa-regular fa-image text-3xl mb-3&quot;></i><p class=&quot;font-extrabold text-gray-600 mb-1&quot;>${name}</p><p class=&quot;text-xs leading-relaxed&quot;>請將圖片放在同一資料夾中，可使用 .jpg / .png / .jpeg</p></div>';}">
+          </div>
+          <div class="px-4 py-3 border-t border-gray-100">
+            <p class="text-sm font-extrabold text-gray-800">${name}</p>
+            <p class="text-xs text-gray-500 mt-1">檔名請使用：${name}</p>
+          </div>
+        </div>
+      `).join('');
+    };
+
+
+    const buildProject1151Buttons = () => {
+      return `
+        <div class="space-y-4">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <button type="button" class="project-section-toggle w-full text-left bg-orange-50 hover:bg-orange-100 border border-orange-200 rounded-2xl px-5 py-4 transition" data-target="p1151-source">
+              <div class="flex items-center justify-between gap-3">
+                <span class="font-extrabold text-orange-700 text-lg">--問題來源</span>
+                <i class="fa-solid fa-chevron-down text-orange-500 transition-transform duration-200"></i>
+              </div>
+            </button>
+            <button type="button" class="project-section-toggle w-full text-left bg-orange-50 hover:bg-orange-100 border border-orange-200 rounded-2xl px-5 py-4 transition" data-target="p1151-definition">
+              <div class="flex items-center justify-between gap-3">
+                <span class="font-extrabold text-orange-700 text-lg">--問題定義</span>
+                <i class="fa-solid fa-chevron-down text-orange-500 transition-transform duration-200"></i>
+              </div>
+            </button>
+            <button type="button" class="project-section-toggle w-full text-left bg-orange-50 hover:bg-orange-100 border border-orange-200 rounded-2xl px-5 py-4 transition" data-target="p1151-engineering">
+              <div class="flex items-center justify-between gap-3">
+                <span class="font-extrabold text-orange-700 text-lg">工程性問題（業界 → 學界）</span>
+                <i class="fa-solid fa-chevron-down text-orange-500 transition-transform duration-200"></i>
+              </div>
+            </button>
+            <button type="button" class="project-section-toggle w-full text-left bg-orange-50 hover:bg-orange-100 border border-orange-200 rounded-2xl px-5 py-4 transition" data-target="p1151-owner">
+              <div class="flex items-center justify-between gap-3">
+                <span class="font-extrabold text-orange-700 text-lg">--問題由誰來定義？</span>
+                <i class="fa-solid fa-chevron-down text-orange-500 transition-transform duration-200"></i>
+              </div>
+            </button>
+          </div>
+
+          <div class="space-y-4 mt-4">
+            <div id="p1151-source" class="project-section-panel hidden bg-white border border-orange-100 rounded-2xl p-5 shadow-sm">
+              <h5 class="text-xl font-extrabold text-orange-700 mb-3">--問題來源</h5>
+              <p class="text-gray-700 leading-8">來自宇隆科技產線巡檢與量測流程的實際需求。現行作業多仰賴人工進行工件確認、量具取用、量測步驟執行與結果追蹤，隨著產量提升，逐漸出現人為錯漏、進度不易掌握、量測狀態難以即時追蹤等問題，成為影響品質穩定性與管理效率的重要瓶頸。</p>
+            </div>
+            <div id="p1151-definition" class="project-section-panel hidden bg-white border border-orange-100 rounded-2xl p-5 shadow-sm">
+              <h5 class="text-xl font-extrabold text-orange-700 mb-3">--問題定義</h5>
+              <p class="text-gray-700 leading-8">巡檢與量測流程缺乏即時視覺化監控與數位化管理，導致工件與量具狀態不易辨識、相似量具容易混用、量測步驟可能遺漏，且管理者難以及時掌握現場進度與異常狀況；因此需建置一套結合影像辨識、狀態監控與流程追溯之智慧巡檢系統。</p>
+            </div>
+            <div id="p1151-engineering" class="project-section-panel hidden bg-white border border-orange-100 rounded-2xl p-5 shadow-sm">
+              <h5 class="text-xl font-extrabold text-orange-700 mb-3">工程性問題（業界 → 學界）</h5>
+              <p class="text-gray-700 leading-8 mb-3">將「產線巡檢與量測流程過度依賴人工，造成效率低、易錯漏且難追蹤」轉化為可驗證的工程問題：</p>
+              <ol class="list-decimal ml-6 space-y-2 text-gray-700 leading-8">
+                <li>工件與量具狀態自動辨識問題</li>
+                <li>巡檢流程即時監控與判定問題</li>
+                <li>巡檢資訊整合與追溯管理問題</li>
+              </ol>
+            </div>
+            <div id="p1151-owner" class="project-section-panel hidden bg-white border border-orange-100 rounded-2xl p-5 shadow-sm">
+              <h5 class="text-xl font-extrabold text-orange-700 mb-3">--問題由誰來定義？</h5>
+              <p class="text-gray-700 leading-8">由宇隆科技提出真實產線需求與現場痛點，教師負責將產業問題轉化為課程目標與工程任務，學生則於教師與業師共同指導下，完成系統建置、模型訓練、介面開發與整合驗證。</p>
+            </div>
+          </div>
+        </div>
+      `;
+    };
+
+
+    const buildProject1152Buttons = () => {
+
+      return `
+        <div class="space-y-4">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <button type="button" class="project-section-toggle w-full text-left bg-orange-50 hover:bg-orange-100 border border-orange-200 rounded-2xl px-5 py-4 transition" data-target="p1152-source">
+              <div class="flex items-center justify-between gap-3">
+                <span class="font-extrabold text-orange-700 text-lg">--問題來源</span>
+                <i class="fa-solid fa-chevron-down text-orange-500 transition-transform duration-200"></i>
+              </div>
+            </button>
+            <button type="button" class="project-section-toggle w-full text-left bg-orange-50 hover:bg-orange-100 border border-orange-200 rounded-2xl px-5 py-4 transition" data-target="p1152-definition">
+              <div class="flex items-center justify-between gap-3">
+                <span class="font-extrabold text-orange-700 text-lg">--問題定義</span>
+                <i class="fa-solid fa-chevron-down text-orange-500 transition-transform duration-200"></i>
+              </div>
+            </button>
+            <button type="button" class="project-section-toggle w-full text-left bg-orange-50 hover:bg-orange-100 border border-orange-200 rounded-2xl px-5 py-4 transition" data-target="p1152-engineering">
+              <div class="flex items-center justify-between gap-3">
+                <span class="font-extrabold text-orange-700 text-lg">工程性問題（業界 → 學界）</span>
+                <i class="fa-solid fa-chevron-down text-orange-500 transition-transform duration-200"></i>
+              </div>
+            </button>
+            <button type="button" class="project-section-toggle w-full text-left bg-orange-50 hover:bg-orange-100 border border-orange-200 rounded-2xl px-5 py-4 transition" data-target="p1152-owner">
+              <div class="flex items-center justify-between gap-3">
+                <span class="font-extrabold text-orange-700 text-lg">--問題由誰來定義？</span>
+                <i class="fa-solid fa-chevron-down text-orange-500 transition-transform duration-200"></i>
+              </div>
+            </button>
+          </div>
+
+          <div class="space-y-4 mt-4">
+            <div id="p1152-source" class="project-section-panel hidden bg-white border border-orange-100 rounded-2xl p-5 shadow-sm">
+              <h5 class="text-xl font-extrabold text-orange-700 mb-3">--問題來源</h5>
+              <p class="text-gray-700 leading-8">來自東台精機協助產業客戶推動智慧製造升級之實際需求。現行加工製程多仰賴人員經驗進行切削參數設定、加工狀態判讀與異常處置，隨著產品精度要求提升與加工條件日趨複雜，逐漸出現加工效率不易提升、品質穩定性不足、能耗偏高、刀具負載變化難以及時掌握等問題，成為影響生產效能與製程優化的重要瓶頸。</p>
+            </div>
+            <div id="p1152-definition" class="project-section-panel hidden bg-white border border-orange-100 rounded-2xl p-5 shadow-sm">
+              <h5 class="text-xl font-extrabold text-orange-700 mb-3">--問題定義</h5>
+              <p class="text-gray-700 leading-8">加工製程缺乏即時監測、智慧判斷與參數最佳化機制，導致切削參數設定高度依賴經驗、加工負載與異常狀態不易即時辨識，且難以在效率、品質與能耗之間取得最佳平衡；因此需建置一套結合加工資料擷取、狀態監測、AI分析與參數優化之智慧加工系統，以提升製程穩定性與決策效率。</p>
+            </div>
+            <div id="p1152-engineering" class="project-section-panel hidden bg-white border border-orange-100 rounded-2xl p-5 shadow-sm">
+              <h5 class="text-xl font-extrabold text-orange-700 mb-3">工程性問題（業界 → 學界）</h5>
+              <p class="text-gray-700 leading-8 mb-3">將「加工製程仰賴人工經驗調整，造成效率、品質與能耗難以兼顧」轉化為可驗證的工程問題：</p>
+              <ol class="list-decimal ml-6 space-y-2 text-gray-700 leading-8">
+                <li>加工狀態與主軸負載即時辨識問題</li>
+                <li>切削參數智慧調整與最佳化問題</li>
+                <li>加工資訊整合、監控與異常預警問題</li>
+              </ol>
+            </div>
+            <div id="p1152-owner" class="project-section-panel hidden bg-white border border-orange-100 rounded-2xl p-5 shadow-sm">
+              <h5 class="text-xl font-extrabold text-orange-700 mb-3">--問題由誰來定義？</h5>
+              <p class="text-gray-700 leading-8">由東台精機依據產業客戶實際加工需求與現場痛點提出問題情境，教師負責將產業問題轉化為課程目標與工程任務，學生則於教師與業師共同指導下，完成加工監測、模型建置、參數最佳化分析、介面開發與整合驗證。</p>
+            </div>
+          </div>
+        </div>
+      `;
+    };
+
+
+    const buildProject1153Buttons = () => {
+      return `
+        <div class="space-y-4">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <button type="button" class="project-section-toggle w-full text-left bg-orange-50 hover:bg-orange-100 border border-orange-200 rounded-2xl px-5 py-4 transition" data-target="p1153-source">
+              <div class="flex items-center justify-between gap-3">
+                <span class="font-extrabold text-orange-700 text-lg">--問題來源</span>
+                <i class="fa-solid fa-chevron-down text-orange-500 transition-transform duration-200"></i>
+              </div>
+            </button>
+            <button type="button" class="project-section-toggle w-full text-left bg-orange-50 hover:bg-orange-100 border border-orange-200 rounded-2xl px-5 py-4 transition" data-target="p1153-definition">
+              <div class="flex items-center justify-between gap-3">
+                <span class="font-extrabold text-orange-700 text-lg">--問題定義</span>
+                <i class="fa-solid fa-chevron-down text-orange-500 transition-transform duration-200"></i>
+              </div>
+            </button>
+            <button type="button" class="project-section-toggle w-full text-left bg-orange-50 hover:bg-orange-100 border border-orange-200 rounded-2xl px-5 py-4 transition" data-target="p1153-engineering">
+              <div class="flex items-center justify-between gap-3">
+                <span class="font-extrabold text-orange-700 text-lg">工程性問題（業界 → 學界）</span>
+                <i class="fa-solid fa-chevron-down text-orange-500 transition-transform duration-200"></i>
+              </div>
+            </button>
+            <button type="button" class="project-section-toggle w-full text-left bg-orange-50 hover:bg-orange-100 border border-orange-200 rounded-2xl px-5 py-4 transition" data-target="p1153-owner">
+              <div class="flex items-center justify-between gap-3">
+                <span class="font-extrabold text-orange-700 text-lg">--問題由誰來定義？</span>
+                <i class="fa-solid fa-chevron-down text-orange-500 transition-transform duration-200"></i>
+              </div>
+            </button>
+          </div>
+
+          <div class="space-y-4 mt-4">
+            <div id="p1153-source" class="project-section-panel hidden bg-white border border-orange-100 rounded-2xl p-5 shadow-sm">
+              <h5 class="text-xl font-extrabold text-orange-700 mb-3">--問題來源</h5>
+              <p class="text-gray-700 leading-8">來自銳泰精密工具於金屬加工產線中，亮面工件自動化搬運與夾取之實際需求。現行作業多仰賴人工或傳統視覺系統進行工件辨識與取放，於亮面金屬物件情境下，因鏡面反射導致3D感測不穩定、點雲破碎與缺失，隨著產線自動化需求提升，逐漸出現辨識困難、姿態估測不準與夾取失敗率高等問題，成為影響生產效率與自動化程度之重要瓶頸。</p>
+            </div>
+            <div id="p1153-definition" class="project-section-panel hidden bg-white border border-orange-100 rounded-2xl p-5 shadow-sm">
+              <h5 class="text-xl font-extrabold text-orange-700 mb-3">--問題定義</h5>
+              <p class="text-gray-700 leading-8">亮面金屬工件於隨機堆疊（bin picking）情境下，缺乏穩定之視覺辨識與幾何重建機制，導致點雲資料不完整、物件輪廓難以正確分割，進而影響姿態估測與夾取決策；且在複雜堆疊情況下，系統難以及時判斷最佳抓取位置與方向。因此需建置一套結合影像分割、點雲補全與姿態估測之智慧夾取系統，以提升整體辨識穩定性與夾取成功率。</p>
+            </div>
+            <div id="p1153-engineering" class="project-section-panel hidden bg-white border border-orange-100 rounded-2xl p-5 shadow-sm">
+              <h5 class="text-xl font-extrabold text-orange-700 mb-3">工程性問題（業界 → 學界）</h5>
+              <p class="text-gray-700 leading-8 mb-3">將「產線巡檢與量測流程過度依賴人工，造成效率低、易錯漏且難追蹤」轉化為可驗證的工程問題：</p>
+              <ol class="list-decimal ml-6 space-y-2 text-gray-700 leading-8">
+                <li>亮面工件之穩定辨識問題</li>
+                <li>破碎點雲之幾何補全與重建問題</li>
+                <li>隨機堆疊情境下之精準姿態估測與夾取決策問題</li>
+              </ol>
+            </div>
+            <div id="p1153-owner" class="project-section-panel hidden bg-white border border-orange-100 rounded-2xl p-5 shadow-sm">
+              <h5 class="text-xl font-extrabold text-orange-700 mb-3">--問題由誰來定義？</h5>
+              <p class="text-gray-700 leading-8">由銳泰精密工具提出實際產線需求與現場痛點，教師負責將產業問題轉化為課程目標與工程任務，學生則於教師與業師共同指導下，完成系統建置、模型訓練、視覺辨識與機械手臂整合驗證。</p>
+            </div>
+          </div>
+        </div>
+      `;
+    };
+
+    const bindProjectSectionToggles = (scope = document) => {
+      scope.querySelectorAll('.project-section-toggle').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const panelId = btn.dataset.target;
+          const panel = scope.querySelector('#' + panelId);
+          if (!panel) return;
+          const willOpen = panel.classList.contains('hidden');
+          scope.querySelectorAll('.project-section-panel').forEach(el => el.classList.add('hidden'));
+          scope.querySelectorAll('.project-section-toggle').forEach(el => el.classList.remove('active'));
+          if (willOpen) {
+            panel.classList.remove('hidden');
+            btn.classList.add('active');
+          }
+        });
+      });
     };
 
     const openModal = (btn) => {
@@ -2792,6 +2999,19 @@ window.addEventListener("DOMContentLoaded", () => {
       resultEl.textContent = btn.dataset.result || '';
       const tags = (btn.dataset.tags || '').split(',').map(t => t.trim()).filter(Boolean);
       tagsEl.innerHTML = tags.map(tag => `<span class="project-chip bg-gray-100 text-gray-700">${tag}</span>`).join('');
+      if ((btn.dataset.title || '').trim() === '智慧製造產線視覺巡檢量測系統開發') {
+        detailsEl.innerHTML = buildProject1151Buttons();
+        bindProjectSectionToggles(detailsEl);
+      } else if ((btn.dataset.title || '').trim() === '智慧加工監測與切削參數最佳化系統開發') {
+        detailsEl.innerHTML = buildProject1152Buttons();
+        bindProjectSectionToggles(detailsEl);
+      } else if (((btn.dataset.title || '').trim() === '亮面金屬智慧夾取系統開發') || ((btn.dataset.title || '').trim() === '亮面金屬智慧夾取系統') || ((btn.dataset.title || '').includes('亮面金屬'))) {
+        detailsEl.innerHTML = buildProject1153Buttons();
+        bindProjectSectionToggles(detailsEl);
+      } else {
+        detailsEl.innerHTML = buildDetailList(btn.dataset.details || '');
+      }
+      galleryEl.innerHTML = buildGallery(btn.dataset.images || '');
       modal.classList.remove('hidden');
       document.body.classList.add('overflow-hidden');
     };
