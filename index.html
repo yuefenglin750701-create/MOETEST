@@ -389,6 +389,27 @@
 .project-section-toggle.active { background: #ffedd5; border-color: #fdba74; box-shadow: 0 10px 24px rgba(249,115,22,.12); }
 .project-section-toggle.active i { transform: rotate(180deg); }
 
+
+        .pyr-panel-collapsed {
+            min-height: 220px !important;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            border: 2px dashed #cbd5e1;
+        }
+        .pyr-panel-placeholder {
+            text-align: center;
+            padding: 2rem;
+            color: #64748b;
+        }
+        .pyr-panel-placeholder i {
+            font-size: 3rem;
+            color: #94a3b8;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
 </style>
 </head>
 <body class="bg-gray-50 flex flex-col min-h-screen text-gray-800 overflow-x-hidden">
@@ -643,7 +664,14 @@
                         <p class="mt-12 text-gray-400 font-bold italic">點擊金字塔各層級查看詳細規劃</p>
                     </div>
                     <div class="lg:w-1/2">
-                        <div id="pyr-panel" class="bg-white rounded-[3rem] shadow-xl border border-gray-100 overflow-hidden min-h-[550px] relative">
+                        <div id="pyr-panel" class="bg-white rounded-[3rem] shadow-xl border border-gray-100 overflow-hidden min-h-[550px] relative pyr-panel-collapsed">
+                            <div class="pyr-panel-placeholder">
+                                <i class="fa-solid fa-hand-pointer"></i>
+                                <div class="text-2xl font-extrabold text-gray-700 mb-3">點擊左側金字塔查看詳細規劃</div>
+                                <p class="text-sm md:text-base leading-relaxed max-w-md mx-auto">
+                                    請點選「基礎核心課程」、「特色領域模組」或「PBL 總整課程」，右側內容才會展開顯示。
+                                </p>
+                            </div>
                             <!-- Injected by JS -->
                         </div>
                     </div>
@@ -675,7 +703,9 @@
 
                             <div class="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div class="project-card bg-white rounded-[2rem] border border-gray-100 shadow-sm overflow-hidden">
-                                    <div class="h-40 overflow-hidden"><img src="115-1.jpeg" class="w-full h-full object-cover"></div>
+                                    <div class="h-40 bg-gradient-to-br from-cyan-500 to-blue-700 flex items-center justify-center text-white text-5xl">
+                                        <i class="fa-solid fa-microchip"></i>
+                                    </div>
                                     <div class="p-6">
                                         <div class="flex flex-wrap gap-2 mb-3">
                                             <span class="project-chip bg-cyan-50 text-cyan-700">半導體製程</span>
@@ -689,7 +719,11 @@
 
                                 <div class="project-card bg-white rounded-[2rem] border border-gray-100 shadow-sm overflow-hidden">
                                     <div class="h-40 bg-gradient-to-br from-emerald-500 to-green-700 flex items-center justify-center text-white text-5xl">
-                   <div class="h-40 overflow-hidden"><img src="115-2.JPEG" class="w-full h-full object-cover"></div>                                        <span class="project-chip bg-emerald-50 text-emerald-700">智慧巡檢</span>
+                                        <i class="fa-solid fa-robot"></i>
+                                    </div>
+                                    <div class="p-6">
+                                        <div class="flex flex-wrap gap-2 mb-3">
+                                            <span class="project-chip bg-emerald-50 text-emerald-700">智慧巡檢</span>
                                             <span class="project-chip bg-lime-50 text-lime-700">Raspberry Pi</span>
                                         </div>
                                         <h4 class="text-xl font-extrabold text-gray-800 mb-2">工具機精度量測與誤差分析專題</h4>
@@ -1527,8 +1561,9 @@
 
                 <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8">
                     <article class="project-card bg-white rounded-[2rem] shadow-sm border border-gray-100 overflow-hidden" data-category="inspection ai automation">
-                        <div class="h-48 bg-gradient-to-br from-blue-700 via-cyan-600 to-sky-500 flex items-center justify-center text-white text-6xl">
-                            <i class="fa-solid fa-eye"></i>
+                        <div class="h-48 overflow-hidden relative group">
+                            <img src="115-1.jpeg" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                            <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition"></div>
                         </div>
                         <div class="p-7">
                             <div class="flex flex-wrap gap-2 mb-4">
@@ -1557,8 +1592,9 @@
                     </article>
 
                     <article class="project-card bg-white rounded-[2rem] shadow-sm border border-gray-100 overflow-hidden" data-category="machining ai automation">
-                        <div class="h-48 bg-gradient-to-br from-emerald-600 via-green-600 to-lime-500 flex items-center justify-center text-white text-6xl">
-                            <i class="fa-solid fa-chart-line"></i>
+                        <div class="h-48 overflow-hidden relative group">
+                            <img src="115-2.jpeg" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                            <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition"></div>
                         </div>
                         <div class="p-7">
                             <div class="flex flex-wrap gap-2 mb-4">
@@ -1587,8 +1623,9 @@
                     </article>
 
                     <article class="project-card bg-white rounded-[2rem] shadow-sm border border-gray-100 overflow-hidden" data-category="robot ai automation">
-                        <div class="h-48 bg-gradient-to-br from-violet-600 via-indigo-600 to-blue-500 flex items-center justify-center text-white text-6xl">
-                            <i class="fa-solid fa-robot"></i>
+                        <div class="h-48 overflow-hidden relative group">
+                            <img src="115-3.jpeg" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                            <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition"></div>
                         </div>
                         <div class="p-7">
                             <div class="flex flex-wrap gap-2 mb-4">
@@ -2116,7 +2153,7 @@ if (window.lucide && typeof window.lucide.createIcons === "function") {
       setTimeout(animateStats, 150);
     }
     if (pageId === "highlights" && typeof updatePyramid === "function") {
-      updatePyramid(2);
+      // updatePyramid(2);
     }
     if (pageId !== "videos" && typeof window.resetVideoGalleryState === "function") {
       window.resetVideoGalleryState();
@@ -2581,6 +2618,11 @@ if (window.lucide && typeof window.lucide.createIcons === "function") {
   };
 
   function updatePyramid(lvl) {
+        const panel = document.getElementById('pyr-panel');
+        if (panel) {
+            panel.classList.remove('pyr-panel-collapsed');
+        }
+
     document.querySelectorAll(".pyramid-layer").forEach(l => l.classList.remove("active"));
     const layer = document.getElementById("l" + lvl);
     if (layer) layer.classList.add("active");
@@ -3827,6 +3869,27 @@ document.addEventListener('DOMContentLoaded', () => {
   document.addEventListener('keydown', (e) => {
     if(e.key === 'Escape') closeActivityDetail();
   });
+});
+</script>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const panel = document.getElementById('pyr-panel');
+  if (panel) {
+    panel.classList.add('pyr-panel-collapsed');
+    if (!panel.innerHTML || panel.innerHTML.includes('Injected by JS')) {
+      panel.innerHTML = `
+        <div class="pyr-panel-placeholder">
+          <i class="fa-solid fa-hand-pointer"></i>
+          <div class="text-2xl font-extrabold text-gray-700 mb-3">點擊左側金字塔查看詳細規劃</div>
+          <p class="text-sm md:text-base leading-relaxed max-w-md mx-auto">
+            請點選「基礎核心課程」、「特色領域模組」或「PBL 總整課程」，右側內容才會展開顯示。
+          </p>
+        </div>
+      `;
+    }
+  }
 });
 </script>
 
