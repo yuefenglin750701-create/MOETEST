@@ -2194,14 +2194,6 @@ if (window.lucide && typeof window.lucide.createIcons === "function") {
     if (pageId === "videos" && typeof window.resetVideoGalleryState === "function") {
       window.resetVideoGalleryState();
     }
-    const mobileMenu = document.getElementById("mobile-menu");
-    if (mobileMenu && window.innerWidth < 1024) {
-      mobileMenu.classList.add("hidden");
-      document.body.classList.remove("mobile-menu-open");
-      document.querySelectorAll(".mobile-select-dropdown").forEach(el => el.classList.remove("open"));
-      const mobileBtn = document.getElementById("mobile-menu-btn");
-      if (mobileBtn) mobileBtn.setAttribute("aria-expanded", "false");
-    }
   }
 
   // initial load
@@ -2212,17 +2204,8 @@ if (window.lucide && typeof window.lucide.createIcons === "function") {
     // mobile menu toggle
     const btn = document.getElementById("mobile-menu-btn");
     const menu = document.getElementById("mobile-menu");
-    const syncMobileMenuState = () => {
-      if (!btn || !menu) return;
-      const isOpen = !menu.classList.contains("hidden");
-      document.body.classList.toggle("mobile-menu-open", isOpen && window.innerWidth < 1024);
-      btn.setAttribute("aria-expanded", isOpen ? "true" : "false");
-    };
     if (btn && menu) {
-      btn.addEventListener("click", () => {
-        menu.classList.toggle("hidden");
-        syncMobileMenuState();
-      });
+      btn.addEventListener("click", () => menu.classList.toggle("hidden"));
     }
 
     // desktop dropdown: hover to open, keyboard focus/click as fallback
@@ -2275,18 +2258,6 @@ if (window.lucide && typeof window.lucide.createIcons === "function") {
         mobileDropdowns.forEach(item => item.classList.remove('open'));
         if (willOpen) dropdown.classList.add('open');
       });
-    });
-    window.addEventListener("resize", () => {
-      const menu = document.getElementById("mobile-menu");
-      const btn = document.getElementById("mobile-menu-btn");
-      if (!menu || !btn) return;
-      const isOpen = !menu.classList.contains("hidden");
-      document.body.classList.toggle("mobile-menu-open", isOpen && window.innerWidth < 1024);
-      if (window.innerWidth >= 1024) {
-        document.body.classList.remove("mobile-menu-open");
-        menu.classList.add("hidden");
-        btn.setAttribute("aria-expanded", "false");
-      }
     });
   });
 
@@ -3953,6 +3924,72 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 });
+</script>
+
+
+<script>
+(function () {
+  function initRobustMobileMenu() {
+    const btn = document.getElementById('mobile-menu-btn');
+    const menu = document.getElementById('mobile-menu');
+    if (!btn || !menu) return;
+
+    if (btn.dataset.mobileBound === 'true') return;
+    btn.dataset.mobileBound = 'true';
+
+    function syncState() {
+      const isOpen = !menu.classList.contains('hidden');
+      document.body.classList.toggle('mobile-menu-open', isOpen && window.innerWidth < 1024);
+      btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    }
+
+    function openMenu() {
+      menu.classList.remove('hidden');
+      syncState();
+    }
+
+    function closeMenu() {
+      menu.classList.add('hidden');
+      document.body.classList.remove('mobile-menu-open');
+      btn.setAttribute('aria-expanded', 'false');
+      document.querySelectorAll('.mobile-select-dropdown').forEach(el => el.classList.remove('open'));
+    }
+
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      if (menu.classList.contains('hidden')) openMenu(); else closeMenu();
+    }, true);
+
+    menu.querySelectorAll('button[onclick*="showPage"]').forEach(el => {
+      el.addEventListener('click', function () {
+        setTimeout(closeMenu, 0);
+      }, true);
+    });
+
+    document.addEventListener('click', function (e) {
+      if (window.innerWidth >= 1024) return;
+      const clickedInsideMenu = menu.contains(e.target);
+      const clickedButton = btn.contains(e.target);
+      if (!clickedInsideMenu && !clickedButton && !menu.classList.contains('hidden')) {
+        closeMenu();
+      }
+    }, true);
+
+    window.addEventListener('resize', function () {
+      if (window.innerWidth >= 1024) closeMenu();
+      else syncState();
+    });
+
+    closeMenu();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initRobustMobileMenu);
+  } else {
+    initRobustMobileMenu();
+  }
+})();
 </script>
 
 </body>
